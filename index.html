@@ -202,6 +202,7 @@ Chưa cập nhật giá
 </div>
 
 </div>
+
 <!-- THÔNG TIN CHUYỂN KHOẢN -->
 
 <div class="buyBankBox">
@@ -293,11 +294,13 @@ Copy
 
 </div>
 
+</div>
+
 <!-- MEOW WALLET + BẢNG MUA CHƯƠNG -->
 <div class="meowWalletCard" id="meowWalletCard">
-  <div class="mwTop"><span>🐱 Ví tiền Meow</span><div class="mwTopActions"><a href="#" id="mwYuiWalletBtn" class="mwYuiWalletBtn" target="_blank" rel="noopener">💜 Ví</a><button type="button" id="mwRefreshBtn" aria-label="Làm mới ví">↻</button></div></div>
+  <div class="mwTop"><span>🐱 Ví tiền Meow</span><div class="mwTopActions"><a href="#" id="mwYuiWalletBtn" class="mwYuiWalletBtn" target="_blank" rel="noopener">💜 Ví Yui</a><button type="button" id="mwRefreshBtn" aria-label="Làm mới ví">↻</button></div></div>
   <div class="mwBalance" id="mwBalance">Đăng nhập ID khách để xem số dư</div>
-  
+  <small id="mwWalletHint">Số dư đồng bộ từ Meow Wallet trên Firebase.</small>
 </div>
 <div class="meowBuyTableCard">
   <div class="mwTableHeading"><h2>🌸 Bảng mua chương lẻ</h2><div class="mwHeadingRight"><span id="mwSingleCount">0 chương</span><button type="button" id="mwToggleBuyTable" class="mwToggleBuyTable" aria-expanded="false" aria-controls="mwBuyTableContent">＋ Xem thêm</button></div></div>
@@ -305,7 +308,8 @@ Copy
     <div class="mwTotalRow"><span>💗 Tổng giá các chương lẻ</span><b id="mwSingleTotal">0đ</b></div>
     <div class="mwTableScroll"><table class="mwChapterTable"><thead><tr><th>Chương</th><th>Giá</th><th></th></tr></thead><tbody id="mwChapterBuyRows"><tr><td colspan="3">Đang tải giá chương…</td></tr></tbody></table></div>
   </div>
-
+  <div class="mwFullBuyRow"><div><b>📚 Mua full bộ</b><small id="mwFullPriceHint">Giá full truyện được đồng bộ từ thông tin truyện.</small></div><b id="mwFullPrice">Chưa cập nhật</b><button type="button" id="mwBuyFullBtn">💗 Mua full bộ</button></div>
+  <p id="mwPurchaseMessage" class="mwPurchaseMessage" aria-live="polite"></p>
 </div>
 <div id="mwCuteConfirm" class="mwConfirmOverlay" aria-hidden="true">
   <div class="mwConfirmBox" role="dialog" aria-modal="true" aria-labelledby="mwConfirmTitle">
@@ -9701,7 +9705,7 @@ const db = getDatabase(app);
 // MEOW WALLET: đồng bộ số dư, giá chương và giao dịch mua
 const MW_WALLET_PATH = "meowWallet";
 // Bà tự thay URL bên dưới bằng link Ví Yui của mình
-const MW_YUI_WALLET_URL = "https://oluoinhocuameowfullsac.blogspot.com/2026/10/nap-tien.html";
+const MW_YUI_WALLET_URL = "DAN_LINK_VI_YUI_CUA_BA_VAO_DAY";
 const MW_PURCHASE_PATH = "meowPurchases";
 const MW_TX_PATH = "meowWalletTransactions";
 let mwWalletBalance = 0;
