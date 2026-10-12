@@ -1,12 +1,16235 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ổ Lười Nhỏ Của Meow</title>
-</head>
-<body>
-<h1>🐱 Ổ Lười Nhỏ Của Meow</h1>
-<p>Web đã hoạt động!</p>
-</body>
-</html>
+<div id="meowApp">
+
+
+
+<!--=====================
+
+     HOME PAGE
+
+=====================-->
+
+
+<section id="homePage">
+
+<div class="homeCard">
+
+
+
+<div class="coverBox">
+
+
+<img id="coverImage" src="" />
+
+
+
+<div class="authorBadge">
+
+
+✍️&nbsp;
+
+<span id="author">
+
+Đang tải...
+
+</span>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<div class="titleRow">
+
+<div class="storyTitleBox">
+
+<h1 id="storyName">
+Đang tải truyện...
+</h1>
+
+<select
+id="storyDropdown"
+style="display:none">
+</select>
+
+</div>
+  
+<button id="storyLikeBtn" class="readerLikeBtn">
+💕
+</button>
+
+<button id="animeThemeBtn">
+
+🌙
+
+</button>
+
+
+</div>
+
+
+<div id="storyTags"></div>
+
+
+
+<div class="infoBox">
+
+
+
+<div>
+
+
+📚 Chương
+
+
+<b id="chapterCount">
+
+0
+
+</b>
+
+
+</div>
+
+
+
+
+<div>
+
+
+📅 Cập nhật
+
+
+<b id="updateDate">
+
+---
+
+</b>
+
+
+</div>
+
+
+<div>
+👀 Tổng lượt đọc:
+<b id="storyViews">0</b>
+</div>
+
+<div id="lastReadBox">
+
+📖 Đang đọc
+
+<b id="lastRead">
+
+Chưa đọc
+
+</b>
+
+</div>
+
+
+
+
+<div>
+
+
+📌 Trạng thái
+
+
+<b id="status">
+
+---
+
+</b>
+
+
+</div>
+
+<div>
+💖 Lượt thích:
+<b id="storyLikeCount">0</b>
+</div>
+
+
+</div>
+
+
+<div id="storySummary"></div>
+
+<button id="readBtn">
+📖 Đọc ngay
+</button>
+
+<button id="listBtn">
+📚 Danh sách chương
+</button>
+
+<div class="buyCard">
+
+<div class="buyHeader" onclick="toggleBuyBox()">
+
+<h2>
+💛 Mua Full Truyện
+</h2>
+
+<span id="buyArrow">
+▼
+</span>
+
+</div>
+
+<div id="buyBody" class="buyBody">
+
+<!-- GIÁ -->
+
+<div class="buyPriceBox">
+
+<div class="buyPriceTitle">
+💖 GIÁ TRUYỆN
+</div>
+
+<div class="buyPriceContent">
+
+<div id="buyPagePrice" class="buyPrice">
+Chưa cập nhật giá
+</div>
+
+</div>
+
+</div>
+
+<!-- THÔNG TIN CHUYỂN KHOẢN -->
+
+<div class="buyBankBox">
+
+<h3>
+🏦 THÔNG TIN CHUYỂN KHOẢN
+</h3>
+
+<!-- QR -->
+
+<div class="buyQR">
+
+<img
+id="buyQRImage"
+src="https://img.vietqr.io/image/BIDV-8817159793-compact.png?accountName=LE%20HONG%20TRANG"
+alt="QR Chuyển Khoản">
+
+<button
+class="downloadQRBtn"
+onclick="downloadQR()">
+
+📥 Tải QR
+
+</button>
+
+</div>
+
+<div class="buyRow">
+
+<span>
+💗 LE HONG TRANG
+</span>
+
+<button onclick="copyText(this,'LE HONG TRANG')">
+Copy
+</button>
+
+</div>
+
+<div class="buyRow">
+
+<span>
+💗 8817159793
+</span>
+
+<button onclick="copyText(this,'8817159793')">
+Copy
+</button>
+
+</div>
+
+<div class="buyRow">
+
+<span>
+💗 BIDV
+</span>
+
+<button onclick="copyText(this,'BIDV')">
+Copy
+</button>
+
+</div>
+
+</div>
+
+<!-- HƯỚNG DẪN -->
+
+<div class="buyNote">
+
+💌 Sau khi chuyển khoản vui lòng gửi:
+
+<br><br>
+
+✨ Ảnh chuyển khoản
+
+<br>
+
+✨ Gmail & ID độc giả [Nếu đã tạo trước đó]
+
+<br>
+
+✨ Tên truyện
+
+<br>
+
+✨ Fanpage hoặc Mail để xác nhận
+
+</div>
+
+</div>
+
+</div>
+
+<!-- MEOW WALLET + BẢNG MUA CHƯƠNG -->
+<div class="meowWalletCard" id="meowWalletCard">
+  <div class="mwTop"><span>🐱 Ví tiền Meow</span><div class="mwTopActions"><a href="#" id="mwYuiWalletBtn" class="mwYuiWalletBtn" target="_blank" rel="noopener">💜 Ví Yui</a><button type="button" id="mwRefreshBtn" aria-label="Làm mới ví">↻</button></div></div>
+  <div class="mwBalance" id="mwBalance">Đăng nhập ID khách để xem số dư</div>
+  <small id="mwWalletHint">Số dư đồng bộ từ Meow Wallet trên Firebase.</small>
+</div>
+<div class="meowBuyTableCard">
+  <div class="mwTableHeading"><h2>🌸 Bảng mua chương lẻ</h2><div class="mwHeadingRight"><span id="mwSingleCount">0 chương</span><button type="button" id="mwToggleBuyTable" class="mwToggleBuyTable" aria-expanded="false" aria-controls="mwBuyTableContent">＋ Xem thêm</button></div></div>
+  <div id="mwBuyTableContent" class="mwBuyTableContent" hidden>
+    <div class="mwTotalRow"><span>💗 Tổng giá các chương lẻ</span><b id="mwSingleTotal">0đ</b></div>
+    <div class="mwTableScroll"><table class="mwChapterTable"><thead><tr><th>Chương</th><th>Giá</th><th></th></tr></thead><tbody id="mwChapterBuyRows"><tr><td colspan="3">Đang tải giá chương…</td></tr></tbody></table></div>
+  </div>
+  <div class="mwFullBuyRow"><div><b>📚 Mua full bộ</b><small id="mwFullPriceHint">Giá full truyện được đồng bộ từ thông tin truyện.</small></div><b id="mwFullPrice">Chưa cập nhật</b><button type="button" id="mwBuyFullBtn">💗 Mua full bộ</button></div>
+  <p id="mwPurchaseMessage" class="mwPurchaseMessage" aria-live="polite"></p>
+</div>
+<div id="mwCuteConfirm" class="mwConfirmOverlay" aria-hidden="true">
+  <div class="mwConfirmBox" role="dialog" aria-modal="true" aria-labelledby="mwConfirmTitle">
+    <div class="mwConfirmIcon">🐱💗</div><h3 id="mwConfirmTitle">Xác nhận mua nha!</h3>
+    <p id="mwConfirmText">Bà kiểm tra lại thông tin trước khi mua nè.</p>
+    <div class="mwConfirmButtons"><button type="button" id="mwConfirmCancel">Để tui xem lại</button><button type="button" id="mwConfirmOk">💗 Đồng ý mua</button></div>
+  </div>
+</div>
+  
+</section>
+
+
+
+
+
+
+
+
+
+<!--=====================
+
+     CHAPTER LIST
+
+=====================-->
+
+
+
+<section id="chapterPage">
+
+
+
+<button id="backHome">
+
+
+⬅ Quay lại
+
+
+</button>
+
+
+
+
+<h2>
+📚 Danh sách chương
+</h2>
+
+
+<div class="chapterTools">
+
+<button id="oldChapter">
+📖 Cũ nhất
+</button>
+
+
+<button id="newChapter">
+✨ Mới nhất
+</button>
+
+</div>
+
+
+<input id="chapterSearch" placeholder="🔎 Tìm chương..." />
+
+
+<div id="chapterList">
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!--=====================
+
+     READER
+
+=====================-->
+
+
+
+<section id="readerPage">
+
+
+
+
+<div id="readerTop">
+
+
+
+<button id="closeReader">✕</button>
+
+
+<span id="readerTitle">Chương</span>
+
+
+<button id="readerSettingBtn">⚙️</button>
+
+
+
+</div>
+
+
+
+<div id="chapterInfo">
+
+<div class="chapterInfoItem">
+📅
+<div>
+<div class="chapterInfoLabel">Ngày đăng</div>
+<b id="chapterDate">--</b>
+</div>
+</div>
+
+<div class="chapterInfoItem">
+📝
+<div>
+<div class="chapterInfoLabel">Số từ</div>
+<b id="chapterWords">0</b>
+</div>
+</div>
+
+<div class="chapterInfoItem">
+👀
+<div>
+<div class="chapterInfoLabel">Lượt xem</div>
+<b id="chapterViews">0</b>
+</div>
+</div>
+
+</div>
+
+
+<div id="readerContent">
+
+
+</div>
+
+
+
+
+
+
+
+<div id="readerBottom">
+
+<button id="prevChapter">
+❮
+</button>
+
+<button id="readerChapterList">
+≡
+</button>
+
+<button id="readerNoteBtn">
+🖼️
+</button>
+
+<button id="nextChapter">
+❯
+</button>
+
+</div>
+
+
+  
+ 
+</section>
+
+
+
+
+<div id="readerSettingPanel">
+
+<div class="sheetHandle"></div>
+
+<div class="sheetHeader">
+
+<h3>⚙️ Cài đặt đọc</h3>
+
+<button id="closeSetting">✕</button>
+
+</div>
+
+<div class="settingItem">
+
+<span>📏 Cỡ chữ</span>
+
+<input id="fontSize" max="30" type="range" value="19" />
+
+</div>
+
+<div class="settingItem">
+
+<span>📐 Giãn dòng</span>
+
+<input id="lineHeight" max="30" type="range" value="20" />
+
+</div>
+
+<div class="settingItem">
+
+<span>🔤 Font chữ</span>
+
+<select id="fontFamily">
+
+<option value="'Be Vietnam Pro'">Be Vietnam Pro</option>
+
+<option value="Roboto">Roboto</option>
+
+<option value="Noto Serif">Noto Serif</option>
+
+<option value="Merriweather">Merriweather</option>
+
+</select>
+
+</div>
+<div class="settingItem">
+
+<span>🎨 Màu trang</span>
+
+<select id="readerTheme">
+
+<option value="white">🤍 Giấy trắng</option>
+
+<option value="cream">📜 Giấy cổ</option>
+
+<option value="pink">🌸 Sakura</option>
+
+<option value="blue">💙 Bầu trời</option>
+
+<option value="night">🌙 Đêm</option>
+
+<option value="matcha">🍵 Matcha</option>
+
+<option value="lavender">💜 Lavender</option>
+
+<option value="peach">🍑 Peach</option>
+
+</select>
+
+</div>
+  
+<div id="audioPlayer">
+
+<div id="audioTitle">
+🎧 AI đang đọc
+</div>
+<!--Thanh chỉnh tốc độ-->
+<div class="audioRate">
+
+<span>🐢</span>
+
+<input id="ttsRate" max="2" type="range" value="1" />
+
+<span id="ttsRateText">1.0x</span>
+
+</div>
+<div id="ttsCurrentText">
+Chưa đọc
+</div>
+
+<div class="meow-tts-bar">
+<div id="ttsProgress"></div>
+</div>
+
+<div id="ttsPercent">
+0%
+</div>
+
+<div class="audioButtons">
+
+<button class="seek-btn" id="audioPrev">
+
+  ↺
+
+</button>
+
+<button id="ttsBtn">🎧</button>
+
+<button id="audioStop">■</button>
+
+<button class="seek-btn" id="audioNext">
+
+  ↻
+
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<div id="readerChapterPanel">
+
+<div class="sheetHandle"></div>
+
+<div class="sheetHeader">
+
+<h3>📚 Danh sách chương</h3>
+
+<button id="closeChapterPanel">✕</button>
+
+</div>
+
+<div id="readerChapterListBox"></div>
+
+</div>
+
+<div id="readerNotePanel">
+
+<div class="sheetHandle"></div>
+
+<div class="sheetHeader">
+
+<h3>🖼️ Chú thích</h3>
+
+<button id="closeReaderNotePanel">✕</button>
+
+</div>
+
+<div id="readerNoteList">
+
+🌸 Chưa có chú thích.
+
+</div>
+
+</div>
+
+<!-- XEM ẢNH LỚN -->
+<div id="noteImageViewer">
+
+<button id="closeNoteImage">
+✕
+</button>
+
+<img id="noteImageBig">
+
+</div>
+
+
+<!--=====================
+ VIP LOCK
+=====================-->
+
+<div id="vipLockPage">
+
+<div class="vipLockCard">
+
+<div class="vipLockIcon">
+🔒
+</div>
+
+<h2>Chương VIP</h2>
+
+<p>
+
+Chương này chỉ dành cho thành viên VIP.
+
+</p>
+
+<div class="vipStoryName" id="vipStoryName">
+Tên truyện
+</div>
+<div id="vipChapterName"></div>
+<div class="vipUserId" id="vipUserId">
+ID: ---
+</div>
+
+<button id="closeVipLock">
+
+Đóng
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!--=====================
+     ADMIN LOGIN
+=====================-->
+
+<section id="adminLogin">
+
+
+<div class="adminCard">
+
+
+<div class="adminIcon">
+👑
+</div>
+
+
+<h2>
+Meow Login
+</h2>
+
+
+
+<div class="loginTabs">
+
+
+<button class="active" id="showAdminLogin">
+
+👑 Admin
+
+</button>
+
+
+
+<button id="showCustomerLogin">
+
+🐱 Khách
+
+</button>
+
+
+</div>
+
+
+
+
+
+<!--===================
+     ADMIN LOGIN BOX
+===================-->
+
+
+<div id="adminLoginBox">
+
+
+<input id="adminIDInput" placeholder="Nhập ID Admin" />
+
+
+
+<button id="adminLoginBtn">
+
+🔐 Đăng nhập Admin
+
+</button>
+
+
+
+<p id="adminLoginMsg"></p>
+
+
+</div>
+
+
+
+
+
+
+<!--===================
+     KHÁCH LOGIN BOX
+===================-->
+
+
+<div id="customerLoginBox" style="display: none;">
+
+
+
+<input id="customerNameInput" placeholder="Tên khách" />
+
+
+
+<input id="customerIDInput" placeholder="ID khách" />
+
+
+
+<button id="customerLoginBtn">
+
+🐱 Đăng nhập
+
+</button>
+
+
+
+<p id="customerLoginMsg"></p>
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+<!--=====================
+     CUSTOMER PROFILE
+=====================-->
+
+<section id="customerProfile" style="display: none;">
+
+
+<div class="customerProfileCard">
+
+
+<div class="customerAvatar">
+
+🐱
+
+</div>
+
+
+
+<h1 id="customerProfileName">
+
+Khách
+
+</h1>
+
+
+
+<p>
+
+Meow Reader Member
+
+</p>
+
+
+
+<div class="customerInfoBox">
+
+
+<p>
+🆔 ID:
+
+<span id="customerProfileID">
+---
+</span>
+
+</p>
+
+
+
+<p>
+📧 Gmail:
+
+<span id="customerProfileMail">
+---
+</span>
+
+</p>
+
+
+</div>
+
+
+
+
+<div class="customerMenu">
+
+
+<button id="myBooksBtn">
+
+📚 Tủ truyện
+
+</button>
+
+
+
+<button id="myVipBooksBtn">
+
+👑 Truyện đã mua
+
+</button>
+
+
+</div>
+
+
+
+
+<div id="customerContent">
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+<!--=====================
+
+     ADMIN PROFILE
+
+=====================-->
+
+
+
+<section id="adminProfile">
+
+
+
+<div class="adminProfileCard">
+
+
+
+
+<div class="adminAvatar">
+
+
+👑
+
+
+</div>
+
+
+
+
+
+<h1 id="adminName">
+
+
+Admin
+
+
+</h1>
+
+
+
+
+
+<p>
+
+
+Meow Reader Administrator
+
+
+</p>
+
+
+
+
+
+
+<div id="manageBox">
+
+<div class="manageHeader">
+
+<div class="manageAvatar">
+
+👑
+
+</div>
+
+<div class="manageText">
+
+<h2>
+
+Meow Admin Panel
+
+</h2>
+
+<p>
+
+Quản lý truyện • Khách • Hệ thống
+</p>
+
+</div>
+
+
+<button id="adminLogout">
+🚪
+</button>
+
+
+
+</div>
+
+<div class="manageButtons">
+
+<button id="showStoryInfo">
+
+<div class="manageBtnIcon">
+
+📖
+
+</div>
+
+<span>
+
+Thông tin
+
+</span>
+
+</button>
+
+<button id="showAddChapter">
+
+<div class="manageBtnIcon">
+
+✍️
+
+</div>
+
+<span>
+
+Thêm chương
+
+</span>
+
+</button>
+
+<button id="showChapterList">
+
+<div class="manageBtnIcon">
+
+📚
+
+</div>
+
+<span>
+
+Danh sách
+
+</span>
+
+</button>
+
+<button id="showStoryManage">
+
+<div class="manageBtnIcon">
+
+📚
+
+</div>
+
+<span>
+
+Truyện
+
+</span>
+
+</button>
+
+<button id="showCustomerManage">
+
+<div class="manageBtnIcon">
+
+👤
+
+</div>
+
+<span>
+
+Khách
+
+</span>
+
+</button>
+
+<button id="showSetting">
+
+<div class="manageBtnIcon">
+
+⚙️
+
+</div>
+
+<span>
+
+Cài đặt
+
+</span>
+
+</button>
+
+</div>
+
+</div>
+
+
+<!--=========================
+QUẢN LÝ TRUYỆN
+=========================-->
+
+<div id="storyManage">
+
+    <div class="storyManageHeader">
+
+        <div class="storyManageLeft">
+
+            <div class="storyManageIcon">
+                📚
+            </div>
+
+            <div>
+
+                <h2>Quản lý truyện</h2>
+
+                <p>Tất cả truyện trong hệ thống</p>
+
+            </div>
+
+        </div>
+
+        <button id="addStoryBtn">
+            ＋
+        </button>
+
+    </div>
+
+    <!-- Ô tìm kiếm -->
+    <input
+        id="storyManageSearch"
+        class="searchInput"
+        type="text"
+        placeholder="🔍 Tìm theo tên hoặc ID truyện...">
+
+    <div id="storyList"></div>
+
+</div>
+
+<!--=========================
+FORM THÊM TRUYỆN
+=========================-->
+
+<div id="addStoryBox">
+
+    <h2>➕ Thêm truyện</h2>
+
+    <input id="newStoryId" placeholder="ID truyện" />
+
+    <input id="newStoryName" placeholder="Tên truyện" />
+
+    <div class="storyFormButtons">
+
+        <button id="closeStoryBox">
+            Hủy
+        </button>
+
+        <button id="saveNewStory">
+            💾 Lưu
+        </button>
+
+    </div>
+
+</div>
+  
+  <!--=====================
+QUẢN LÝ KHÁCH
+=====================-->
+
+<div id="customerManage">
+
+<div class="storyManageHeader">
+
+<div class="storyManageLeft">
+
+<div class="storyManageIcon">
+👤
+</div>
+
+<div>
+
+<h2>Quản lý khách</h2>
+
+<p>Độc giả của hệ thống</p>
+
+</div>
+
+</div>
+
+<button id="toggleCustomerList">
+👁️
+</button>
+
+<button id="addCustomerBtn">
+＋
+</button>
+
+</div>
+
+<!-- Ô tìm kiếm -->
+<input
+id="customerManageSearch"
+class="searchInput"
+type="text"
+placeholder="🔍 Tìm theo tên, ID hoặc Gmail...">
+
+<div id="customerList"></div>
+
+</div>
+<!--FORM-->
+
+<div id="addCustomerBox">
+
+<h2>➕ Thêm khách</h2>
+
+<input id="customerName" placeholder="Tên khách" />
+
+<input id="customerID" />
+
+<input id="customerMail" />
+
+<div class="storyFormButtons">
+
+<button id="closeCustomerBox">
+Hủy
+</button>
+
+<button id="saveCustomer">
+💾 Lưu
+</button>
+
+</div>
+
+</div>
+<div id="storyInfoBox" style="display: none;">
+
+<h2>📖 Thông tin truyện</h2>
+  <button id="closeStoryInfo">
+✕
+</button>
+
+  <div class="storyIdBox">
+
+<label>🆔 ID truyện</label>
+
+<input id="storyInfoId" readonly />
+
+</div>
+<!-- TRUYỆN MẶC ĐỊNH -->
+
+<label>🏠 Truyện mặc định</label>
+
+<select id="defaultStorySelect">
+
+</select>
+
+<label class="settingCheck">
+
+<input
+type="checkbox"
+id="disableDefaultStory">
+
+Không có truyện mặc định
+
+</label>
+<!--Ảnh bìa-->
+<label>🖼 Ảnh bìa</label>
+
+<input id="storyCover" placeholder="Dán link ảnh bìa..." />
+
+<input accept="image/*" id="storyCoverFile" type="file" />
+
+<img id="storyCoverPreview" style="border-radius: 18px; display: none; margin: 15px auto; width: 180px;" />
+
+<!--Tên truyện-->
+
+<label>📚 Tên truyện</label>
+
+<input id="storyTitle" placeholder="Tên truyện" />
+
+<!--Tác giả-->
+
+<label>✍️ Tác giả</label>
+
+<input id="storyAuthor" placeholder="Tên tác giả" />
+
+<!--Trạng thái-->
+
+<label>📌 Trạng thái</label>
+
+<select id="storyStatus">
+
+<option value="Đang ra">
+🟢 Đang ra
+</option>
+
+<option value="Hoàn thành">
+✅ Hoàn thành
+</option>
+
+<option value="Drop">
+🔴 Drop
+</option>
+
+</select>
+
+<!-- =======================
+TAG
+======================= -->
+
+<label>🏷 Tag</label>
+
+<div id="tagList"></div>
+
+<div class="tagInputBar">
+
+<input
+id="newTag"
+placeholder="Nhập tag mới" />
+
+<button id="addTagBtn">
+＋
+</button>
+
+<button
+type="button"
+id="showAllTags">
+
+🏷 Chọn tag
+
+</button>
+
+
+
+<div id="allTagList"></div>
+
+</div>
+<div class="adminInputGroup">
+
+<label>
+💰 Giá truyện
+</label>
+
+<textarea
+id="storyPrice"
+rows="3"
+placeholder="Nhập giá
+">
+</textarea>
+
+</div>
+  
+  
+  <div class="adminInputGroup">
+
+<label>🌐 Link trang lưu</label>
+
+<input
+id="storyPageLink"
+type="text"
+placeholder="https://tenblog.blogspot.com">
+
+</div>
+<!--Văn án-->
+
+<label>📝 Văn án</label>
+
+<textarea id="adminStorySummary" placeholder="Nhập văn án..."></textarea>
+<hr />
+
+<h3>
+👑 Khách được đọc VIP
+</h3>
+
+
+<button id="toggleVipCustomer">
+👑 Chọn khách VIP
+</button>
+
+
+<div id="vipCustomerSearchBox" style="display:none;">
+
+<input 
+id="vipCustomerSearch"
+placeholder="🔎 Tìm tên khách..." />
+
+
+<div id="vipCustomerList">
+
+</div>
+
+
+</div>
+<button id="saveStoryInfo">
+
+💾 Lưu thông tin
+
+</button>
+  <button id="deleteStoryBtn">
+
+🗑️ Xóa truyện
+
+</button>
+
+</div>
+
+<div id="chapterManageBox">
+
+<div class="infoBoxHeader">
+
+<h2>
+📚 Danh sách chương
+</h2>
+
+<button id="closeChapterManage">
+✕
+</button>
+
+</div>
+
+<div id="chapterManageStoryName">
+</div>
+  
+
+
+<div id="chapterManageList">
+</div>
+
+</div>
+
+
+
+
+<!--=====================
+
+     ADD CHAPTER FORM
+
+=====================-->
+
+
+
+<div id="addChapterBox">
+
+
+
+<h2>
+
+
+✍️ Thêm chương
+
+
+</h2>
+
+
+
+
+
+<input id="adminChapter" type="hidden" />
+
+
+
+<div class="chapterNumberBox">
+
+📖 Đang tạo:
+
+<b id="nextChapterNumber">
+
+Chương 1
+
+</b>
+
+</div>
+
+
+<input id="adminTitle" placeholder="Tên chương" />
+
+
+
+
+
+<div class="adminInputGroup chapterPriceGroup">
+  <label for="adminChapterPrice">
+    💰 Giá tiền chương (VNĐ)
+  </label>
+
+  <input
+    id="adminChapterPrice"
+    type="number"
+    min="0"
+    step="1000"
+    value="0"
+    placeholder="Nhập giá chương, ví dụ: 5000"
+  />
+
+  <small>
+    🌸 Nhập 0 nếu chương miễn phí.
+  </small>
+</div>
+
+
+
+<div class="editorBox">
+
+<div class="editorToolbar">
+
+<button type="button" data-cmd="bold"><b>B</b></button>
+
+<button type="button" data-cmd="italic"><i>I</i></button>
+
+<button type="button" data-cmd="underline"><u>U</u></button>
+
+<button type="button" data-cmd="strikeThrough"><s>S</s></button>
+
+<span class="editorLine"></span>
+
+<button type="button" data-cmd="justifyLeft">⬅️</button>
+
+<button type="button" data-cmd="justifyCenter">↔️</button>
+
+<button type="button" data-cmd="justifyRight">➡️</button>
+
+<span class="editorLine"></span>
+
+<button type="button" id="insertLinkBtn">🔗</button>
+
+<button type="button" id="insertImageBtn">🖼️</button>
+
+<input type="color" id="textColor">
+
+</div>
+
+<div
+id="adminContent"
+class="editorContent"
+contenteditable="true"
+spellcheck="true">
+</div>
+
+</div>
+
+<div class="adminInputGroup">
+
+<label>
+🖼️ Hình chú thích
+</label>
+
+<input
+type="file"
+id="chapterImageFile"
+accept="image/*"
+multiple
+style="display:none;">
+
+<button
+type="button"
+id="chooseChapterImages">
+
+📁 Tải ảnh từ máy
+
+</button>
+
+<div id="chapterImagePreview"></div>
+
+</div>
+
+
+
+
+
+<input id="adminPassword" placeholder="Mật khẩu chương (bỏ trống nếu không khóa)" />
+
+
+
+
+
+
+<label>
+
+
+
+<input id="adminVip" type="checkbox" />
+
+
+
+💎 Chương VIP
+
+
+
+</label>
+
+
+
+
+
+
+
+<br />
+
+
+
+
+
+
+
+<button id="saveChapter">
+
+
+💾 Lưu chương
+
+
+</button>
+
+
+
+
+
+
+
+
+<button id="deleteChapter">
+
+
+🗑 Xóa chương
+
+
+</button>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+</section>
+
+
+<div class="loginDivider">
+<span>✦ Meow Library ✦</span>
+</div>
+<div id="libraryNotice" class="libraryNotice">
+
+    <span>
+        💖 BẤM VÀO TRUYỆN SẼ HIỆN NGAY BÊN TRÊN
+    </span>
+
+    <button id="closeLibraryNotice">
+        ✕
+    </button>
+
+</div>
+<div id="loginStorySlider">
+
+<div id="loginStoryTrack">
+
+</div>
+
+</div>
+
+
+  <div class="loginDivider">
+  <span>TRA CỨU</span>
+</div>
+
+<div class="storyToolBar">
+
+  <button id="searchStoryBtn">
+    🔍 Tìm truyện
+  </button>
+
+  <button id="tagStoryBtn">
+    🏷 Thể loại
+  </button>
+
+</div>
+
+<!-- KHUNG TÌM TRUYỆN -->
+<div id="storySearchPanel" style="display:none;">
+
+  <div class="storySearchBox">
+
+    <input
+      id="storySearchInput"
+      type="text"
+      placeholder="🔍 Tìm truyện hoặc tác giả..."
+    >
+    
+    
+
+    <div id="storySearchResultBox"></div>
+
+  </div>
+
+</div>
+
+<!-- KHUNG THỂ LOẠI -->
+<div id="storyTagPanel" style="display:none;">
+
+  <div id="storyTagList"></div>
+
+  <div id="storyTagResultBox"></div>
+
+</div>
+ </div>
+
+<div class="loginDivider">
+  <span>CÒN TIẾP...</span>
+</div>
+
+</div>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&family=Roboto:wght@400;700&family=Noto+Serif:wght@400;700&family=Merriweather:wght@400;700&display=swap');
+
+/* =====================
+
+ RESET
+
+===================== */
+
+
+
+*{
+
+
+box-sizing:border-box;
+
+
+}
+
+
+
+
+body{
+
+
+margin:0;
+
+
+background:
+
+
+linear-gradient(
+
+180deg,
+
+#fff7fc,
+
+#ffeaf5
+
+);
+
+
+font-family:
+
+
+'Be Vietnam Pro',
+
+Arial,
+
+sans-serif;
+
+
+color:#444;
+
+
+}
+
+
+
+
+
+
+button{
+
+
+border:none;
+
+
+cursor:pointer;
+
+
+font-family:inherit;
+
+
+}
+
+
+
+
+
+
+/* =====================
+
+ APP
+
+===================== */
+
+
+
+#meowApp{
+
+
+max-width:650px;
+
+
+margin:auto;
+
+
+min-height:100vh;
+
+
+}
+
+
+
+
+
+
+/* =====================
+
+ PAGE
+
+===================== */
+
+
+
+#homePage,
+
+#chapterPage{
+
+
+display:none;
+
+
+padding:20px;
+
+
+min-height:100vh;
+
+
+}
+
+
+
+
+#homePage{
+
+
+display:block;
+
+
+}
+
+
+
+
+
+
+/* =====================
+
+ COVER
+
+===================== */
+
+
+
+.coverBox{
+
+
+width:100%;
+
+
+aspect-ratio:16/9;
+
+
+border-radius:30px;
+
+
+overflow:hidden;
+
+
+position:relative;
+
+
+background:#ffd5e8;
+
+
+box-shadow:
+
+
+0 10px 30px #ff8fc144;
+
+
+}
+
+
+
+
+.coverBox img{
+
+
+width:100%;
+
+
+height:100%;
+
+
+object-fit:cover;
+
+
+}
+
+
+
+
+
+
+.authorBadge{
+
+
+position:absolute;
+
+
+left:15px;
+
+
+bottom:15px;
+
+
+
+background:
+
+
+linear-gradient(
+
+90deg,
+
+#ff86bc,
+
+#ff5fa5
+
+);
+
+
+
+color:white;
+
+
+padding:10px 18px;
+
+
+border-radius:50px;
+
+
+font-weight:700;
+
+
+box-shadow:
+
+
+0 5px 15px #ff5fa555;
+
+
+}
+
+
+
+
+
+
+/* =====================
+
+ TITLE
+
+===================== */
+
+
+
+#storyName{
+
+
+font-size:28px;
+
+
+margin:25px 0 20px;
+
+
+color:#333;
+
+
+}
+
+
+
+
+
+
+/* =====================
+ INFO BOX CÂN ĐỐI
+===================== */
+
+.infoBox{
+
+background:white;
+
+padding:15px;
+
+border-radius:28px;
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:12px;
+
+box-shadow:
+
+0 10px 25px rgba(255,95,165,.12);
+
+}
+
+
+.infoBox div{
+
+background:
+
+linear-gradient(
+135deg,
+#fff3f9,
+#ffe7f2
+);
+
+padding:14px 10px;
+
+border-radius:20px;
+
+font-size:13px;
+
+text-align:center;
+
+min-height:75px;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+
+.infoBox b{
+
+display:block;
+
+margin-top:6px;
+
+font-size:17px;
+
+color:#ff5fa5;
+
+line-height:1.2;
+
+}
+
+
+/* mobile */
+
+@media(max-width:600px){
+
+.infoBox{
+
+grid-template-columns:repeat(2,1fr);
+
+gap:10px;
+
+padding:12px;
+
+}
+
+
+.infoBox div{
+
+padding:12px 8px;
+
+min-height:70px;
+
+font-size:12px;
+
+}
+
+
+.infoBox b{
+
+font-size:16px;
+
+}
+
+}
+
+
+
+
+
+
+
+
+/* =====================
+
+ BUTTON
+
+===================== */
+
+
+
+#readBtn{
+
+
+width:100%;
+
+
+height:60px;
+
+
+margin-top:25px;
+
+
+border-radius:50px;
+
+
+font-size:20px;
+
+
+font-weight:800;
+
+
+color:white;
+
+
+
+background:
+
+
+linear-gradient(
+
+90deg,
+
+#ff8fc5,
+
+#ff579d
+
+);
+
+
+
+box-shadow:
+
+
+0 8px 20px #ff579d55;
+
+
+}
+
+
+
+
+
+
+#listBtn{
+
+
+
+width:100%;
+
+
+height:55px;
+
+
+margin-top:15px;
+
+
+border-radius:22px;
+
+
+background:white;
+
+
+font-size:17px;
+
+
+font-weight:bold;
+
+
+box-shadow:
+
+
+0 5px 20px #0001;
+
+
+}
+
+
+
+
+
+
+/* =====================
+
+ CHAPTER
+
+===================== */
+
+
+
+#chapterList{
+
+
+margin-top:20px;
+
+
+}
+
+
+
+
+.chapterItem{
+
+
+background:white;
+
+
+padding:18px;
+
+
+margin-bottom:12px;
+
+
+border-radius:20px;
+
+
+box-shadow:
+
+
+0 5px 20px #0001;
+
+
+font-weight:700;
+
+
+transition:.2s;
+
+
+}
+
+
+
+
+.chapterItem:active{
+
+
+transform:scale(.97);
+
+
+}
+
+
+
+/* =====================
+
+ READER
+
+===================== */
+
+
+
+#readerPage{
+
+
+
+display:none;
+
+
+position:fixed;
+
+
+inset:0;
+
+
+background:white;
+
+
+z-index:999;
+
+
+
+}
+
+
+
+
+
+#readerTop{
+
+
+
+height:60px;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+gap:15px;
+
+
+padding:0 15px;
+
+
+
+background:white;
+
+
+
+box-shadow:
+
+
+0 3px 15px #0001;
+
+
+}
+
+
+
+
+#closeReader{
+
+
+
+background:#ffe4f2;
+
+
+border-radius:15px;
+
+
+padding:10px 15px;
+
+
+font-size:18px;
+
+
+}
+
+
+
+
+
+
+#readerContent{
+
+
+
+position:absolute;
+
+
+
+top:60px;
+
+
+bottom:65px;
+
+
+left:0;
+
+
+right:0;
+
+
+
+overflow:auto;
+
+
+
+padding:25px;
+
+
+
+font-size:19px;
+
+
+line-height:2;
+
+
+
+}
+
+
+
+
+
+#readerBottom{
+
+
+
+position:absolute;
+
+
+bottom:0;
+
+
+left:0;
+
+
+right:0;
+
+
+
+height:65px;
+
+
+
+display:flex;
+
+
+justify-content:space-around;
+
+
+align-items:center;
+
+
+
+background:white;
+
+
+
+box-shadow:
+
+
+0 -3px 15px #0001;
+
+
+
+}
+
+
+
+
+#readerBottom button{
+
+
+
+width:55px;
+
+
+height:45px;
+
+
+
+border-radius:18px;
+
+
+
+background:#ffe6f3;
+
+
+
+font-size:22px;
+
+
+
+}
+
+
+
+
+
+
+
+/* =====================
+
+ MOBILE
+
+===================== */
+
+
+
+@media(max-width:600px){
+
+
+
+#storyName{
+
+
+font-size:23px;
+
+
+}
+
+
+
+.infoBox{
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+#readerContent{
+
+
+font-size:18px;
+
+
+padding:20px;
+
+
+}
+
+
+
+}
+
+
+
+
+
+/* =====================
+ ADMIN LOGIN
+===================== */
+
+#adminLogin{
+
+margin:20px;
+
+}
+
+
+.adminCard{
+
+background:white;
+
+padding:25px 20px;
+
+border-radius:30px;
+
+box-shadow:
+
+0 12px 35px rgba(255,95,165,.18);
+
+text-align:center;
+
+}
+
+
+.adminCard input{
+
+width:100%;
+
+padding:14px;
+
+margin:15px 0;
+
+border:none;
+
+outline:none;
+
+border-radius:18px;
+
+background:#fff0f7;
+
+font-size:15px;
+
+}
+
+
+
+#adminLogin button{
+
+width:100%;
+
+height:50px;
+
+border-radius:25px;
+
+background:
+
+linear-gradient(
+90deg,
+#ff9dcc,
+#ff579d
+);
+
+color:white;
+
+font-weight:bold;
+
+font-size:16px;
+
+box-shadow:
+
+0 8px 20px rgba(255,95,165,.3);
+
+}
+
+
+
+
+/* =====================
+ ADMIN PROFILE
+===================== */
+
+
+#adminProfile{
+
+display:none;
+
+padding:20px;
+
+}
+
+
+
+.adminProfileCard{
+
+background:white;
+
+padding:30px 20px;
+
+border-radius:35px;
+
+text-align:center;
+
+box-shadow:
+
+0 12px 35px rgba(0,0,0,.08);
+
+}
+
+
+
+
+.adminAvatar{
+
+width:100px;
+
+height:100px;
+
+margin:auto;
+
+border-radius:50%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:55px;
+
+background:
+
+linear-gradient(
+135deg,
+#ffd4e8,
+#ff72ad
+);
+
+box-shadow:
+
+0 8px 20px rgba(255,95,165,.25);
+
+}
+
+
+
+
+#adminName{
+
+font-size:32px;
+
+margin:20px 0 5px;
+
+color:#ff5fa5;
+
+}
+
+
+
+
+.adminProfileCard p{
+
+color:#888;
+
+}
+
+
+
+
+
+/*=========================
+ ADMIN PANEL
+=========================*/
+
+#manageBox{
+
+margin-top:30px;
+
+padding:25px;
+
+border-radius:32px;
+
+background:linear-gradient(135deg,#fff8fc,#ffe9f4);
+
+box-shadow:0 15px 35px rgba(255,95,165,.15);
+
+border:2px solid #ffd7ea;
+
+}
+
+.manageHeader{
+
+display:flex;
+
+align-items:center;
+
+gap:18px;
+
+margin-bottom:25px;
+
+}
+
+.manageAvatar{
+
+width:75px;
+
+height:75px;
+
+border-radius:25px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:38px;
+
+background:linear-gradient(135deg,#ffb9db,#ff6cab);
+
+color:white;
+
+box-shadow:0 8px 20px rgba(255,95,165,.3);
+
+}
+
+.manageText{
+
+flex:1;
+
+}
+
+.manageText h2{
+
+margin:0;
+
+font-size:26px;
+
+color:#ff5fa5;
+
+}
+
+.manageText p{
+
+margin:6px 0 0;
+
+font-size:14px;
+
+color:#888;
+
+}
+
+.manageButtons{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:15px;
+
+}
+
+.manageButtons button{
+
+background:white;
+
+border:none;
+
+border-radius:24px;
+
+padding:18px 10px;
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+justify-content:center;
+
+gap:10px;
+
+box-shadow:0 8px 20px rgba(0,0,0,.05);
+
+transition:.25s;
+
+}
+
+.manageButtons button:hover{
+
+transform:translateY(-4px);
+
+box-shadow:0 15px 30px rgba(255,95,165,.18);
+
+}
+
+.manageButtons button:active{
+
+transform:scale(.94);
+
+}
+
+.manageBtnIcon{
+
+width:60px;
+
+height:60px;
+
+border-radius:20px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:30px;
+
+background:linear-gradient(135deg,#ffd8eb,#ff90c4);
+
+color:white;
+
+}
+
+.manageButtons span{
+
+font-weight:bold;
+
+font-size:14px;
+
+color:#555;
+
+}
+
+body.darkMode #manageBox{
+
+background:#2b2741;
+
+border-color:#65558b;
+
+}
+
+body.darkMode .manageButtons button{
+
+background:#3a3455;
+
+}
+
+body.darkMode .manageButtons span{
+
+color:white;
+
+}
+
+body.darkMode .manageText h2{
+
+color:#ffb7d8;
+
+}
+
+body.darkMode .manageText p{
+
+color:#cfc7e8;
+
+}
+
+/* =====================
+ FORM THÊM CHƯƠNG
+===================== */
+
+
+#addChapterBox{
+
+display:none;
+
+background:white;
+
+margin-top:20px;
+
+padding:20px;
+
+border-radius:28px;
+
+box-shadow:
+
+0 10px 30px rgba(0,0,0,.08);
+
+}
+
+
+
+
+#addChapterBox input,
+
+#addChapterBox textarea{
+
+width:100%;
+
+padding:14px;
+
+margin:10px 0;
+
+border:none;
+
+outline:none;
+
+border-radius:18px;
+
+background:#fff0f7;
+
+font-size:15px;
+
+}
+
+
+
+#addChapterBox textarea{
+
+height:300px;
+
+resize:none;
+
+}
+
+
+
+
+#addChapterBox button{
+
+padding:13px 22px;
+
+border-radius:22px;
+
+background:
+
+linear-gradient(
+90deg,
+#ff9dcc,
+#ff579d
+);
+
+color:white;
+
+font-weight:bold;
+
+box-shadow:
+
+0 6px 15px rgba(255,95,165,.25);
+
+}
+#readerContent{
+
+  position:absolute;
+
+  top:140px;
+
+  bottom:65px;
+
+  left:0;
+
+  right:0;
+
+  overflow:auto;
+
+  padding:25px;
+
+  font-size:19px;
+
+  line-height:2;
+
+
+  white-space: pre-wrap;      /* Giữ xuống dòng */
+
+  word-break: break-word;     /* Không tràn chữ */
+
+}
+
+#readerSettingPanel,
+#readerChapterPanel{
+
+display:none;
+
+position:fixed;
+
+left:0;
+right:0;
+bottom:0;
+
+max-height:75vh;
+
+overflow:auto;
+
+background:#fff;
+
+border-radius:28px 28px 0 0;
+
+padding:18px;
+
+box-shadow:0 -10px 35px rgba(0,0,0,.18);
+
+animation:sheetUp .25s;
+
+z-index:1001;
+
+}
+
+@keyframes sheetUp{
+
+from{
+
+transform:translateY(100%);
+
+opacity:0;
+
+}
+
+to{
+
+transform:translateY(0);
+
+opacity:1;
+
+}
+
+}
+
+.sheetHandle{
+
+width:55px;
+
+height:6px;
+
+background:#ffd3e6;
+
+border-radius:99px;
+
+margin:0 auto 18px;
+
+}
+
+.sheetHeader{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:18px;
+
+}
+
+.sheetHeader h3{
+
+margin:0;
+
+font-size:22px;
+
+color:#ff5fa5;
+
+}
+
+.sheetHeader button{
+
+width:42px;
+
+height:42px;
+
+border:none;
+
+border-radius:50%;
+
+background:#ffe9f3;
+
+font-size:20px;
+
+color:#ff5fa5;
+
+}
+
+.settingItem{
+
+background:#fff5fa;
+
+padding:15px;
+
+border-radius:18px;
+
+margin-bottom:15px;
+
+box-shadow:0 5px 15px #00000008;
+
+}
+
+.settingItem span{
+
+display:block;
+
+font-weight:bold;
+
+margin-bottom:10px;
+
+color:#555;
+
+}
+
+.settingItem input[type=range]{
+
+width:100%;
+
+accent-color:#ff6cab;
+
+}
+
+.settingItem select{
+
+width:100%;
+
+padding:12px;
+
+border:none;
+
+border-radius:14px;
+
+background:white;
+
+font-size:15px;
+
+outline:none;
+
+}
+
+#readerChapterListBox{
+
+margin-top:10px;
+
+}
+
+#readerChapterListBox .chapterItem{
+
+background:#fff5fa;
+
+border-radius:18px;
+
+margin-bottom:12px;
+
+  }
+
+  #readerSettingBtn{
+
+margin-left:auto;
+
+width:42px;
+
+height:42px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+border:none;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#ffb6d9,#ff6fae);
+
+color:#fff;
+
+font-size:20px;
+
+box-shadow:0 5px 15px rgba(255,95,165,.35);
+
+transition:.2s;
+
+}
+
+#readerSettingBtn:hover{
+
+transform:rotate(30deg) scale(1.05);
+
+}
+
+#readerSettingBtn:active{
+
+transform:scale(.92);
+
+}
+#readerPage{
+
+transition:.3s;
+
+}
+
+#readerContent{
+
+transition:.3s;
+
+}
+  
+
+  #meowBubble{
+
+display:none;
+
+position:fixed;
+
+right:18px;
+
+bottom:150px;
+
+z-index:2000;
+
+background:linear-gradient(135deg,#ffd8ea,#fff);
+
+border-radius:999px;
+
+padding:10px 14px;
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+box-shadow:0 10px 25px rgba(255,105,180,.25);
+
+animation:bubbleShow .3s;
+
+}
+
+@keyframes bubbleShow{
+
+from{
+
+transform:scale(.8);
+
+opacity:0;
+
+}
+
+to{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+}
+
+.bubbleIcon{
+
+width:42px;
+
+height:42px;
+
+border-radius:50%;
+
+background:#ff78b4;
+
+color:white;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:22px;
+
+animation:pulse 1.2s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.1);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+.bubbleInfo{
+
+flex:1;
+
+}
+
+#bubbleTitle{
+
+font-weight:bold;
+
+color:#ff5fa5;
+
+}
+
+#bubbleTime{
+
+font-size:13px;
+
+color:#777;
+
+}
+
+#bubblePlay{
+
+width:42px;
+
+height:42px;
+
+border-radius:50%;
+
+background:#ffe6f3;
+
+font-size:20px;
+
+  }
+  
+  #audioPlayer{
+
+margin-top:12px;
+
+padding:15px;
+
+background:linear-gradient(135deg,#fff7fb,#ffeaf5);
+
+border-radius:18px;
+
+box-shadow:0 5px 15px rgba(255,110,170,.15);
+
+}
+
+#audioTitle{
+
+text-align:center;
+
+font-weight:bold;
+
+color:#ff5fa5;
+
+margin-bottom:12px;
+
+font-size:15px;
+
+}
+
+#audioSeek{
+
+width:100%;
+
+accent-color:#ff6cae;
+
+margin:10px 0 15px;
+
+}
+
+.audioButtons{
+
+display:flex;
+
+justify-content:space-between;
+
+gap:10px;
+
+}
+
+.audioButtons button{
+
+flex:1;
+
+height:45px;
+
+border:none;
+
+border-radius:15px;
+
+background:linear-gradient(135deg,#ffb6d9,#ff73b2);
+
+color:#fff;
+
+font-size:20px;
+
+box-shadow:0 4px 12px rgba(255,95,165,.25);
+
+}
+
+.audioButtons button:active{
+
+transform:scale(.95);
+
+  }
+  
+#chapterInfo{
+
+display:flex;
+justify-content:space-between;
+gap:8px;
+
+margin:-6px 0 10px;
+/* hoặc -8px nếu muốn sát hơn */
+
+padding:10px 14px;
+
+background:#fff;
+border-radius:12px;
+border:1px solid #f2d7e7;
+
+}
+
+.chapterInfoItem{
+
+flex:1;
+
+display:flex;
+align-items:center;
+gap:8px;
+
+padding:10px 12px;
+
+background:#fff;
+
+border:1px solid #ffd8ea;
+border-radius:12px;
+
+box-shadow:0 2px 8px rgba(255,170,210,.15);
+
+}
+
+.chapterInfoItem>div{
+
+display:flex;
+flex-direction:column;
+line-height:1.2;
+
+}
+
+.chapterInfoLabel{
+
+font-size:11px;
+color:#999;
+
+}
+
+.chapterInfoItem b{
+
+font-size:14px;
+color:#ff5c9f;
+font-weight:700;
+
+}
+  
+  /* =======================
+   CHAPTER INFO - DARK MODE
+======================= */
+
+body.darkMode #chapterInfo{
+    background:#23232b;
+    border:1px solid #444;
+    box-shadow:0 6px 18px rgba(0,0,0,.45);
+}
+
+body.darkMode #chapterInfoBody{
+    color:#f1f1f1;
+}
+
+body.darkMode #chapterInfoBody div{
+    background:#2d2d36;
+    border:1px solid #45454f;
+}
+
+body.darkMode #chapterInfoBody b{
+    color:#ffd86b;
+}
+.meow-tts-bar{
+
+height:8px;
+
+background:#ffd9ea;
+
+border-radius:99px;
+
+overflow:hidden;
+
+margin:15px 0;
+
+cursor:pointer;
+
+}
+
+#ttsProgress{
+
+width:0;
+
+height:100%;
+
+background:#ff6fae;
+
+transition:.25s;
+
+}
+
+#ttsPercent{
+
+text-align:right;
+
+font-size:13px;
+
+color:#777;
+
+margin-bottom:12px;
+
+}
+
+#ttsCurrentText{
+
+font-weight:bold;
+
+color:#ff5fa5;
+
+margin-top:8px;
+
+}
+  
+  .reading{
+
+background:#ffe9f4;
+
+border-left:4px solid #ff6cab;
+
+padding:8px 12px;
+
+border-radius:12px;
+
+transition:.25s;
+
+}
+.audioRate{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+margin:12px 0;
+
+}
+
+.audioRate input{
+
+flex:1;
+
+accent-color:#ff6cab;
+
+}
+
+#ttsRateText{
+
+width:45px;
+
+text-align:right;
+
+font-weight:bold;
+
+color:#ff5fa5;
+
+}
+  
+  .chapterItem.reading{
+
+border:2px solid #ff6cab;
+
+background:linear-gradient(135deg,#fff0f7,#ffe3ef);
+
+box-shadow:0 8px 20px rgba(255,95,165,.18);
+
+}
+
+.chapterItem.reading::after{
+
+content:"📖 Đang đọc";
+
+float:right;
+
+font-size:13px;
+
+color:#ff5fa5;
+
+font-weight:bold;
+
+}
+  
+  #lastReadBox{
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+#lastReadBox:active{
+
+transform:scale(.97);
+
+}
+  
+  .chapterItem.reading{
+
+border:2px solid #ff6cab;
+
+background:#fff0f7;
+
+}
+
+.chapterItem.read{
+
+opacity:.9;
+
+}
+
+.chapterStatus{
+
+float:right;
+
+font-size:13px;
+
+font-weight:bold;
+
+}
+
+.chapterStatus.reading{
+
+color:#ff5fa5;
+
+}
+
+.chapterStatus.read{
+
+color:#6bc46d;
+
+}
+  
+  #storyInfoBox{
+
+display:none;
+
+margin-top:20px;
+
+padding:20px;
+
+background:white;
+
+border-radius:28px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+#storyInfoBox h2{
+
+margin:0 0 20px;
+
+color:#ff5fa5;
+
+}
+
+#storyInfoBox label{
+
+display:block;
+
+margin:18px 0 8px;
+
+font-weight:bold;
+
+}
+
+#storyInfoBox input,
+#storyInfoBox textarea,
+#storyInfoBox select{
+
+width:100%;
+
+padding:13px;
+
+border:none;
+
+outline:none;
+
+border-radius:15px;
+
+background:#fff3f9;
+
+font-size:15px;
+
+}
+
+#storyInfoBox textarea{
+
+height:180px;
+
+resize:vertical;
+
+}
+
+#saveStoryInfo{
+
+margin-top:25px;
+
+width:100%;
+
+height:55px;
+
+border:none;
+
+border-radius:25px;
+
+background:linear-gradient(90deg,#ff8fc5,#ff5fa5);
+
+color:white;
+
+font-size:18px;
+
+font-weight:bold;
+
+}
+  
+  /* ===== TAG ===== */
+
+#tagList{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:10px;
+
+margin:12px 0;
+
+}
+
+.storyTag{
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+padding:8px 14px;
+
+border-radius:999px;
+
+background:linear-gradient(135deg,#ffd7ea,#fff);
+
+color:#ff5fa5;
+
+font-weight:bold;
+
+box-shadow:0 4px 10px rgba(255,95,165,.15);
+
+}
+
+.storyTag span{
+
+cursor:pointer;
+
+font-size:18px;
+
+line-height:1;
+
+}
+
+.storyTag span:hover{
+
+color:#ff2d7a;
+
+}
+
+#storyCoverPreview{
+
+display:block;
+
+margin:15px auto;
+
+max-width:200px;
+
+border-radius:18px;
+
+box-shadow:0 8px 20px rgba(0,0,0,.12);
+
+}
+  
+  .chapterNumberBox{
+
+margin-bottom:15px;
+
+padding:15px;
+
+border-radius:18px;
+
+background:#fff5fa;
+
+font-size:18px;
+
+font-weight:bold;
+
+color:#ff5fa5;
+
+text-align:center;
+
+box-shadow:0 5px 15px rgba(255,95,165,.12);
+
+}
+  
+  #chapterManageBox{
+
+display:none;
+
+margin-top:20px;
+
+padding:20px;
+
+background:#fff;
+
+border-radius:28px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+#chapterManageBox h2{
+
+margin-bottom:20px;
+
+color:#ff5fa5;
+
+}
+
+.chapterManageItem{
+
+background:#fff7fb;
+
+border-radius:20px;
+
+padding:18px;
+
+margin-bottom:15px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.05);
+
+}
+
+.chapterManageTitle{
+
+font-size:18px;
+
+font-weight:bold;
+
+color:#444;
+
+margin-bottom:5px;
+
+}
+
+.chapterManageName{
+
+color:#777;
+
+margin-bottom:15px;
+
+}
+
+.chapterManageButtons{
+
+display:flex;
+
+gap:10px;
+
+}
+
+.chapterManageButtons button{
+
+flex:1;
+
+height:45px;
+
+border:none;
+
+border-radius:15px;
+
+font-weight:bold;
+
+}
+
+.editChapterBtn{
+
+background:#8fd3ff;
+
+color:white;
+
+}
+
+.deleteChapterBtn{
+
+background:#ff7d9f;
+
+color:white;
+
+}
+  
+  /* =====================
+   VĂN ÁN
+===================== */
+
+#storySummary{
+
+background:linear-gradient(
+135deg,
+#fff5fa,
+#ffe7f2
+);
+
+padding:20px;
+
+border-radius:28px;
+
+margin-top:20px;
+
+font-size:15px;
+
+line-height:1.8;
+
+color:#666;
+
+box-shadow:
+0 8px 25px rgba(255,95,165,.12);
+
+border:1px solid #ffd6e8;
+
+}
+
+
+/* =====================
+   TAG TRUYỆN
+===================== */
+
+#storyTags{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:10px;
+
+margin-top:15px;
+
+}
+
+
+#storyTags .storyTag{
+
+display:inline-flex;
+
+align-items:center;
+
+padding:8px 16px;
+
+border-radius:999px;
+
+background:
+linear-gradient(
+135deg,
+#ffd8eb,
+#fff
+);
+
+color:#ff5fa5;
+
+font-weight:700;
+
+font-size:14px;
+
+box-shadow:
+0 5px 15px rgba(255,95,165,.15);
+
+border:1px solid #ffd2e5;
+
+}
+
+
+#storyTags .storyTag:hover{
+
+transform:scale(1.05);
+
+}
+  
+ 
+  
+  
+  /* =====================
+ CHAPTER PAGE BOX
+===================== */
+
+#chapterPage{
+
+background:#fff8fc;
+
+border:3px dashed #ff9ec4;
+
+border-radius:35px;
+
+margin:15px;
+
+padding:20px;
+
+box-shadow:
+
+0 12px 30px rgba(255,95,165,.18);
+
+}
+
+
+/* tiêu đề */
+
+#chapterPage h2{
+
+text-align:center;
+
+color:#ff5fa5;
+
+font-size:24px;
+
+margin:15px 0 25px;
+
+}
+
+
+/* từng chương */
+
+.chapterItem{
+
+border:2px solid #ffd1e6;
+
+background:
+
+linear-gradient(
+135deg,
+#fff,
+#fff5fa
+);
+
+}
+
+
+/* hover */
+
+.chapterItem:hover{
+
+border-color:#ff8fc5;
+
+box-shadow:
+
+0 8px 20px rgba(255,95,165,.2);
+
+}
+  
+ /* =====================
+ BACK BUTTON MINI
+===================== */
+
+#backHome{
+
+width:120px;
+
+height:42px;
+
+border-radius:20px;
+
+background:
+
+linear-gradient(
+90deg,
+#ffb6d9,
+#ff72ad
+);
+
+color:white;
+
+font-size:14px;
+
+font-weight:700;
+
+box-shadow:
+
+0 6px 15px rgba(255,95,165,.3);
+
+transition:.2s;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+margin-bottom:15px;
+
+}
+
+
+#backHome:active{
+
+transform:scale(.92);
+
+}
+  
+  /* =====================
+ TITLE + THEME BUTTON
+===================== */
+
+.titleRow{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+gap:15px;
+
+}
+
+
+#storyName{
+
+flex:1;
+
+}
+
+
+/* nút sáng tối anime */
+
+#animeThemeBtn{
+
+width:52px;
+
+height:52px;
+
+border-radius:50%;
+
+font-size:25px;
+
+background:
+
+linear-gradient(
+135deg,
+#ffd6ec,
+#ff82ba
+);
+
+color:white;
+
+box-shadow:
+
+0 8px 20px rgba(255,95,165,.35);
+
+transition:.3s;
+
+}
+
+
+/* tối */
+
+body.darkMode #animeThemeBtn{
+
+background:
+
+linear-gradient(
+135deg,
+#4b496b,
+#222235
+);
+
+}
+
+
+/* hiệu ứng xoay */
+
+#animeThemeBtn:active{
+
+transform:
+
+scale(.9)
+rotate(20deg);
+
+}
+  
+/* =====================
+ GLOBAL DARK MODE ANIME
+===================== */
+
+
+body.darkMode{
+
+background:
+
+linear-gradient(
+180deg,
+#151522,
+#24213a
+);
+
+color:#eee;
+
+}
+
+
+/* toàn bộ app */
+
+body.darkMode #meowApp{
+
+color:#eee;
+
+}
+
+
+/* trang chủ */
+
+body.darkMode #homePage{
+
+background:
+
+linear-gradient(
+180deg,
+#211d33,
+#302844
+);
+
+border-color:#9d8cff;
+
+box-shadow:
+
+0 15px 35px rgba(120,90,255,.35);
+
+}
+
+
+/* tiêu đề */
+
+body.darkMode #storyName{
+
+color:#fff;
+
+}
+
+
+/* thông tin truyện */
+
+body.darkMode .infoBox{
+
+background:#29253e;
+
+box-shadow:
+
+0 8px 25px #0008;
+
+}
+
+
+body.darkMode .infoBox div{
+
+background:#38314f;
+
+color:#eee;
+
+}
+
+
+body.darkMode .infoBox b{
+
+color:#ff9ed1;
+
+}
+
+
+
+/* văn án */
+
+body.darkMode #storySummary{
+
+background:#29253e;
+
+color:#eee;
+
+border-color:#7566b8;
+
+}
+
+
+
+/* nút */
+
+body.darkMode #listBtn{
+
+background:#302a48;
+
+color:white;
+
+box-shadow:
+
+0 5px 20px #0008;
+
+}
+
+
+
+/* danh sách chương */
+
+body.darkMode #chapterPage{
+
+background:
+
+linear-gradient(
+180deg,
+#211d33,
+#302844
+);
+
+border-color:#9d8cff;
+
+}
+
+
+body.darkMode .chapterItem{
+
+background:#302a48;
+
+color:white;
+
+border-color:#685b9b;
+
+}
+
+
+
+/* =====================
+ READER DARK MODE ANIME
+===================== */
+
+
+body.darkMode #readerPage{
+
+background:#181827;
+
+color:#f8f3ff;
+
+}
+
+
+/* thanh trên */
+
+body.darkMode #readerTop{
+
+background:#181827;
+
+color:white;
+
+box-shadow:
+0 3px 15px #0008;
+
+}
+
+
+body.darkMode #readerTitle{
+
+color:#ffb6d9;
+
+}
+
+
+/* nội dung chương */
+
+body.darkMode #readerContent{
+
+background:#181827;
+
+color:#f7f2ff !important;
+
+}
+
+
+/* nếu nội dung có thẻ p/div/span */
+
+body.darkMode #readerContent p,
+body.darkMode #readerContent div,
+body.darkMode #readerContent span{
+
+color:#f7f2ff !important;
+
+}
+
+
+/* đoạn đang đọc */
+
+body.darkMode #readerContent .reading{
+
+background:#4a3155;
+
+color:#fff !important;
+
+border-left-color:#ff8fc5;
+
+}
+
+
+
+/* thanh dưới */
+
+body.darkMode #readerBottom{
+
+background:#181827;
+
+box-shadow:
+
+0 -3px 15px #0008;
+
+}
+
+
+
+body.darkMode #readerBottom button{
+
+background:#40375c;
+
+color:white;
+
+}
+
+
+/* nút đóng */
+
+body.darkMode #closeReader{
+
+background:#40375c;
+
+color:white;
+
+}
+
+
+/* popup cài đặt */
+
+body.darkMode #readerSettingPanel,
+body.darkMode #readerChapterPanel{
+
+background:#24203a;
+
+color:white;
+
+}
+
+
+body.darkMode .settingItem{
+
+background:#342d50;
+
+}
+
+
+body.darkMode .settingItem select{
+
+background:#211d33;
+
+color:white;
+
+}
+
+
+
+/* admin */
+
+body.darkMode .adminProfileCard,
+body.darkMode #storyInfoBox,
+body.darkMode #chapterManageBox,
+body.darkMode #addChapterBox{
+
+background:#29253e;
+
+color:white;
+
+}
+
+
+body.darkMode input,
+body.darkMode textarea,
+body.darkMode select{
+
+background:#37304f!important;
+
+color:white;
+
+}
+
+
+/* chapter đang đọc */
+
+body.darkMode .chapterItem.reading{
+
+background:#50365b;
+
+border-color:#ff8fc5;
+
+}
+  
+  /* =====================
+ READER CHAPTER LIST DARK
+===================== */
+
+
+body.darkMode #readerChapterPanel{
+
+background:#211d33;
+
+color:white;
+
+box-shadow:
+
+0 -10px 35px rgba(0,0,0,.5);
+
+}
+
+
+/* tiêu đề danh sách */
+
+body.darkMode #readerChapterPanel .sheetHeader h3{
+
+color:#ff9ed1;
+
+}
+
+
+/* nút đóng */
+
+body.darkMode #readerChapterPanel .sheetHeader button{
+
+background:#40375c;
+
+color:white;
+
+}
+
+
+
+/* từng chương */
+
+body.darkMode #readerChapterListBox .chapterItem{
+
+background:
+
+linear-gradient(
+135deg,
+#302844,
+#3b3155
+);
+
+color:#f8f3ff;
+
+border:1px solid #66578d;
+
+box-shadow:
+
+0 5px 15px rgba(0,0,0,.35);
+
+}
+
+
+
+/* chương đang đọc */
+
+body.darkMode #readerChapterListBox .chapterItem.reading{
+
+background:
+
+linear-gradient(
+135deg,
+#633653,
+#4b294d
+);
+
+border-color:#ff8fc5;
+
+color:white;
+
+}
+
+
+
+/* trạng thái */
+
+body.darkMode .chapterStatus{
+
+color:#ffb6d9;
+
+}
+
+
+body.darkMode .chapterStatus.read{
+
+color:#9df0a0;
+
+}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /* =====================
+ CHAPTER TOOLS
+===================== */
+
+
+.chapterTools{
+
+display:flex;
+
+gap:10px;
+
+margin-bottom:15px;
+
+}
+
+
+.chapterTools button{
+
+flex:1;
+
+height:45px;
+
+border-radius:22px;
+
+background:
+
+linear-gradient(
+135deg,
+#ffd6ea,
+#ff8fc5
+);
+
+color:white;
+
+font-weight:bold;
+
+box-shadow:
+
+0 5px 15px rgba(255,95,165,.25);
+
+}
+
+
+#chapterSearch{
+
+width:100%;
+
+height:50px;
+
+border:none;
+
+outline:none;
+
+padding:0 18px;
+
+border-radius:25px;
+
+background:white;
+
+font-size:16px;
+
+margin-bottom:20px;
+
+box-shadow:
+
+0 5px 15px #0001;
+
+}
+
+
+/* dark mode */
+
+body.darkMode #chapterSearch{
+
+background:#302a48;
+
+color:white;
+
+}
+
+
+body.darkMode .chapterTools button{
+
+background:#40375c;
+
+}
+  
+  
+  .seek-btn{
+
+  position:relative;
+
+  width:60px;
+
+  height:60px;
+
+  background:none;
+
+  border:none;
+
+  cursor:pointer;
+
+  font-size:42px;   /* Biểu tượng ↺ ↻ lớn hơn */
+
+  line-height:1;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+}
+
+.seek-btn span{
+
+  position:absolute;
+
+  top:50%;
+
+  left:50%;
+
+  transform:translate(-50%,-50%);
+
+  font-size:12px;   /* Số 10 nhỏ hơn */
+
+  font-weight:800;
+
+  color:#fff;
+
+  text-shadow:0 1px 3px rgba(0,0,0,.5);
+
+  pointer-events:none;
+
+}
+ .seek-btn{
+
+  font-size:48px;
+
+  width:64px;
+
+  height:64px;
+
+}
+
+.seek-btn span{
+
+  font-size:11px;
+
+}
+  
+  /* =========================
+   STORY MANAGER
+========================= */
+
+#storyManage{
+
+margin-top:25px;
+
+background:#ffffff;
+
+border-radius:30px;
+
+padding:22px;
+
+box-shadow:
+0 12px 35px rgba(255,95,165,.12);
+
+}
+
+.storyManageHeader{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:20px;
+
+gap:15px;
+
+}
+
+.storyManageLeft{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+}
+
+.storyManageIcon{
+
+width:58px;
+
+height:58px;
+
+border-radius:18px;
+
+background:linear-gradient(
+135deg,
+#ffb7da,
+#ff71af
+);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:28px;
+
+color:white;
+
+box-shadow:
+0 8px 20px rgba(255,95,165,.3);
+
+}
+
+.storyManageHeader h2{
+
+margin:0;
+
+font-size:22px;
+
+color:#ff5fa5;
+
+}
+
+.storyManageHeader p{
+
+margin:4px 0 0;
+
+font-size:13px;
+
+color:#999;
+
+}
+
+#addStoryBtn{
+
+width:55px;
+
+height:55px;
+
+border:none;
+
+border-radius:18px;
+
+font-size:28px;
+
+font-weight:bold;
+
+color:white;
+
+background:linear-gradient(
+135deg,
+#ff9ecc,
+#ff5fa5
+);
+
+box-shadow:
+0 8px 20px rgba(255,95,165,.3);
+
+transition:.25s;
+
+}
+
+#addStoryBtn:hover{
+
+transform:scale(1.06);
+
+}
+
+#addStoryBtn:active{
+
+transform:scale(.92);
+
+}
+
+#storyList{
+
+display:flex;
+
+flex-direction:column;
+
+gap:15px;
+
+}
+  .storyManageItem{
+
+background:linear-gradient(
+135deg,
+#fff8fc,
+#fff2f8
+);
+
+border-radius:22px;
+
+padding:18px;
+
+border:2px solid #ffd5e7;
+
+transition:.25s;
+
+}
+
+.storyManageItem:hover{
+
+transform:translateY(-2px);
+
+box-shadow:
+0 10px 25px rgba(255,95,165,.15);
+
+}
+
+.storyManageItemTop{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+gap:15px;
+
+}
+
+.storyManageName{
+
+font-size:18px;
+
+font-weight:700;
+
+color:#444;
+
+}
+
+.storyManageButtons{
+
+display:flex;
+
+gap:10px;
+
+}
+
+.storyManageButtons button{
+
+width:45px;
+
+height:45px;
+
+border:none;
+
+border-radius:14px;
+
+font-size:19px;
+
+color:white;
+
+background:linear-gradient(
+135deg,
+#ffb2d5,
+#ff6cab
+);
+
+box-shadow:
+0 5px 15px rgba(255,95,165,.25);
+
+transition:.2s;
+
+}
+
+.storyManageButtons button:hover{
+
+transform:scale(1.08);
+
+}
+
+.storyManageButtons button:active{
+
+transform:scale(.92);
+
+}
+  
+  #addStoryBox{
+
+display:none;
+
+margin-top:20px;
+
+background:white;
+
+border-radius:28px;
+
+padding:22px;
+
+box-shadow:
+0 12px 35px rgba(0,0,0,.08);
+
+}
+
+#addStoryBox h2{
+
+margin-top:0;
+
+margin-bottom:18px;
+
+color:#ff5fa5;
+
+}
+
+#addStoryBox input{
+
+width:100%;
+
+padding:14px;
+
+margin-bottom:15px;
+
+border:none;
+
+outline:none;
+
+border-radius:18px;
+
+background:#fff3f9;
+
+font-size:15px;
+
+}
+
+.storyFormButtons{
+
+display:flex;
+
+gap:12px;
+
+margin-top:8px;
+
+}
+
+.storyFormButtons button{
+
+flex:1;
+
+height:48px;
+
+border:none;
+
+border-radius:18px;
+
+font-size:15px;
+
+font-weight:bold;
+
+color:white;
+
+background:linear-gradient(
+135deg,
+#ff9dcc,
+#ff5fa5
+);
+
+}
+
+.storyFormButtons button:first-child{
+
+background:#c7c7c7;
+
+}
+  
+  #chapterManageStoryName{
+
+margin-bottom:20px;
+
+padding:15px;
+
+border-radius:18px;
+
+background:linear-gradient(
+135deg,
+#fff4fa,
+#ffe8f3
+);
+
+font-size:18px;
+
+font-weight:bold;
+
+color:#ff5fa5;
+
+text-align:center;
+
+box-shadow:
+0 5px 15px rgba(255,95,165,.12);
+
+}
+
+.chapterVip{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+margin-top:12px;
+
+font-size:14px;
+
+font-weight:bold;
+
+color:#ff5fa5;
+
+}
+
+.chapterVip input{
+
+width:20px;
+
+height:20px;
+
+}
+  
+  #customerManage{
+
+margin-top:25px;
+
+background:#fff;
+
+padding:22px;
+
+border-radius:30px;
+
+box-shadow:
+0 12px 35px rgba(255,95,165,.12);
+
+}
+
+#customerList{
+
+display:flex;
+
+flex-direction:column;
+
+gap:15px;
+
+margin-top:20px;
+
+}
+
+.customerItem{
+
+background:#fff7fb;
+
+border-radius:22px;
+
+padding:18px;
+
+border:2px solid #ffd6e8;
+
+}
+
+.customerTop{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+.customerButtons{
+
+display:flex;
+
+gap:10px;
+
+}
+
+.customerButtons button{
+
+width:42px;
+
+height:42px;
+
+border:none;
+
+border-radius:14px;
+
+background:linear-gradient(
+135deg,
+#ffb2d5,
+#ff6cab
+);
+
+color:white;
+
+}
+
+#addCustomerBox{
+
+display:none;
+
+margin-top:20px;
+
+background:white;
+
+padding:22px;
+
+border-radius:28px;
+
+box-shadow:
+0 12px 35px rgba(0,0,0,.08);
+
+}
+
+#addCustomerBox input{
+
+width:100%;
+
+padding:14px;
+
+margin-bottom:15px;
+
+border:none;
+
+border-radius:18px;
+
+background:#fff4fa;
+
+}
+  
+  /* =====================
+VIP CUSTOMER
+===================== */
+
+#vipCustomerList{
+
+margin-top:20px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:12px;
+
+}
+
+.vipCustomerItem{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:14px;
+
+border-radius:18px;
+
+background:#fff7fb;
+
+border:2px solid #ffd6e8;
+
+}
+
+.vipCustomerName{
+
+font-weight:bold;
+
+color:#444;
+
+}
+
+.vipCustomerBtn{
+
+padding:10px 18px;
+
+border:none;
+
+border-radius:14px;
+
+font-weight:bold;
+
+color:white;
+
+background:linear-gradient(
+135deg,
+#ff9dcc,
+#ff5fa5
+);
+
+}
+
+.vipCustomerBtn.remove{
+
+background:linear-gradient(
+135deg,
+#999,
+#666
+);
+
+}
+  
+  /* =====================
+ VIP LOCK
+===================== */
+
+#vipLockPage{
+
+display:none;
+
+position:fixed;
+
+inset:0;
+
+background:rgba(0,0,0,.45);
+
+backdrop-filter:blur(12px);
+
+z-index:99999;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+.vipLockCard{
+
+width:340px;
+
+max-width:90%;
+
+background:rgba(255,255,255,.92);
+
+border-radius:35px;
+
+padding:35px 25px;
+
+text-align:center;
+
+box-shadow:0 20px 45px rgba(0,0,0,.25);
+
+animation:vipPop .25s;
+
+}
+
+@keyframes vipPop{
+
+from{
+
+transform:scale(.85);
+
+opacity:0;
+
+}
+
+to{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+}
+
+.vipLockIcon{
+
+font-size:70px;
+
+margin-bottom:15px;
+
+}
+
+.vipLockCard h2{
+
+margin:10px 0;
+
+color:#ff5fa5;
+
+}
+
+.vipLockCard p{
+
+color:#666;
+
+line-height:1.6;
+
+}
+
+.vipStoryName{
+
+margin-top:20px;
+
+font-weight:bold;
+
+font-size:20px;
+
+color:#444;
+
+}
+
+.vipUserId{
+
+margin:12px 0 25px;
+
+color:#888;
+
+}
+
+#closeVipLock{
+
+width:100%;
+
+height:50px;
+
+border:none;
+
+border-radius:25px;
+
+background:linear-gradient(90deg,#ff9dcc,#ff5fa5);
+
+color:white;
+
+font-size:17px;
+
+font-weight:bold;
+
+}
+  
+  /* =====================
+ VIP CHAPTER
+===================== */
+
+.vipChapterMask{
+
+position:relative;
+
+margin-top:8px;
+
+padding:10px;
+
+border-radius:15px;
+
+background:#fff2f7;
+
+overflow:hidden;
+
+}
+
+.vipChapterMask::after{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+backdrop-filter:blur(5px);
+
+background:rgba(255,255,255,.35);
+
+}
+
+.vipTitle{
+
+filter:blur(3px);
+
+user-select:none;
+
+pointer-events:none;
+
+}
+
+.vipBadge{
+
+position:absolute;
+
+top:50%;
+
+left:50%;
+
+transform:translate(-50%,-50%);
+
+z-index:5;
+
+background:linear-gradient(90deg,#ff82ba,#ff5fa5);
+
+color:#fff;
+
+padding:8px 18px;
+
+border-radius:99px;
+
+font-size:13px;
+
+font-weight:bold;
+
+box-shadow:0 5px 15px rgba(255,95,165,.35);
+
+}
+  
+  body.darkMode .vipChapterMask{
+
+background:#382f55;
+
+}
+
+body.darkMode .vipBadge{
+
+background:linear-gradient(90deg,#7d63ff,#9d8cff);
+
+}
+  
+  /* ====================================
+   LOGIN ADMIN / KHÁCH
+==================================== */
+
+.adminCard{
+
+width:100%;
+max-width:430px;
+
+margin:30px auto;
+
+padding:30px;
+
+border-radius:35px;
+
+background:linear-gradient(
+180deg,
+#fff,
+#fff7fb
+);
+
+box-shadow:
+0 15px 35px rgba(255,120,180,.18);
+
+border:2px solid #ffd7e8;
+
+}
+
+.adminIcon{
+
+width:90px;
+height:90px;
+
+margin:auto;
+
+border-radius:50%;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:45px;
+
+background:linear-gradient(
+135deg,
+#ffd9eb,
+#ff8fc5
+);
+
+color:#fff;
+
+box-shadow:
+0 10px 25px rgba(255,95,165,.3);
+
+margin-bottom:18px;
+
+}
+
+.adminCard h2{
+
+text-align:center;
+
+font-size:28px;
+
+color:#ff5fa5;
+
+margin-bottom:25px;
+
+}
+
+.loginTabs{
+
+display:flex;
+
+gap:12px;
+
+margin-bottom:25px;
+
+}
+
+.loginTabs button{
+
+flex:1;
+
+height:48px;
+
+border:none;
+
+border-radius:18px;
+
+font-size:16px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.25s;
+
+background:#ffe7f2;
+
+color:#ff5fa5;
+
+}
+
+.loginTabs button.active{
+
+background:linear-gradient(
+135deg,
+#ff8fc5,
+#ff5fa5
+);
+
+color:white;
+
+box-shadow:
+0 8px 20px rgba(255,95,165,.28);
+
+}
+
+#adminLoginBox,
+#customerLoginBox{
+
+display:flex;
+flex-direction:column;
+gap:15px;
+
+}
+
+#adminLoginBox input,
+#customerLoginBox input{
+
+height:50px;
+
+border:none;
+
+outline:none;
+
+padding:0 18px;
+
+border-radius:18px;
+
+background:#fff5fa;
+
+font-size:15px;
+
+box-shadow:
+0 4px 12px rgba(0,0,0,.05);
+
+transition:.2s;
+
+}
+
+#adminLoginBox input:focus,
+#customerLoginBox input:focus{
+
+background:#fff;
+
+box-shadow:
+0 0 0 3px rgba(255,120,180,.2);
+
+}
+
+#adminLoginBtn,
+#customerLoginBtn{
+
+height:52px;
+
+border:none;
+
+border-radius:22px;
+
+font-size:16px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+color:white;
+
+background:linear-gradient(
+135deg,
+#ff9ac8,
+#ff5fa5
+);
+
+box-shadow:
+0 10px 25px rgba(255,95,165,.25);
+
+transition:.25s;
+
+}
+
+#adminLoginBtn:hover,
+#customerLoginBtn:hover{
+
+transform:translateY(-2px);
+
+}
+
+#adminLoginBtn:active,
+#customerLoginBtn:active{
+
+transform:scale(.96);
+
+}
+
+#adminLoginMsg,
+#customerLoginMsg{
+
+text-align:center;
+
+font-size:14px;
+
+font-weight:bold;
+
+color:#ff5fa5;
+
+margin-top:5px;
+
+}
+
+/* ========= DARK ========= */
+
+body.darkMode .adminCard{
+
+background:#2b2741;
+
+border-color:#5d4d90;
+
+box-shadow:
+0 15px 35px rgba(0,0,0,.35);
+
+}
+
+body.darkMode .adminCard h2{
+
+color:#ffd1eb;
+
+}
+
+body.darkMode .loginTabs button{
+
+background:#3b3555;
+
+color:#fff;
+
+}
+
+body.darkMode .loginTabs button.active{
+
+background:linear-gradient(
+135deg,
+#8d6bff,
+#5b4db8
+);
+
+}
+
+body.darkMode #adminLoginBox input,
+body.darkMode #customerLoginBox input{
+
+background:#40375c;
+
+color:white;
+
+}
+
+body.darkMode #adminLoginBtn,
+body.darkMode #customerLoginBtn{
+
+background:linear-gradient(
+135deg,
+#7566b8,
+#54438c
+);
+
+}
+  
+  /* =========================
+   CUSTOMER PROFILE MEOW
+========================= */
+
+
+#customerProfile{
+
+width:100%;
+
+min-height:100vh;
+
+padding:25px 15px;
+
+display:none;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+
+
+.customerProfileCard{
+
+width:100%;
+
+max-width:420px;
+
+background:
+
+linear-gradient(
+145deg,
+#fff8fc,
+#ffe7f2
+);
+
+border-radius:35px;
+
+padding:30px 20px;
+
+text-align:center;
+
+box-shadow:
+
+0 15px 35px rgba(255,120,170,.25);
+
+border:2px solid #ffd1e5;
+
+animation:
+
+customerShow .35s ease;
+
+}
+
+
+
+@keyframes customerShow{
+
+from{
+
+opacity:0;
+
+transform:translateY(25px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:none;
+
+}
+
+}
+
+
+/* icon mèo */
+
+.customerAvatar{
+
+width:90px;
+
+height:90px;
+
+margin:0 auto 15px;
+
+border-radius:50%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:55px;
+
+background:
+
+linear-gradient(
+135deg,
+#ffb6d9,
+#ff8fc1
+);
+
+box-shadow:
+
+0 8px 20px rgba(255,120,170,.35);
+
+}
+
+
+
+/* tên */
+
+#customerProfileName{
+
+font-size:28px;
+
+font-weight:900;
+
+color:#ff5d9e;
+
+margin-bottom:5px;
+
+}
+
+
+
+.customerProfileCard > p{
+
+color:#a96b88;
+
+font-size:14px;
+
+margin-bottom:20px;
+
+}
+
+
+
+/* thông tin */
+
+.customerInfoBox{
+
+background:white;
+
+border-radius:22px;
+
+padding:15px;
+
+text-align:left;
+
+box-shadow:
+
+inset 0 0 0 2px #ffe0ed;
+
+margin-bottom:20px;
+
+}
+
+
+
+.customerInfoBox p{
+
+margin:10px 0;
+
+font-size:15px;
+
+color:#755264;
+
+}
+
+
+
+.customerInfoBox span{
+
+font-weight:700;
+
+color:#ff639f;
+
+}
+
+
+
+/* menu */
+
+.customerMenu{
+
+display:flex;
+
+flex-direction:column;
+
+gap:12px;
+
+}
+
+
+
+.customerMenu button{
+
+height:55px;
+
+border:none;
+
+border-radius:22px;
+
+font-size:17px;
+
+font-weight:700;
+
+cursor:pointer;
+
+color:white;
+
+
+background:
+
+linear-gradient(
+135deg,
+#ff9ec8,
+#ff6fa8
+);
+
+
+box-shadow:
+
+0 8px 18px rgba(255,100,160,.3);
+
+transition:.2s;
+
+}
+
+
+
+.customerMenu button:hover{
+
+transform:translateY(-3px);
+
+}
+
+
+
+/* nội dung tủ truyện */
+
+#customerContent{
+
+margin-top:20px;
+
+background:white;
+
+border-radius:25px;
+
+padding:15px;
+
+min-height:80px;
+
+box-shadow:
+
+0 5px 15px rgba(255,150,190,.15);
+
+}
+
+
+
+/* nút thông báo */
+
+#customerNotifyBtn{
+
+position:absolute;
+
+right:25px;
+
+top:25px;
+
+width:45px;
+
+height:45px;
+
+border:none;
+
+border-radius:50%;
+
+font-size:22px;
+
+background:#fff;
+
+box-shadow:
+
+0 5px 15px rgba(255,120,170,.25);
+
+}
+  
+ .storyTitleBox{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    flex-wrap:nowrap;
+}
+
+#storyName{
+    margin:0;
+    line-height:1.2;
+}
+
+#storyDropdown{
+    height:34px;
+    padding:0 12px;
+    border:none;
+    border-radius:16px;
+    background:#fff4fa;
+    font-weight:bold;
+    color:#ff5fa5;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    cursor:pointer;
+    max-width:170px;
+    font-size:13px;
+}
+
+body.darkMode #storyDropdown{
+
+background:#40375c;
+
+color:#fff;
+
+}
+  
+  #settingBox{
+
+display:none;
+
+position:fixed;
+
+left:50%;
+top:50%;
+
+transform:translate(-50%,-50%);
+
+width:min(420px,92vw);
+
+background:#fff;
+
+border-radius:24px;
+
+padding:25px;
+
+box-shadow:0 20px 50px rgba(0,0,0,.18);
+
+z-index:9999;
+
+}
+
+body.darkMode #settingBox{
+
+background:#2d2d3a;
+
+color:#fff;
+
+}
+
+.settingCheck{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+margin:18px 0;
+
+}
+  
+  /* =========================
+   DEFAULT STORY SETTING
+========================= */
+
+#defaultStorySelect{
+
+width:100%;
+
+height:48px;
+
+border:none;
+
+outline:none;
+
+padding:0 18px;
+
+margin:10px 0 15px;
+
+border-radius:18px;
+
+background:
+linear-gradient(
+135deg,
+#fff0f7,
+#ffe0ee
+);
+
+color:#ff5c9a;
+
+font-size:15px;
+
+font-weight:600;
+
+box-shadow:
+0 8px 20px rgba(255,120,170,.15);
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+
+
+#defaultStorySelect:hover{
+
+transform:translateY(-2px);
+
+box-shadow:
+0 12px 25px rgba(255,120,170,.25);
+
+}
+
+
+
+#defaultStorySelect:focus{
+
+box-shadow:
+0 0 0 3px rgba(255,120,170,.25);
+
+}
+
+
+
+/* LABEL */
+
+#storyInfoBox label{
+
+display:block;
+
+margin-top:18px;
+
+margin-bottom:8px;
+
+font-weight:700;
+
+color:#ff6fa5;
+
+font-size:15px;
+
+}
+
+
+
+/* CHECKBOX */
+
+.settingCheck{
+
+display:flex !important;
+
+align-items:center;
+
+gap:10px;
+
+padding:14px 16px;
+
+margin:15px 0;
+
+border-radius:18px;
+
+background:
+
+linear-gradient(
+135deg,
+#fff7fb,
+#ffeaf4
+);
+
+color:#777;
+
+font-weight:600;
+
+cursor:pointer;
+
+box-shadow:
+
+0 6px 15px rgba(255,120,170,.12);
+
+}
+
+
+
+.settingCheck input{
+
+width:20px;
+
+height:20px;
+
+accent-color:#ff7eb5;
+
+cursor:pointer;
+
+}
+
+
+
+/* KHUNG THÔNG TIN TRUYỆN */
+
+#storyInfoBox{
+
+background:
+
+linear-gradient(
+180deg,
+#ffffff,
+#fff7fb
+);
+
+border-radius:28px;
+
+padding:25px;
+
+box-shadow:
+
+0 20px 50px rgba(255,120,170,.18);
+
+}
+
+
+
+/* TIÊU ĐỀ */
+
+#storyInfoBox h2{
+
+text-align:center;
+
+color:#ff5c9a;
+
+font-size:24px;
+
+margin-bottom:20px;
+
+}
+
+
+
+/* NÚT LƯU */
+
+#saveStoryInfo{
+
+width:100%;
+
+height:50px;
+
+border:none;
+
+border-radius:20px;
+
+background:
+
+linear-gradient(
+135deg,
+#ff8fc7,
+#ff5c9a
+);
+
+color:white;
+
+font-size:16px;
+
+font-weight:700;
+
+cursor:pointer;
+
+box-shadow:
+
+0 10px 25px rgba(255,90,150,.3);
+
+transition:.25s;
+
+}
+
+
+
+#saveStoryInfo:hover{
+
+transform:translateY(-3px);
+
+}
+
+
+
+/* DARK MODE */
+
+body.darkMode #storyInfoBox{
+
+background:#292938;
+
+}
+
+
+
+body.darkMode #defaultStorySelect{
+
+background:#3a3a4c;
+
+color:#ffd0e5;
+
+}
+
+
+
+body.darkMode .settingCheck{
+
+background:#353546;
+
+color:#eee;
+
+}
+  
+  .infoBoxHeader{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+}
+
+
+#closeStoryInfo{
+
+width:38px;
+height:38px;
+
+border:none;
+border-radius:50%;
+
+background:#ff9ec4;
+
+color:white;
+
+font-size:20px;
+
+cursor:pointer;
+
+}
+  
+  #vipCustomerList{
+
+max-height:300px;
+
+overflow-y:auto;
+
+margin-top:10px;
+
+padding-right:5px;
+
+}
+
+
+#vipCustomerSearch{
+
+width:100%;
+
+padding:12px;
+
+border-radius:15px;
+
+border:1px solid #ffd0e5;
+
+margin:10px 0;
+
+}
+  
+  #storyList,
+#customerList{
+
+max-height:350px;
+
+overflow-y:auto;
+
+margin-top:15px;
+
+}
+  #storyManage,
+#customerManage{
+
+display:none;
+
+}
+  .infoBoxHeader{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+}
+
+
+#closeChapterManage{
+
+width:38px;
+height:38px;
+
+border:none;
+border-radius:50%;
+
+background:#ff9ec4;
+
+color:white;
+
+font-size:20px;
+
+cursor:pointer;
+
+}
+  
+  #adminLogout{
+
+width:40px;
+height:40px;
+
+border:none;
+border-radius:50%;
+
+background:#ff9ec4;
+
+color:white;
+
+font-size:20px;
+
+cursor:pointer;
+
+}
+  
+  /* =======================
+   MUA FULL
+======================= */
+
+.buyCard{
+
+margin-top:22px;
+
+background:linear-gradient(135deg,#fff8fc,#ffe8f4);
+
+border:3px solid #ffd2e8;
+
+border-radius:30px;
+
+padding:22px;
+
+box-shadow:0 12px 30px rgba(255,95,165,.18);
+
+}
+
+.buyCard h2{
+
+margin:0 0 18px;
+
+text-align:center;
+
+font-size:28px;
+
+color:#ff5fa5;
+
+}
+
+.buyPriceBox{
+
+background:linear-gradient(135deg,#fff3b0,#ffe88b);
+
+border-radius:24px;
+
+padding:20px;
+
+text-align:center;
+
+margin-bottom:20px;
+
+box-shadow:0 8px 20px rgba(255,205,70,.25);
+
+}
+
+.buyPriceTitle{
+
+font-size:16px;
+
+font-weight:bold;
+
+color:#9b6b00;
+
+margin-bottom:10px;
+
+}
+
+.buyPrice{
+
+font-size:34px;
+
+font-weight:900;
+
+color:#ff4f88;
+
+}
+
+.buyBankBox{
+
+background:white;
+
+border-radius:24px;
+
+padding:18px;
+
+box-shadow:0 8px 20px rgba(255,95,165,.08);
+
+}
+
+.buyBankBox h3{
+
+margin:0 0 15px;
+
+text-align:center;
+
+color:#ff69b4;
+
+font-size:22px;
+
+}
+
+.buyRow{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:12px 0;
+
+border-bottom:1px dashed #ffd3e8;
+
+gap:10px;
+
+}
+
+.buyRow:last-child{
+
+border-bottom:none;
+
+}
+
+.buyRow span{
+
+font-weight:700;
+
+color:#666;
+
+word-break:break-all;
+
+}
+
+.buyRow button{
+
+background:linear-gradient(135deg,#ff8ec5,#ff5fa5);
+
+color:white;
+
+border:none;
+
+padding:8px 18px;
+
+border-radius:16px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+.buyRow button:hover{
+
+transform:translateY(-2px);
+
+}
+
+.buyNote{
+
+margin-top:20px;
+
+background:#fff0f8;
+
+border:2px dashed #ffc4df;
+
+border-radius:20px;
+
+padding:16px;
+
+line-height:1.9;
+
+color:#ff5fa5;
+
+font-weight:600;
+
+}
+
+@media(max-width:600px){
+
+.buyCard{
+
+padding:18px;
+
+}
+
+.buyCard h2{
+
+font-size:24px;
+
+}
+
+.buyPrice{
+
+font-size:28px;
+
+}
+
+.buyRow{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+}
+
+.buyRow button{
+
+width:100%;
+
+margin-top:8px;
+
+}
+
+}
+  
+  .buyDropdown{
+
+margin-bottom:18px;
+
+border-radius:22px;
+
+overflow:hidden;
+
+background:#fff;
+
+box-shadow:0 8px 20px rgba(255,95,165,.12);
+
+}
+
+.buyDropdownHead{
+
+padding:16px 20px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+cursor:pointer;
+
+font-weight:800;
+
+color:#ff5fa5;
+
+}
+
+.buyDropdownBody{
+
+max-height:0;
+
+overflow:hidden;
+
+transition:max-height .35s ease;
+
+}
+
+.buyDropdown.open .buyDropdownBody{
+
+max-height:1000px;
+
+}
+
+.buyStoryItem{
+
+padding:14px 20px;
+
+border-top:1px dashed #ffd4e7;
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+.buyStoryItem:hover{
+
+background:#fff3f9;
+
+}
+
+#buyStoryArrow{
+
+transition:.3s;
+
+}
+
+.buyDropdown.open #buyStoryArrow{
+
+transform:rotate(180deg);
+
+}
+  
+  /* =======================
+   MUA FULL DROPDOWN
+======================= */
+
+.buyHeader{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+cursor:pointer;
+
+padding:6px 4px;
+
+user-select:none;
+
+}
+
+.buyHeader h2{
+
+margin:0;
+
+color:#ff5fa5;
+
+font-size:28px;
+
+font-weight:900;
+
+}
+
+#buyArrow{
+
+font-size:22px;
+
+color:#ff5fa5;
+
+transition:.35s;
+
+}
+
+#buyArrow.rotate{
+
+transform:rotate(180deg);
+
+}
+
+.buyBody{
+
+max-height:0;
+
+overflow:hidden;
+
+transition:
+max-height .45s ease,
+padding .35s ease;
+
+padding-top:0;
+
+}
+
+.buyBody.open{
+
+max-height:1800px;
+
+padding-top:18px;
+
+}
+
+/* =======================
+   KHUNG QR
+======================= */
+
+.buyQR{
+
+margin:18px auto 20px;
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+gap:14px;
+
+}
+
+.buyQR img{
+
+width:220px;
+
+max-width:100%;
+
+display:block;
+
+background:white;
+
+padding:10px;
+
+border-radius:24px;
+
+border:3px solid #ffd4e7;
+
+box-shadow:
+0 10px 28px rgba(255,95,165,.18);
+
+transition:.25s;
+
+}
+
+.buyQR img:hover{
+
+transform:scale(1.03);
+
+}
+
+/* =======================
+   NÚT TẢI QR
+======================= */
+
+.downloadQRBtn{
+
+border:none;
+
+cursor:pointer;
+
+padding:11px 22px;
+
+border-radius:999px;
+
+font-size:15px;
+
+font-weight:800;
+
+color:white;
+
+background:linear-gradient(
+135deg,
+#ff9acb,
+#ff5fa5
+);
+
+box-shadow:
+0 8px 18px rgba(255,95,165,.22);
+
+transition:.25s;
+
+}
+
+.downloadQRBtn:hover{
+
+transform:translateY(-2px);
+
+box-shadow:
+0 12px 24px rgba(255,95,165,.28);
+
+}
+
+.downloadQRBtn:active{
+
+transform:scale(.96);
+
+}
+  
+  #readerNotePanel{
+position:fixed;
+left:0;
+right:0;
+bottom:0;
+height:70%;
+background:#fff;
+border-radius:25px 25px 0 0;
+display:none;
+z-index:9999;
+animation:sheetUp .28s;
+overflow:hidden;
+}
+
+#readerNoteList{
+padding:18px;
+overflow-y:auto;
+height:calc(100% - 70px);
+}
+  
+  .readerNoteItem{
+
+display:flex;
+align-items:flex-start;
+gap:14px;
+
+padding:14px;
+
+margin-bottom:14px;
+
+background:#fff8fc;
+
+border:2px solid #ffd7e9;
+
+border-radius:18px;
+
+}
+
+.readerNoteItem img{
+
+width:90px;
+height:90px;
+
+object-fit:cover;
+
+border-radius:14px;
+
+border:2px solid #ffd7e9;
+
+flex-shrink:0;
+
+}
+
+.readerNoteItem p{
+
+margin:0;
+
+flex:1;
+
+font-size:15px;
+
+line-height:1.7;
+
+color:#555;
+
+word-break:break-word;
+
+white-space:pre-wrap;
+
+}
+  
+  .readerNoteImage{
+
+position:relative;
+
+width:120px;
+
+flex-shrink:0;
+
+}
+
+.readerNoteImage img{
+
+width:120px;
+
+height:auto;
+
+border-radius:15px;
+
+display:block;
+
+}
+
+.zoomImageBtn{
+
+position:absolute;
+
+right:8px;
+
+bottom:8px;
+
+width:34px;
+
+height:34px;
+
+border:none;
+
+border-radius:50%;
+
+background:rgba(255,255,255,.9);
+
+cursor:pointer;
+
+font-size:18px;
+
+backdrop-filter:blur(6px);
+
+}
+
+.zoomImageBtn:hover{
+
+transform:scale(1.1);
+
+}
+
+#noteImageViewer{
+
+position:fixed;
+
+left:0;
+
+top:0;
+
+right:0;
+
+bottom:0;
+
+background:rgba(0,0,0,.92);
+
+display:none;
+
+justify-content:center;
+
+align-items:center;
+
+z-index:999999;
+
+}
+
+#noteImageBig{
+
+max-width:95%;
+
+max-height:90%;
+
+border-radius:18px;
+
+box-shadow:0 0 30px rgba(255,255,255,.2);
+
+}
+
+#closeNoteImage{
+
+position:absolute;
+
+top:25px;
+
+right:25px;
+
+width:45px;
+
+height:45px;
+
+border:none;
+
+border-radius:50%;
+
+background:#ff8fc4;
+
+color:#fff;
+
+font-size:24px;
+
+cursor:pointer;
+
+}
+  
+  .chapterPreviewItem{
+
+position:relative;
+
+display:inline-block;
+
+margin:8px;
+
+}
+
+.chapterPreviewItem img{
+
+width:120px;
+
+border-radius:15px;
+
+display:block;
+
+}
+
+.deleteChapterImageBtn{
+
+position:absolute;
+
+top:6px;
+
+right:6px;
+
+width:28px;
+
+height:28px;
+
+border:none;
+
+border-radius:50%;
+
+background:#ff5b8a;
+
+color:#fff;
+
+font-weight:bold;
+
+cursor:pointer;
+
+box-shadow:0 4px 10px rgba(0,0,0,.2);
+
+}
+
+.deleteChapterImageBtn:hover{
+
+transform:scale(1.1);
+
+}
+  
+  #deleteStoryBtn{
+
+margin-top:12px;
+
+width:100%;
+
+padding:14px;
+
+border:none;
+
+border-radius:18px;
+
+cursor:pointer;
+
+font-size:16px;
+
+font-weight:700;
+
+color:#fff;
+
+background:linear-gradient(
+135deg,
+#ff6f91,
+#ff3d71
+);
+
+box-shadow:0 8px 18px rgba(255,80,120,.25);
+
+transition:.25s;
+
+}
+
+#deleteStoryBtn:hover{
+
+transform:translateY(-2px);
+
+}
+
+#deleteStoryBtn:active{
+
+transform:scale(.97);
+
+}
+  #toggleCustomerList{
+
+width:42px;
+height:42px;
+
+border:none;
+border-radius:14px;
+
+background:#ffd6ea;
+
+cursor:pointer;
+
+font-size:20px;
+
+margin-right:8px;
+
+}
+  .chapterVipBar{
+margin:15px 0;
+}
+
+#chapterVipCustomer{
+width:100%;
+padding:12px 16px;
+border-radius:16px;
+border:2px solid #ffd3e6;
+background:#fff;
+font-size:15px;
+}
+  .previewCaption,
+.readerNoteText{
+
+margin-top:8px;
+font-size:14px;
+text-align:center;
+color:#777;
+
+}
+  
+  /* =====================================
+ 🌙 ANIME NIGHT MODE FULL BLOG
+===================================== */
+
+
+/* BODY */
+
+body.darkMode{
+
+background:
+linear-gradient(
+180deg,
+#12111d,
+#242039
+)!important;
+
+color:#eee;
+
+}
+
+
+/* APP */
+
+body.darkMode #meowApp{
+
+color:#eee;
+
+}
+
+
+/* tất cả box trắng */
+
+body.darkMode .infoBox,
+body.darkMode .adminCard,
+body.darkMode .adminProfileCard,
+body.darkMode #storyInfoBox,
+body.darkMode #chapterManageBox,
+body.darkMode #addChapterBox,
+body.darkMode #addStoryBox,
+body.darkMode #addCustomerBox,
+body.darkMode #customerManage,
+body.darkMode #storyManage,
+body.darkMode .buyCard,
+body.darkMode #readerNotePanel,
+body.darkMode #settingBox{
+
+
+background:
+linear-gradient(
+145deg,
+#29253f,
+#211d33
+)!important;
+
+
+color:white;
+
+
+box-shadow:
+0 15px 40px rgba(0,0,0,.45);
+
+}
+
+
+
+/* COVER */
+
+body.darkMode .coverBox{
+
+background:#302844;
+
+box-shadow:
+0 10px 30px rgba(150,100,255,.25);
+
+}
+
+
+
+/* TITLE */
+
+body.darkMode #storyName,
+body.darkMode h1,
+body.darkMode h2,
+body.darkMode h3{
+
+color:#ffd0e8;
+
+}
+
+
+
+/* INFO */
+
+body.darkMode .infoBox div{
+
+background:
+linear-gradient(
+135deg,
+#3b3155,
+#302844
+);
+
+
+color:#eee;
+
+}
+
+
+body.darkMode .infoBox b{
+
+color:#ff9ed1;
+
+}
+
+
+
+/* BUTTON TRẮNG */
+
+body.darkMode #listBtn,
+body.darkMode .chapterItem,
+body.darkMode .storyManageItem,
+body.darkMode .customerItem,
+body.darkMode .vipCustomerItem,
+body.darkMode .buyDropdown,
+body.darkMode .buyBankBox,
+body.darkMode .readerNoteItem{
+
+
+background:
+linear-gradient(
+135deg,
+#39304f,
+#302844
+)!important;
+
+
+color:white;
+
+border-color:#62558e;
+
+
+}
+
+
+
+/* CHAPTER */
+
+body.darkMode #chapterPage{
+
+background:
+linear-gradient(
+180deg,
+#211d33,
+#302844
+);
+
+border-color:#8f7cff;
+
+}
+
+
+body.darkMode .chapterItem{
+
+color:white;
+
+}
+
+
+
+body.darkMode .chapterItem:hover{
+
+box-shadow:
+0 10px 30px rgba(150,100,255,.35);
+
+}
+
+
+
+/* READER */
+
+body.darkMode #readerPage,
+body.darkMode #readerTop,
+body.darkMode #readerBottom,
+body.darkMode #readerContent{
+
+
+background:#161525!important;
+
+color:#f8f3ff!important;
+
+}
+
+
+
+body.darkMode #readerContent p,
+body.darkMode #readerContent div,
+body.darkMode #readerContent span{
+
+
+color:#f8f3ff!important;
+
+}
+
+
+
+/* reader button */
+
+body.darkMode #readerBottom button,
+body.darkMode #closeReader{
+
+
+background:#40375c;
+
+color:white;
+
+}
+
+
+
+/* SHEET */
+
+body.darkMode #readerSettingPanel,
+body.darkMode #readerChapterPanel{
+
+
+background:#211d33;
+
+color:white;
+
+}
+
+
+body.darkMode .settingItem{
+
+background:#342d50;
+
+}
+
+
+body.darkMode .settingItem span{
+
+color:#eee;
+
+}
+
+
+body.darkMode .settingItem select{
+
+
+background:#211d33;
+
+color:white;
+
+}
+
+
+
+/* INPUT */
+
+body.darkMode input,
+body.darkMode textarea,
+body.darkMode select{
+
+
+background:#3b3355!important;
+
+color:white!important;
+
+border-color:#66558d;
+
+}
+
+
+body.darkMode input::placeholder,
+body.darkMode textarea::placeholder{
+
+color:#cfc5e8;
+
+}
+
+
+
+/* ADMIN */
+
+body.darkMode .manageButtons button{
+
+background:#39304f;
+
+color:white;
+
+}
+
+
+body.darkMode .manageButtons span{
+
+color:#eee;
+
+}
+
+
+
+body.darkMode .manageText p{
+
+color:#cfc5e8;
+
+}
+
+
+
+/* STORY TAG */
+
+body.darkMode .storyTag,
+body.darkMode #storyTags .storyTag{
+
+
+background:
+linear-gradient(
+135deg,
+#4a3d68,
+#332b4b
+);
+
+
+color:#ffb6d9;
+
+border-color:#7664aa;
+
+}
+
+
+
+/* STORY SUMMARY */
+
+body.darkMode #storySummary{
+
+
+background:
+linear-gradient(
+135deg,
+#302844,
+#29253e
+);
+
+
+color:#eee;
+
+}
+
+
+
+/* CUSTOMER */
+
+body.darkMode .customerProfileCard{
+
+
+background:
+linear-gradient(
+145deg,
+#302844,
+#211d33
+);
+
+
+border-color:#6c5b9d;
+
+}
+
+
+body.darkMode .customerInfoBox{
+
+
+background:#39304f;
+
+}
+
+
+body.darkMode .customerInfoBox p{
+
+color:#eee;
+
+}
+
+
+
+/* MUSIC */
+
+body.darkMode #audioPlayer{
+
+
+background:
+linear-gradient(
+135deg,
+#302844,
+#211d33
+);
+
+
+}
+
+
+
+body.darkMode #bubbleTime{
+
+color:#ddd;
+
+}
+
+
+
+body.darkMode #meowBubble{
+
+
+background:
+linear-gradient(
+135deg,
+#39304f,
+#211d33
+);
+
+
+color:white;
+
+}
+
+
+
+/* MUA FULL */
+
+body.darkMode .buyPriceBox{
+
+
+background:
+linear-gradient(
+135deg,
+#5b4b32,
+#40331d
+);
+
+
+}
+
+
+body.darkMode .buyPriceTitle{
+
+color:#ffe8a3;
+
+}
+
+
+
+body.darkMode .buyBankBox{
+
+
+background:#302844;
+
+}
+
+
+
+body.darkMode .buyRow span{
+
+color:#eee;
+
+}
+
+
+body.darkMode .buyNote{
+
+
+background:#3b304d;
+
+border-color:#8065a8;
+
+color:#ffd0e8;
+
+}
+
+
+
+/* NOTE ẢNH */
+
+body.darkMode .readerNoteItem p{
+
+color:#eee;
+
+}
+
+
+
+/* VIP LOCK */
+
+body.darkMode .vipLockCard,
+body.darkMode .vipLockCard{
+
+
+background:
+linear-gradient(
+145deg,
+#302844,
+#211d33
+)!important;
+
+
+color:white;
+
+}
+
+
+
+body.darkMode .vipLockCard p,
+body.darkMode .vipUserId{
+
+color:#ddd;
+
+}
+
+
+
+/* CLOSE BUTTON */
+
+body.darkMode #closeStoryInfo,
+body.darkMode #closeChapterManage,
+body.darkMode #adminLogout{
+
+background:#6b5ac0;
+
+}
+
+
+
+/* SCROLLBAR */
+
+body.darkMode::-webkit-scrollbar{
+
+width:8px;
+
+}
+
+
+body.darkMode::-webkit-scrollbar-thumb{
+
+background:#8d78d6;
+
+border-radius:99px;
+
+}
+
+
+/* GLOW ANIME */
+
+body.darkMode #animeThemeBtn{
+
+box-shadow:
+
+0 0 25px rgba(255,150,220,.5);
+
+}
+  
+  /* =================================
+   🌙 BLOG ARTICLE FULL DARK
+================================= */
+
+
+body.darkMode article,
+body.darkMode .blog,
+body.darkMode .blogPage,
+body.darkMode .post,
+body.darkMode .postBox,
+body.darkMode .article,
+body.darkMode .articleBox,
+body.darkMode .blogContent,
+body.darkMode .contentBox,
+body.darkMode .storyContent,
+body.darkMode .chapterContent,
+body.darkMode .chapterText,
+body.darkMode .postContent{
+
+background:#181827!important;
+
+color:#f8f3ff!important;
+
+}
+
+
+
+/* chữ trong bài */
+
+body.darkMode article *,
+body.darkMode .blog *,
+body.darkMode .post *,
+body.darkMode .article *,
+body.darkMode .chapterText *,
+body.darkMode .storyContent *{
+
+color:#f5efff;
+
+}
+
+
+
+/* tiêu đề bài */
+
+body.darkMode .blog h1,
+body.darkMode .blog h2,
+body.darkMode .blog h3,
+body.darkMode .post h1,
+body.darkMode .article h1{
+
+color:#ffb6d9!important;
+
+}
+
+
+
+/* khung bài viết */
+
+body.darkMode .postContent,
+body.darkMode .articleBox,
+body.darkMode .blogContent{
+
+border-color:#65558b!important;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,.5);
+
+}
+
+
+
+/* link trong bài */
+
+body.darkMode a{
+
+color:#ff9ed1;
+
+}
+
+
+
+/* ảnh trong bài */
+
+body.darkMode img{
+
+filter:none;
+
+}
+
+
+
+/* nếu có div trắng lồng trong bài */
+
+body.darkMode .blog div,
+body.darkMode .post div,
+body.darkMode article div{
+
+background-color:transparent;
+
+}
+  
+  .readerLikeBtn{
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:50%;
+    background:#fff4fa;
+    color:#ff5fa5;
+    font-size:20px;
+    cursor:pointer;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    transition:.25s;
+}
+
+.readerLikeBtn:hover{
+    transform:scale(1.08);
+}
+
+.readerLikeBtn.liked{
+    background:#ff5fa5;
+    color:#fff;
+}
+  
+  /* =======================
+   TAG TRUYỆN
+======================= */
+
+#storyTags{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin-top:10px;
+}
+
+.storyTag{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+
+padding:6px 14px;
+
+border-radius:999px;
+
+background:linear-gradient(
+135deg,
+#ffe3f3,
+#ffd1ea
+);
+
+border:1px solid #ffc0df;
+
+color:#ff4f9c;
+
+font-size:13px;
+font-weight:700;
+
+cursor:pointer;
+
+transition:.25s;
+
+user-select:none;
+}
+
+.storyTag:hover{
+
+transform:translateY(-2px);
+
+background:linear-gradient(
+135deg,
+#ffd4ec,
+#ffc2e3
+);
+
+box-shadow:0 6px 15px rgba(255,110,180,.25);
+
+}
+
+.storyTag:active{
+
+transform:scale(.96);
+
+}
+  
+  body.darkMode .storyTag{
+
+background:#3a3047;
+
+border:1px solid #59486d;
+
+color:#ffb4df;
+
+}
+
+body.darkMode .storyTag:hover{
+
+background:#4a3b5c;
+
+box-shadow:0 6px 16px rgba(255,180,223,.15);
+
+}
+  
+  /* =======================
+   DANH SÁCH TAG
+======================= */
+
+#allTagList{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+
+margin-top:12px;
+padding:10px;
+
+background:#fff7fb;
+
+border:2px dashed #ffd3e8;
+
+border-radius:16px;
+
+display:none;
+}
+
+#allTagList.show{
+display:flex;
+}
+
+.tagChooseBtn{
+
+border:none;
+
+padding:8px 14px;
+
+border-radius:999px;
+
+background:linear-gradient(
+135deg,
+#ffe3f4,
+#ffd2ea
+);
+
+color:#ff5b9f;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+.tagChooseBtn:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 6px 15px rgba(255,120,190,.25);
+
+}
+
+.tagChooseBtn:active{
+
+transform:scale(.95);
+
+}
+  
+  body.darkMode #allTagList{
+
+background:#2e2737;
+
+border-color:#53445f;
+
+}
+
+body.darkMode .tagChooseBtn{
+
+background:#473954;
+
+color:#ffc5e8;
+
+}
+
+body.darkMode .tagChooseBtn:hover{
+
+background:#5a4769;
+
+}
+  
+  /* =======================
+   NÚT TAG
+======================= */
+
+#addTagBtn,
+#showAllTags{
+
+height:42px;
+
+padding:0 18px;
+
+border:none;
+
+border-radius:999px;
+
+background:linear-gradient(
+180deg,
+#fff8fd,
+#ffe4f3
+);
+
+color:#ff5ea8;
+
+font-size:14px;
+font-weight:700;
+
+cursor:pointer;
+
+box-shadow:0 6px 15px rgba(255,120,190,.18);
+
+transition:.25s;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:6px;
+
+}
+
+#addTagBtn{
+
+width:46px;
+
+padding:0;
+
+font-size:22px;
+
+font-weight:800;
+
+}
+
+#addTagBtn:hover,
+#showAllTags:hover{
+
+transform:translateY(-2px);
+
+background:linear-gradient(
+180deg,
+#ffeaf6,
+#ffd6ea
+);
+
+box-shadow:0 8px 18px rgba(255,120,190,.25);
+
+}
+
+#addTagBtn:active,
+#showAllTags:active{
+
+transform:scale(.95);
+
+}
+  
+  .tagChooseItem{
+
+display:flex;
+
+align-items:center;
+
+gap:4px;
+
+}
+
+.deleteTagBtn{
+
+width:26px;
+height:26px;
+
+border:none;
+
+border-radius:50%;
+
+background:#ff6b8f;
+
+color:#fff;
+
+font-size:14px;
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+.deleteTagBtn:hover{
+
+background:#ff3f73;
+
+transform:scale(1.1);
+
+}
+  
+  body.darkMode .deleteTagBtn{
+
+background:#8a4862;
+
+}
+
+body.darkMode .deleteTagBtn:hover{
+
+background:#b95f84;
+
+}
+  
+  /* =======================
+   LOGIN STORY SLIDER
+======================= */
+
+.loginDivider{
+
+display:flex;
+align-items:center;
+margin:22px 0;
+
+}
+
+.loginDivider::before,
+.loginDivider::after{
+
+content:"";
+flex:1;
+height:2px;
+
+background:linear-gradient(
+90deg,
+transparent,
+#ff82be,
+#ffd7ea,
+#ff82be,
+transparent
+);
+
+box-shadow:
+0 0 10px #ff9acb,
+0 0 18px #ff9acb;
+
+}
+
+.loginDivider span{
+
+padding:0 16px;
+
+font-weight:700;
+
+color:#ff5a9f;
+
+text-shadow:0 0 10px rgba(255,120,180,.6);
+
+white-space:nowrap;
+
+}
+
+/* Slider */
+
+#loginStorySlider{
+
+overflow:hidden;
+
+border-radius:22px;
+
+background:#fff7fb;
+
+padding:12px 0;
+
+border:2px solid #ffd9ea;
+
+}
+
+#loginStoryTrack{
+
+display:flex;
+
+gap:18px;
+
+width:max-content;
+
+animation:meowStorySlider 90s linear infinite;
+
+}
+
+#loginStoryTrack:hover{
+
+animation-play-state:paused;
+
+}
+
+@keyframes meowStorySlider{
+
+from{
+
+transform:translateX(0);
+
+}
+
+to{
+
+transform:translateX(-50%);
+
+}
+
+}
+
+.loginStoryCard{
+
+width:180px;
+
+background:#fff;
+
+border-radius:18px;
+
+overflow:hidden;
+
+box-shadow:0 8px 20px rgba(255,120,180,.18);
+
+flex-shrink:0;
+
+}
+
+.loginStoryCard img{
+
+width:100%;
+
+height:240px;
+
+object-fit:cover;
+
+display:block;
+
+}
+
+.loginStoryName{
+
+padding:10px;
+
+font-weight:700;
+
+text-align:center;
+
+}
+
+.storyStatusBadge{
+
+margin:0 auto 12px;
+
+width:max-content;
+
+padding:5px 12px;
+
+border-radius:999px;
+
+font-size:12px;
+
+font-weight:700;
+
+color:#fff;
+
+}
+
+.storyStatusBadge.full{
+
+background:#27c96f;
+
+}
+
+.storyStatusBadge.running{
+
+background:#ff66a9;
+
+}
+
+.storyStatusBadge.drop{
+
+background:#ff4343;
+
+}
+
+.storyStatusBadge.empty{
+
+background:#8d5cff;
+
+}
+  
+  .loginStoryCover{
+
+position:relative;
+
+}
+
+.storyStatusBadge{
+
+position:absolute;
+
+top:10px;
+
+left:10px;
+
+margin:0;
+
+padding:6px 12px;
+
+border-radius:999px;
+
+color:#fff;
+
+font-size:12px;
+
+font-weight:700;
+
+box-shadow:0 5px 12px rgba(0,0,0,.25);
+
+backdrop-filter:blur(6px);
+
+}
+  
+  body.darkMode #loginStorySlider{
+
+background:#2d2636;
+
+border-color:#51445f;
+
+}
+
+body.darkMode .loginStoryCard{
+
+background:#3a3145;
+
+box-shadow:0 10px 20px rgba(0,0,0,.35);
+
+}
+
+body.darkMode .loginStoryName{
+
+color:#ffd6eb;
+
+}
+
+body.darkMode .loginDivider span{
+
+color:#ffb8dc;
+
+}
+
+body.darkMode .loginDivider::before,
+body.darkMode .loginDivider::after{
+
+background:linear-gradient(
+90deg,
+transparent,
+#ff8fc6,
+#ffbfdc,
+#ff8fc6,
+transparent
+);
+
+box-shadow:
+0 0 10px #ff8fc6,
+0 0 20px #ff8fc6;
+
+}
+  .loginStoryCard{
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+.loginStoryCard:hover{
+
+transform:translateY(-8px) scale(1.03);
+
+}
+
+.loginStoryCard img{
+
+transition:.35s;
+
+}
+
+.loginStoryCard:hover img{
+
+transform:scale(1.06);
+
+}
+  
+  /* =======================
+   KẾT QUẢ TÌM TRUYỆN
+======================= */
+
+.storySearchResult{
+
+display:flex;
+
+gap:16px;
+
+padding:14px;
+
+margin-top:14px;
+
+background:#fff;
+
+border-radius:18px;
+
+box-shadow:0 8px 20px rgba(255,120,190,.12);
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+.storySearchResult:hover{
+
+transform:translateY(-2px);
+
+}
+
+.storySearchCover{
+
+position:relative;
+
+width:95px;
+
+min-width:95px;
+
+}
+
+.storySearchCover img{
+
+width:95px;
+
+height:130px;
+
+object-fit:cover;
+
+border-radius:14px;
+
+}
+
+.storySearchInfo{
+
+flex:1;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+}
+
+.storySearchTitle{
+
+font-size:23px;
+
+font-weight:800;
+
+color:#ff5ea8;
+
+margin-bottom:8px;
+
+}
+
+.storySearchAuthor{
+
+margin-bottom:6px;
+
+color:#666;
+
+}
+
+.storySearchTags{
+
+margin-bottom:6px;
+
+color:#777;
+
+white-space:nowrap;
+
+overflow:hidden;
+
+text-overflow:ellipsis;
+
+}
+
+.storySearchBottom{
+
+display:flex;
+
+gap:18px;
+
+margin-top:8px;
+
+font-weight:700;
+
+color:#666;
+
+}
+  
+  /* =======================
+   DARK SEARCH RESULT
+======================= */
+
+body.darkMode .storySearchResult{
+
+background:#3a3145;
+
+box-shadow:0 10px 20px rgba(0,0,0,.35);
+
+}
+
+body.darkMode .storySearchTitle{
+
+color:#ffd6eb;
+
+}
+
+body.darkMode .storySearchAuthor,
+body.darkMode .storySearchTags,
+body.darkMode .storySearchBottom{
+
+color:#d8c9e6;
+
+}
+  .storyToolBar{
+
+display:flex;
+
+gap:12px;
+
+justify-content:center;
+
+margin-top:18px;
+
+}
+
+.storyToolBar button{
+
+height:42px;
+
+padding:0 20px;
+
+border:none;
+
+border-radius:999px;
+
+background:linear-gradient(
+180deg,
+#fff7fc,
+#ffe5f3
+);
+
+color:#ff5ea8;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:.25s;
+
+box-shadow:0 6px 16px rgba(255,120,190,.15);
+
+}
+
+.storyToolBar button:hover{
+
+transform:translateY(-2px);
+
+}
+
+body.darkMode .storyToolBar button{
+
+background:#44374f;
+
+color:#ffd4ea;
+
+}
+  
+  #storySearchPanel{
+
+display:none;
+
+margin-top:18px;
+
+}
+
+.storySearchBox{
+
+background:#fff7fb;
+
+padding:18px;
+
+border-radius:18px;
+
+border:2px dashed #ffd4ea;
+
+}
+
+.storySearchBox input{
+
+width:100%;
+
+height:46px;
+
+border:none;
+
+border-radius:999px;
+
+padding:0 18px;
+
+font-size:15px;
+
+outline:none;
+
+background:#fff;
+
+box-sizing:border-box;
+
+box-shadow:0 5px 15px rgba(255,120,190,.12);
+
+}
+
+body.darkMode .storySearchBox{
+
+background:#31293b;
+
+border-color:#564967;
+
+}
+
+body.darkMode .storySearchBox input{
+
+background:#43364f;
+
+color:#fff;
+
+}
+  
+  #chapterList{
+
+max-height:650px;
+
+overflow-y:auto;
+
+overflow-x:hidden;
+
+padding-right:6px;
+
+scroll-behavior:smooth;
+
+}
+  
+  #chapterList::-webkit-scrollbar{
+
+width:8px;
+
+}
+
+#chapterList::-webkit-scrollbar-track{
+
+background:#ffe8f3;
+
+border-radius:20px;
+
+}
+
+#chapterList::-webkit-scrollbar-thumb{
+
+background:linear-gradient(
+180deg,
+#ff9fcf,
+#ff6fb2
+);
+
+border-radius:20px;
+
+}
+
+#chapterList::-webkit-scrollbar-thumb:hover{
+
+background:#ff5ea8;
+
+}
+  
+  .loginStoryName{
+
+font-size:15px;
+
+font-weight:700;
+
+color:#ff4f97;
+
+line-height:1.35;
+
+margin-top:8px;
+
+white-space:nowrap;
+
+overflow:hidden;
+
+text-overflow:ellipsis;
+
+}
+
+.loginStoryTags{
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:4px;
+
+margin-top:5px;
+
+padding:4px 10px;
+
+font-size:11px;
+
+font-weight:600;
+
+color:#a56b86;
+
+background:linear-gradient(
+135deg,
+#fff6fa,
+#ffeaf3
+);
+
+border:1px solid #ffd2e5;
+
+border-radius:999px;
+
+white-space:nowrap;
+
+overflow:hidden;
+
+text-overflow:ellipsis;
+
+box-shadow:
+0 2px 8px rgba(255,120,170,.12);
+
+transition:.25s;
+
+}
+
+.loginStoryCard:hover .loginStoryTags{
+
+background:linear-gradient(
+135deg,
+#ffe5f1,
+#ffd6ea
+);
+
+color:#ff4f97;
+
+transform:translateY(-1px);
+
+}
+  
+  body.darkMode .loginStoryTags{
+
+background:rgba(255,255,255,.08);
+
+border:1px solid rgba(255,255,255,.12);
+
+color:#e6bfd2;
+
+box-shadow:none;
+
+}
+
+body.darkMode .loginStoryCard:hover .loginStoryTags{
+
+background:rgba(255,143,198,.15);
+
+color:#ffd6eb;
+
+}
+  
+  /* =======================
+   TAG PANEL ĐẸP
+======================= */
+
+#storyTagPanel{
+display:none;
+margin-top:18px;
+padding:18px;
+background:#fff7fb;
+border:2px dashed #ffd4ea;
+border-radius:22px;
+box-shadow:0 10px 25px rgba(255,120,190,.12);
+}
+
+#storyTagList{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:10px;
+
+margin-bottom:16px;
+
+max-height:160px;
+
+overflow-y:auto;
+
+padding:6px;
+
+}
+
+/* Scroll */
+
+#storyTagList::-webkit-scrollbar{
+
+width:8px;
+
+}
+
+#storyTagList::-webkit-scrollbar-track{
+
+background:#ffe8f3;
+
+border-radius:20px;
+
+}
+
+#storyTagList::-webkit-scrollbar-thumb{
+
+background:linear-gradient(
+180deg,
+#ff9fcf,
+#ff6fb2
+);
+
+border-radius:20px;
+
+}
+
+#storyTagList::-webkit-scrollbar-thumb:hover{
+
+background:#ff5ea8;
+
+}
+
+.storyTagBtn{
+padding:10px 16px;
+border:none;
+border-radius:999px;
+background:linear-gradient(135deg,#ffe3f1,#ffc7df);
+color:#ff4f97;
+font-weight:700;
+cursor:pointer;
+transition:.25s;
+box-shadow:0 4px 10px rgba(255,120,170,.15);
+}
+
+.storyTagBtn:hover{
+transform:translateY(-2px) scale(1.04);
+background:linear-gradient(135deg,#ffd0e7,#ffb3d4);
+}
+
+#storyTagResultBox{
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+.tagResultTitle{
+font-size:18px;
+font-weight:800;
+color:#ff4f97;
+margin-bottom:6px;
+}
+
+/* =======================
+   CARD TRUYỆN GIỐNG ẢNH
+======================= */
+
+.storySearchItem{
+display:flex;
+gap:14px;
+padding:14px;
+border-radius:20px;
+background:#fff;
+border:1px solid #ffd7e8;
+box-shadow:0 8px 20px rgba(255,120,170,.10);
+cursor:pointer;
+transition:.25s;
+position:relative;
+overflow:hidden;
+}
+
+.storySearchItem:hover{
+transform:translateY(-3px);
+box-shadow:0 14px 30px rgba(255,120,170,.18);
+}
+
+.storySearchCover{
+width:88px;
+height:124px;
+object-fit:cover;
+border-radius:14px;
+flex-shrink:0;
+box-shadow:0 6px 16px rgba(0,0,0,.18);
+}
+
+.storySearchInfo{
+flex:1;
+min-width:0;
+display:flex;
+flex-direction:column;
+gap:6px;
+}
+
+.storySearchTitle{
+font-size:21px;
+font-weight:900;
+line-height:1.25;
+color:#ff4f97;
+text-transform:uppercase;
+}
+
+.storySearchMeta{
+font-size:14px;
+color:#6d5665;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+
+.storySearchMeta b{
+color:#4f3b48;
+}
+
+.storySearchStats{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+margin-top:4px;
+font-size:13px;
+font-weight:700;
+color:#8f6f81;
+}
+
+.storySearchStats span{
+display:flex;
+align-items:center;
+gap:4px;
+}
+
+
+
+/* =======================
+   DARK MODE
+======================= */
+
+body.darkMode #storyTagPanel{
+background:#2f2638;
+border-color:#564967;
+box-shadow:0 10px 25px rgba(0,0,0,.35);
+}
+
+body.darkMode .storyTagBtn{
+background:#4b3d57;
+color:#ffd6eb;
+box-shadow:none;
+}
+
+body.darkMode .storyTagBtn:hover{
+background:#5b4b69;
+}
+
+body.darkMode .tagResultTitle{
+color:#ffd6eb;
+}
+
+body.darkMode .storySearchItem{
+background:#352c40;
+border-color:#564967;
+box-shadow:0 10px 22px rgba(0,0,0,.35);
+}
+
+body.darkMode .storySearchTitle{
+color:#ffd6eb;
+}
+
+body.darkMode .storySearchMeta{
+color:#d9c7e6;
+}
+
+body.darkMode .storySearchMeta b{
+color:#fff;
+}
+
+body.darkMode .storySearchStats{
+color:#e7d5f1;
+}
+  
+  #readerTitle{
+flex:1;
+margin:0 12px;
+font-size:16px;
+font-weight:700;
+text-align:center;
+
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+  
+  .editorBox{
+background:#fff;
+border:2px solid #ffd3e7;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 8px 20px rgba(255,120,180,.12);
+margin-bottom:15px;
+}
+
+.editorToolbar{
+display:flex;
+flex-wrap:wrap;
+align-items:center;
+gap:6px;
+padding:10px;
+background:linear-gradient(180deg,#fff7fb,#ffeaf5);
+border-bottom:1px solid #ffd3e7;
+}
+
+.editorToolbar button{
+width:38px;
+height:38px;
+border:none;
+border-radius:10px;
+background:#fff;
+cursor:pointer;
+font-size:16px;
+transition:.2s;
+}
+
+.editorToolbar button:hover{
+background:#ffedf6;
+transform:translateY(-2px);
+}
+
+.editorToolbar input[type=color]{
+width:38px;
+height:38px;
+padding:0;
+border:none;
+background:none;
+cursor:pointer;
+}
+
+.editorLine{
+width:1px;
+height:26px;
+background:#ffd3e7;
+margin:0 4px;
+}
+
+.editorContent{
+min-height:450px;
+max-height:450px;   /* Chiều cao khung */
+padding:18px;
+outline:none;
+font-size:17px;
+line-height:1.9;
+font-family:"Be Vietnam Pro",sans-serif;
+background:#fff;
+color:#333;
+
+display:block;
+text-align:left;
+vertical-align:top;
+
+overflow-y:auto;    /* Scroll dọc */
+overflow-x:hidden;  /* Ẩn scroll ngang */
+
+white-space:pre-wrap;
+word-break:break-word;
+}
+
+.editorContent:empty::before{
+content:"Nhập nội dung chương...";
+color:#b8a8b3;
+pointer-events:none;
+}
+  
+  .editorContent{
+min-height:450px;
+padding:18px;
+overflow-y:auto;
+
+display:block;
+
+text-align:left;
+vertical-align:top;
+}
+  .searchInput{
+width:100%;
+padding:12px 15px;
+margin:12px 0;
+border:2px solid #ffd7ea;
+border-radius:12px;
+font-size:15px;
+outline:none;
+box-sizing:border-box;
+background:#fff;
+transition:.2s;
+}
+
+.searchInput:focus{
+border-color:#ff8cbc;
+box-shadow:0 0 10px rgba(255,140,188,.25);
+}
+  
+.libraryNotice{
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+
+margin:10px 15px 16px;
+padding:12px 16px;
+
+background:linear-gradient(135deg,#fff8fc,#ffeef7);
+border:2px solid #ffd4e8;
+border-radius:18px;
+
+box-shadow:
+0 6px 18px rgba(255,120,180,.15);
+
+color:#ff5f9d;
+font-size:13px;
+font-weight:700;
+letter-spacing:.4px;
+
+animation:libraryNoticeShow .35s;
+
+}
+
+.libraryNotice span{
+
+flex:1;
+text-align:center;
+
+}
+
+.libraryNotice button{
+
+width:28px;
+height:28px;
+
+border:none;
+border-radius:50%;
+
+background:linear-gradient(135deg,#ff8fbe,#ff5f9d);
+color:#fff;
+
+font-size:15px;
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.25s;
+
+box-shadow:
+0 4px 10px rgba(255,95,157,.25);
+
+}
+
+.libraryNotice button:hover{
+
+transform:rotate(90deg) scale(1.08);
+
+box-shadow:
+0 6px 16px rgba(255,95,157,.35);
+
+}
+
+@keyframes libraryNoticeShow{
+
+from{
+
+opacity:0;
+transform:translateY(-8px);
+
+}
+
+to{
+
+opacity:1;
+transform:none;
+
+}
+
+}
+  
+  /* Dark Mode */
+body.darkMode .libraryNotice{
+
+background:linear-gradient(135deg,#2f2734,#3d3042);
+border:2px solid #70506f;
+
+color:#ffd4e9;
+
+box-shadow:
+0 8px 20px rgba(0,0,0,.35);
+
+}
+
+body.darkMode .libraryNotice button{
+
+background:linear-gradient(135deg,#ff8fbe,#ff5f9d);
+
+color:#fff;
+
+box-shadow:
+0 4px 12px rgba(255,95,157,.35);
+
+}
+
+body.darkMode .libraryNotice button:hover{
+
+box-shadow:
+0 6px 16px rgba(255,95,157,.5);
+
+}
+
+body.darkMode .libraryNotice span{
+
+color:#ffe6f2;
+
+}
+  
+  /* ==========================
+   NÚT KHÁCH VIP
+========================== */
+
+#toggleVipCustomer{
+
+padding:10px 18px;
+
+border:none;
+border-radius:16px;
+
+cursor:pointer;
+
+font-size:14px;
+font-weight:700;
+
+color:#fff;
+
+background:linear-gradient(
+135deg,
+#ff8fcf,
+#c78bff
+);
+
+box-shadow:
+0 8px 22px rgba(214,120,255,.28);
+
+transition:.28s;
+
+}
+
+#toggleVipCustomer:hover{
+
+transform:translateY(-2px);
+
+background:linear-gradient(
+135deg,
+#ff79c2,
+#b971ff
+);
+
+box-shadow:
+0 12px 28px rgba(214,120,255,.38);
+
+}
+
+#toggleVipCustomer:active{
+
+transform:scale(.96);
+
+}
+  
+  /* ==========================
+   DARK MODE
+========================== */
+
+.darkMode #toggleVipCustomer{
+
+background:linear-gradient(
+135deg,
+#a56dff,
+#ff73c0
+);
+
+color:#fff;
+
+box-shadow:
+0 8px 24px rgba(0,0,0,.45);
+
+}
+
+.darkMode #toggleVipCustomer:hover{
+
+background:linear-gradient(
+135deg,
+#b67fff,
+#ff8ad0
+);
+
+}
+
+/* MEOW WALLET & PURCHASE TABLE */
+.meowWalletCard,.meowBuyTableCard{margin:18px 0;padding:18px;border-radius:24px;background:linear-gradient(135deg,#fff,#fff0f7);border:1px solid #ffd2e6;box-shadow:0 8px 24px #ff78b31c;color:#51424a}
+.mwTop,.mwTableHeading,.mwTotalRow,.mwFullBuyRow{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.mwTop{font-weight:800;color:#e94d91;font-size:17px}.mwTop button{border-radius:50%;width:34px;height:34px;background:#ffe0ef;color:#d83f84;font-size:18px}
+.mwTopActions{display:flex;align-items:center;gap:8px}.mwYuiWalletBtn{display:inline-flex;align-items:center;justify-content:center;padding:8px 12px;border-radius:999px;background:linear-gradient(135deg,#eee2ff,#ffd9f0);color:#8d55bd;text-decoration:none;font-size:12px;font-weight:800;white-space:nowrap}.mwYuiWalletBtn:active{transform:scale(.97)}.mwBalance{font-size:25px;font-weight:900;color:#e94391;margin:10px 0 5px}.meowWalletCard small,.mwFullBuyRow small{display:block;color:#887783;font-size:12px;line-height:1.5}
+.mwTableHeading h2{margin:0;color:#e94d91;font-size:19px}.mwHeadingRight{display:flex;align-items:center;gap:7px;flex-wrap:wrap;justify-content:flex-end}.mwToggleBuyTable{border:1px solid #ffc4df!important;border-radius:999px!important;padding:7px 11px!important;background:linear-gradient(135deg,#fff,#ffe3f1)!important;color:#ce4386!important;font-size:12px;font-weight:800;white-space:nowrap}.mwBuyTableContent{margin-top:4px}.mwBuyTableContent[hidden]{display:none!important}.mwTableHeading span{font-size:12px;background:#ffe1ef;padding:6px 10px;border-radius:99px;color:#cb4784;white-space:nowrap}
+.mwTotalRow{margin:14px 0;padding:12px;border-radius:14px;background:#fff5fa;font-size:13px}.mwTotalRow b,.mwFullBuyRow> b{color:#df438b;font-size:16px;white-space:nowrap}
+.mwTableScroll{overflow:auto;border-radius:14px}.mwChapterTable{width:100%;border-collapse:collapse;background:#fff;font-size:13px}.mwChapterTable th,.mwChapterTable td{padding:11px 8px;text-align:left;border-bottom:1px solid #ffe3ef}.mwChapterTable th{background:#ffeaf4;color:#bc4a7d}.mwChapterTable td:last-child{text-align:right}.mwChapterTable button,.mwFullBuyRow button{border:0;border-radius:99px;padding:8px 12px;background:linear-gradient(90deg,#ff9dcc,#ff579d);color:white;font-weight:800;white-space:nowrap}.mwChapterTable .mwOwned{color:#39a56a;font-weight:800}.mwFullBuyRow{margin-top:14px;padding:13px;border-radius:16px;background:#fff4d9;flex-wrap:wrap}.mwFullBuyRow>div{flex:1;min-width:130px}.mwFullBuyRow button{background:linear-gradient(90deg,#ffbb67,#ff7c9f)}.mwPurchaseMessage{margin:10px 0 0;color:#cf4388;font-size:13px;line-height:1.5;overflow-wrap:anywhere}
+body.darkMode .meowWalletCard,body.darkMode .meowBuyTableCard{background:#2b2737;border-color:#514257;color:#f8eaf2}body.darkMode .mwChapterTable{background:#342d40;color:#fff}body.darkMode .mwChapterTable th{background:#49334b;color:#ffd4e8}body.darkMode .mwChapterTable td{border-color:#514257}body.darkMode .mwTotalRow{background:#393044}body.darkMode .mwFullBuyRow{background:#463844}body.darkMode .meowWalletCard small,body.darkMode .mwFullBuyRow small{color:#d5c4d0}
+.mwConfirmOverlay{position:fixed;inset:0;z-index:999999;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(70,38,61,.42);backdrop-filter:blur(5px)}.mwConfirmOverlay.mwShow{display:flex}.mwConfirmBox{width:min(100%,360px);padding:24px 20px 20px;border-radius:28px;text-align:center;background:linear-gradient(145deg,#fffaff,#ffeaf4);border:1px solid #ffc8e0;box-shadow:0 20px 65px #6d29483b;animation:mwPopIn .18s ease-out;color:#6a4358}.mwConfirmIcon{font-size:38px}.mwConfirmBox h3{margin:9px 0;color:#df438b;font-size:21px}.mwConfirmBox p{white-space:pre-line;line-height:1.7;font-size:14px;margin:10px 0 20px}.mwConfirmButtons{display:flex;gap:9px;justify-content:center}.mwConfirmButtons button{flex:1;border:0;border-radius:999px;padding:11px 10px;font-weight:800;font-size:12px}.mwConfirmCancel{background:#f4e8ef;color:#886779}.mwConfirmOk{background:linear-gradient(100deg,#ff9dcc,#ff579d);color:#fff;box-shadow:0 5px 12px #ff79b54a}@keyframes mwPopIn{from{opacity:0;transform:translateY(8px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}body.darkMode .mwConfirmBox{background:linear-gradient(145deg,#30283a,#443044);color:#fbeaf4;border-color:#69445d}body.darkMode .mwToggleBuyTable{background:#443044!important;color:#ffd8eb!important;border-color:#69445d!important}
+@media(max-width:480px){.mwHeadingRight{gap:5px}.mwToggleBuyTable{padding:6px 8px!important;font-size:11px}.mwConfirmButtons{flex-direction:column-reverse}.meowWalletCard,.meowBuyTableCard{padding:14px;border-radius:20px}.mwTableHeading h2{font-size:16px}.mwChapterTable th,.mwChapterTable td{padding:9px 6px;font-size:12px}.mwChapterTable button{padding:7px 9px;font-size:11px}.mwFullBuyRow{gap:8px}.mwFullBuyRow button{width:100%}}
+
+</style>
+
+
+
+<script type="module">
+
+
+import {initializeApp}
+
+from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+
+
+
+import {
+
+
+getDatabase,
+
+ref,
+
+get,
+
+set,
+
+remove,
+
+onValue,
+
+runTransaction,
+
+push
+
+
+}
+
+
+from "https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js";
+
+
+
+
+
+
+// =======================
+
+// FIREBASE
+
+// =======================
+
+
+
+const firebaseConfig = {
+
+
+
+apiKey:"AIzaSyCMUFJMj74GHONcP3thoTIc2TfZyc91b8",
+
+
+authDomain:"olncm-fa88c.firebaseapp.com",
+
+
+databaseURL:
+
+"https://olncm-fa88c-default-rtdb.asia-southeast1.firebasedatabase.app",
+
+
+projectId:"olncm-fa88c",
+
+
+storageBucket:
+
+"olncm-fa88c.firebasestorage.app",
+
+
+messagingSenderId:"1047257801200",
+
+
+appId:
+
+"1:1047257801200:web:d051244e609b2285ddbd35"
+
+
+
+};
+
+
+
+
+
+const app = initializeApp(firebaseConfig);
+
+
+
+const db = getDatabase(app);
+
+// MEOW WALLET: đồng bộ số dư, giá chương và giao dịch mua
+const MW_WALLET_PATH = "meowWallet";
+// Bà tự thay URL bên dưới bằng link Ví Yui của mình
+const MW_YUI_WALLET_URL = "DAN_LINK_VI_YUI_CUA_BA_VAO_DAY";
+const MW_PURCHASE_PATH = "meowPurchases";
+const MW_TX_PATH = "meowWalletTransactions";
+let mwWalletBalance = 0;
+let mwWalletListener = null;
+function mwMoney(v){ return (Math.max(0,Number(v)||0)).toLocaleString("vi-VN") + "đ"; }
+function mwPrice(v){ if(typeof v==="number") return Math.max(0,v); const n=String(v??"").replace(/[^0-9]/g,""); return Math.max(0,Number(n)||0); }
+function mwCustomerId(){ return String(localStorage.getItem("MEOW_ID")||"").trim(); }
+function mwMsg(t){ const e=document.getElementById("mwPurchaseMessage"); if(e)e.textContent=t||""; }
+function mwStartWalletSync(){
+ const id=mwCustomerId(), bal=document.getElementById("mwBalance");
+ if(!id){ if(bal)bal.textContent="Đăng nhập ID khách để xem số dư"; return; }
+ if(mwWalletListener) return;
+ mwWalletListener=onValue(ref(db,`${MW_WALLET_PATH}/${id}`),snap=>{
+  const w=snap.val()||{}; mwWalletBalance=Number(w.balance)||0;
+  if(bal)bal.textContent=mwMoney(mwWalletBalance);
+  const hint=document.getElementById("mwWalletHint"); if(hint)hint.textContent="ID: "+id+" · Số dư cập nhật trực tiếp từ Firebase.";
+ },err=>{if(bal)bal.textContent="Không tải được ví"; console.error(err);});
+}
+async function mwHasAccess(kind,chapterId=""){
+ const id=mwCustomerId(); if(!id)return false;
+ const [purchaseSnap,customerSnap]=await Promise.all([get(ref(db,`${MW_PURCHASE_PATH}/${id}`)),get(ref(db,`customers/${id}`))]);
+ const rows=Object.values(purchaseSnap.val()||{}); const customer=customerSnap.val()||{};
+ if(kind==="full"){
+  const b=customer.books?.[STORY_ID];
+  if(b===true||b?.full||b?.vip||b?.purchased)return true;
+ }
+ if(customer.books?.[STORY_ID]?.full===true)return true;
+ if(customer.chapterVip?.[STORY_ID]?.[chapterId])return true;
+ return rows.some(p=>String(p.storyId||"")===String(STORY_ID)&&((p.type==="full"||p.full===true)||(kind==="chapter"&&(p.type==="chapter"||p.type==="single")&&String(p.chapterId||p.chapter||"")===String(chapterId))));
+}
+function mwRenderBuyTable(){
+ const body=document.getElementById("mwChapterBuyRows"); if(!body)return;
+ const ids=Object.keys(chapters||{}).sort((a,b)=>Number(a)-Number(b));
+ let total=0, count=0;
+ body.innerHTML=ids.map(id=>{const c=chapters[id]||{},price=mwPrice(c.price); if(price>0){total+=price;count++;}
+  const title=(c.title?" · "+String(c.title):"");
+  return `<tr><td>Chương ${String(id).replace(/[<>"'&]/g,"")}${title.replace(/[<>"'&]/g,"")}</td><td>${price?mwMoney(price):"Miễn phí"}</td><td>${price?`<button type="button" data-mw-buy-chapter="${String(id).replace(/[^0-9a-z_-]/gi,"")}">Mua</button>`:"—"}</td></tr>`;
+ }).join("")||'<tr><td colspan="3">Chưa có chương.</td></tr>';
+ document.getElementById("mwSingleCount").textContent=count+" chương có giá";
+ document.getElementById("mwSingleTotal").textContent=mwMoney(total);
+ const infoPrice=window.mwFullBookPrice;
+ const priceEl=document.getElementById("mwFullPrice"); if(priceEl)priceEl.textContent=infoPrice>0?mwMoney(infoPrice):"Chưa cập nhật";
+ body.querySelectorAll("[data-mw-buy-chapter]").forEach(b=>b.onclick=()=>mwBuy("chapter",b.dataset.mwBuyChapter));
+}
+function mwCuteConfirm(message){
+ return new Promise(resolve=>{
+  const overlay=document.getElementById("mwCuteConfirm"),txt=document.getElementById("mwConfirmText"),ok=document.getElementById("mwConfirmOk"),cancel=document.getElementById("mwConfirmCancel");
+  if(!overlay||!ok||!cancel){resolve(window.confirm(message));return;}
+  txt.textContent=message;overlay.classList.add("mwShow");overlay.setAttribute("aria-hidden","false");
+  const finish=value=>{overlay.classList.remove("mwShow");overlay.setAttribute("aria-hidden","true");ok.removeEventListener("click",yes);cancel.removeEventListener("click",no);overlay.removeEventListener("click",outside);document.removeEventListener("keydown",escape);resolve(value);};
+  const yes=()=>finish(true),no=()=>finish(false),outside=e=>{if(e.target===overlay)no();},escape=e=>{if(e.key==="Escape")no();};
+  ok.addEventListener("click",yes);cancel.addEventListener("click",no);overlay.addEventListener("click",outside);document.addEventListener("keydown",escape);
+ });
+}
+const mwToggleBuyTable=document.getElementById("mwToggleBuyTable");
+if(mwToggleBuyTable){mwToggleBuyTable.addEventListener("click",()=>{const content=document.getElementById("mwBuyTableContent"),expanded=mwToggleBuyTable.getAttribute("aria-expanded")==="true";content.hidden=expanded;mwToggleBuyTable.setAttribute("aria-expanded",String(!expanded));mwToggleBuyTable.textContent=expanded?"＋ Xem thêm":"－ Thu gọn";});}
+
+async function mwBuy(kind,chapterId=""){
+ const id=mwCustomerId(); if(!id){alert("Bà đăng nhập ID khách hàng trước khi mua nha 💗");return;}
+ if(!STORY_ID){alert("Chưa chọn truyện.");return;}
+ const chapter=chapters[chapterId]||{};
+ const price=kind==="full"?mwPrice(window.mwFullBookPrice):mwPrice(chapter.price);
+ if(price<=0){alert(kind==="full"?"Truyện chưa cập nhật giá full bộ.":"Chương này miễn phí hoặc chưa có giá.");return;}
+ if(await mwHasAccess(kind,chapterId)){mwMsg("🌷 Bà đã có quyền đọc nội dung này rồi nha.");return;}
+ const ok=await mwCuteConfirm(`Bà muốn ${kind==="full"?"mua FULL BỘ":"mua Chương "+chapterId} với giá ${mwMoney(price)} nha?\nSố dư ví hiện tại: ${mwMoney(mwWalletBalance)}`);
+ if(!ok)return;
+ try{
+  let walletAfter=null;
+  const tx=await runTransaction(ref(db,`${MW_WALLET_PATH}/${id}`),w=>{if(!w)return;const balance=Number(w.balance)||0;if(balance<price)return;walletAfter={...w,balance:balance-price,totalOut:(Number(w.totalOut)||0)+price};return walletAfter;});
+  if(!tx.committed){alert("Ví không đủ tiền hoặc chưa có ví Meow Wallet. Bà kiểm tra số dư nha.");return;}
+  const purchase={customerId:id,storyId:String(STORY_ID),storyTitle:document.getElementById("storyName")?.textContent||STORY_ID,type:kind,chapterId:kind==="chapter"?String(chapterId):"",price,createdAt:Date.now(),source:"reader_purchase"};
+  try{
+   await push(ref(db,`${MW_PURCHASE_PATH}/${id}`),purchase);
+   if(kind==="full") await set(ref(db,`customers/${id}/books/${STORY_ID}`),{vip:true,full:true,access:"full",purchased:true,purchasedAt:Date.now()});
+   else await set(ref(db,`customers/${id}/chapterVip/${STORY_ID}/${chapterId}`),{vip:true,unlocked:true,purchased:true,purchasedAt:Date.now()});
+   await push(ref(db,MW_TX_PATH),{customerId:id,type:"purchase",amount:price,note:kind==="full"?`Mua full bộ: ${purchase.storyTitle}`:`Mua chương ${chapterId}: ${purchase.storyTitle}`,source:"reader_purchase",storyId:String(STORY_ID),chapterId:purchase.chapterId,createdAt:Date.now()});
+  }catch(e){await runTransaction(ref(db,`${MW_WALLET_PATH}/${id}`),w=>{if(!w)return w;w.balance=(Number(w.balance)||0)+price;w.totalOut=Math.max(0,(Number(w.totalOut)||0)-price);return w;});throw e;}
+  mwMsg(`🎉 Mua thành công! Đã trừ ${mwMoney(price)}. Số dư còn ${mwMoney(walletAfter.balance)}.`);
+  if(kind==="chapter")openReader(String(chapterId)); else renderChapterList();
+ }catch(e){console.error(e);mwMsg("❌ Giao dịch lỗi: "+(e?.message||"không kết nối được Firebase"));alert("Giao dịch chưa thành công. Bà kiểm tra Firebase Rules và thử lại nha.");}
+}
+
+
+
+// Khởi động đồng bộ ví và nút làm mới trong cùng module Firebase
+try { mwStartWalletSync(); } catch(e) { console.warn("Wallet sync:",e); }
+const mwYuiWalletButton=document.getElementById("mwYuiWalletBtn");
+if(mwYuiWalletButton){
+ mwYuiWalletButton.href = MW_YUI_WALLET_URL.startsWith("http") ? MW_YUI_WALLET_URL : "#";
+ mwYuiWalletButton.addEventListener("click",function(e){
+  if(!MW_YUI_WALLET_URL.startsWith("http")){
+   e.preventDefault();
+   alert("Bà dán link Ví Yui vào biến MW_YUI_WALLET_URL trong code nha 💜");
+  }
+ });
+}
+const mwRefreshButton=document.getElementById("mwRefreshBtn");
+if(mwRefreshButton) mwRefreshButton.onclick=()=>{mwWalletListener=null;mwStartWalletSync();};
+
+// =======================
+// ID TRANG
+// =======================
+
+const PAGE_ID = "dangtruyen";
+
+
+
+// =======================
+// ID TRUYỆN HỆ THỐNG
+// =======================
+
+let STORY_ID = "";
+
+
+async function loadSystemDefaultStory(){
+
+const snap = await get(
+ref(
+db,
+"settings/defaultStory/" + PAGE_ID
+)
+);
+
+
+if(snap.exists()){
+
+// lấy truyện mặc định từ Firebase
+
+STORY_ID = snap.val();
+
+
+}else{
+
+// nếu Firebase chưa có thì lấy truyện đang chọn
+
+STORY_ID =
+localStorage.getItem("CURRENT_STORY") || "";
+
+}
+
+
+console.log(
+"Truyện mặc định:",
+STORY_ID
+);
+
+
+}
+
+
+
+
+
+// =======================
+
+// BIẾN
+
+// =======================
+
+
+
+let chapters={};
+
+
+
+let currentChapter="1";
+
+let storyTags = [];
+  
+  let allTags = [];
+  
+  let editingChapter = null;
+  
+  let vipList = {};
+  let customerListVisible=false;
+  
+  let selectedVipCustomer = null;
+  
+  let allStories = {};
+let storySearchMode = "name"; // name | tag
+  
+  
+// =======================
+// MEOW TTS
+// =======================
+
+let speaking = false;
+let paused = false;
+
+let utterance = null;
+
+let paragraphs = [];
+
+let currentParagraph = 0;
+
+let speechRate = 1;
+
+let dragSeek = false;
+
+let dragging = false;
+
+// =======================
+
+// LOAD THÔNG TIN
+
+// =======================
+
+
+
+async function loadStory(){
+
+
+
+const snap = await get(
+
+
+ref(
+
+db,
+
+"stories/"+STORY_ID+"/info"
+
+
+)
+
+
+);
+
+
+
+
+if(!snap.exists()){
+
+
+
+console.log(
+
+"Không có thông tin truyện"
+
+);
+
+
+
+return;
+
+
+
+}
+
+
+
+
+
+const data=snap.val();
+window.mwFullBookPrice = mwPrice(data.fullPrice ?? data.fullBookPrice ?? data.price);
+const fullPriceEl=document.getElementById("mwFullPrice"); if(fullPriceEl) fullPriceEl.textContent=window.mwFullBookPrice>0?mwMoney(window.mwFullBookPrice):"Chưa cập nhật";
+const fullBtn=document.getElementById("mwBuyFullBtn"); if(fullBtn) fullBtn.onclick=()=>mwBuy("full");
+document.getElementById("storySummary").innerText =
+data.summary || "";
+document.getElementById("buyPagePrice").innerText =
+data.price || "Chưa cập nhật giá";
+const tagBox =
+document.getElementById("storyTags");
+
+if(tagBox){
+
+tagBox.innerHTML="";
+
+(data.tags || []).forEach(tag=>{
+
+tagBox.innerHTML += `
+<span class="storyTag">
+#${tag}
+</span>
+`;
+
+});
+
+}
+
+
+
+document
+
+.getElementById("storyName")
+
+.innerText=
+
+
+data.name || "Không tên";
+
+
+
+
+
+document
+
+.getElementById("author")
+
+.innerText=
+
+
+data.author || "Không rõ";
+
+
+
+
+
+document
+
+.getElementById("coverImage")
+
+.src=
+
+
+data.cover || "";
+
+
+
+
+
+document
+
+.getElementById("updateDate")
+
+.innerText=
+
+
+data.date || "---";
+
+
+
+
+
+document
+
+.getElementById("status")
+
+.innerText=
+
+
+data.status || "Đang ra";
+
+
+
+loadStoryDropdown();
+  loadVipList();
+  updateStoryViews();
+  loadStoryLike();
+}
+
+
+
+
+async function updateStoryViews(){
+
+const snap = await get(
+ref(db,"stories/"+STORY_ID+"/chapters")
+);
+
+let total = 0;
+
+if(snap.exists()){
+
+const data = snap.val();
+
+const keyword =
+(
+document.getElementById("storyManageSearch")?.value ||
+""
+).toLowerCase();
+
+Object.keys(data).forEach(id=>{
+
+const info=data[id].info||{};
+
+if(
+keyword &&
+!(
+(info.name||"").toLowerCase().includes(keyword) ||
+id.toLowerCase().includes(keyword)
+)
+){
+return;
+}
+  
+  const storySearch =
+document.getElementById("storyManageSearch");
+
+if(storySearch){
+
+
+
+}
+
+total += Number(data[id].views || 0);
+
+});
+
+}
+
+document.getElementById("storyViews").innerText =
+total.toLocaleString("vi-VN");
+
+}
+
+
+async function loadStoryLike(){
+
+const user = localStorage.getItem("MEOW_ID");
+
+const likeRef =
+ref(db,"stories/"+STORY_ID+"/likes");
+
+const snap = await get(likeRef);
+
+let likes = snap.exists() ? snap.val() : {};
+
+document.getElementById("storyLikeCount").innerText =
+Object.keys(likes).length;
+
+const btn =
+document.getElementById("storyLikeBtn");
+
+if(user && likes[user]){
+
+btn.innerText = "💕";
+
+}else{
+
+btn.innerText = "🤍";
+
+}
+
+}
+  
+  document.getElementById("storyLikeBtn").onclick = async function(){
+
+const user = localStorage.getItem("MEOW_ID");
+
+if(!user){
+
+alert("Đăng nhập trước.");
+
+return;
+
+}
+
+const likeRef =
+ref(db,"stories/"+STORY_ID+"/likes/"+user);
+
+const snap = await get(likeRef);
+
+if(snap.exists()){
+
+await remove(likeRef);
+
+}else{
+
+await set(likeRef,true);
+
+}
+
+loadStoryLike();
+
+};
+// =======================
+
+// LOAD CHƯƠNG
+
+// =======================
+
+
+
+function loadChapters(){
+
+
+
+onValue(
+
+
+ref(
+
+db,
+
+"stories/"+STORY_ID+"/chapters"
+
+
+),
+
+
+
+snap=>{
+
+
+
+chapters={};
+
+
+
+
+if(!snap.exists()){
+console.log("Chưa có chương");
+mwRenderBuyTable();
+return;
+}
+
+
+
+
+chapters=snap.val();
+
+// Cập nhật bảng mua chương lẻ và tổng tiền ngay khi Firebase tải xong
+mwRenderBuyTable();
+
+document
+.getElementById("chapterCount")
+
+.innerText=
+
+
+Object.keys(chapters).length;
+
+
+
+
+
+renderChapterList();
+  
+  renderChapterManage();
+
+updateNextChapter();
+
+
+}
+
+
+
+);
+
+
+
+
+}
+
+
+
+
+
+// =======================
+// HIỆN NỘI DUNG CHƯƠNG
+// =======================
+
+async function showChapter(chapter){
+
+const box =
+document.getElementById("readerContent");
+
+if(!box) return;
+
+
+if(!chapter){
+
+box.innerHTML =
+"❌ Không có dữ liệu chương";
+
+return;
+
+}
+
+
+// hiện nội dung
+
+box.innerHTML =
+chapter.content || "📖 Chưa có nội dung";
+
+box.querySelectorAll("*").forEach(el => {
+  el.style.fontSize = "inherit";
+  el.style.lineHeight = "inherit";
+});
+}
+
+
+// =======================
+// HIỆN DANH SÁCH
+// =======================
+
+function renderChapterList(){
+
+const box =
+document.getElementById("chapterList");
+
+const readerBox =
+document.getElementById("readerChapterListBox");
+
+box.innerHTML="";
+
+if(readerBox){
+readerBox.innerHTML="";
+}
+
+let chapterOrder =
+Object.keys(chapters)
+.sort((a,b)=>{
+
+return chapterSort==="new"
+?
+Number(b)-Number(a)
+:
+Number(a)-Number(b);
+
+});
+
+chapterOrder.forEach(id=>{
+const item =
+document.createElement("div");
+
+item.className="chapterItem";
+
+if(localStorage.getItem(STORY_ID+"_last")==id){
+item.classList.add("reading");
+}
+
+const readList =
+JSON.parse(
+localStorage.getItem(STORY_ID+"_read") || "[]"
+);
+
+let badge="";
+
+if(localStorage.getItem(STORY_ID+"_last")==id){
+
+badge =
+'<span class="chapterStatus reading">📖 Đang đọc</span>';
+
+}else if(readList.includes(id)){
+
+badge =
+'<span class="chapterStatus read">✓ Đã đọc</span>';
+
+}
+
+const chapter = chapters[id];
+
+
+const user =
+localStorage.getItem("MEOW_ID");
+  
+let vipHtml="";
+
+
+
+
+
+let hasVip = false;
+
+const meowId = localStorage.getItem("MEOW_ID");
+
+if(
+meowId &&
+(
+vipList[meowId] === true ||
+vipList[meowId]?.vip === true
+)
+){
+
+hasVip = true;
+
+}
+
+if(chapter.vip && !hasVip){
+
+vipHtml=`
+
+<div class="vipChapterMask">
+
+<div class="vipBadge">
+
+🔒 VIP
+
+</div>
+
+<div class="vipTitle">
+
+Chương VIP
+
+</div>
+
+</div>
+
+`;
+
+}else{
+
+vipHtml =
+chapter.title || "";
+
+}
+item.innerHTML=`
+
+📖 Chương ${id}
+
+${badge}
+
+<br>
+
+${vipHtml}
+
+`;
+
+item.onclick=async()=>{
+ const c=chapters[id]||{};
+ const price=mwPrice(c.price);
+ if(price>0){ const access=await mwHasAccess("chapter",id); if(!access){ await mwBuy("chapter",id); return; } }
+ openReader(id);
+};
+
+box.appendChild(item);
+
+if(readerBox){
+
+const readerItem =
+item.cloneNode(true);
+
+readerItem.onclick=()=>{
+
+openReader(id);
+
+readerChapterPanel.style.display="none";
+
+};
+
+readerBox.appendChild(readerItem);
+
+}
+
+});
+
+}
+
+
+
+// =======================
+// DANH SÁCH QUẢN LÝ CHƯƠNG
+// =======================
+
+function renderChapterManage(){
+
+const box =
+document.getElementById("chapterManageList");
+
+if(!box) return;
+
+box.innerHTML="";
+
+document.getElementById(
+"chapterManageStoryName"
+).innerHTML=
+
+"📖 " +
+
+document.getElementById("storyName").innerText;
+
+Object.keys(chapters)
+
+.sort((a,b)=>Number(a)-Number(b))
+
+.forEach(id=>{
+
+const c=chapters[id];
+
+const item=document.createElement("div");
+
+item.className="chapterManageItem";
+
+item.innerHTML=`
+
+<div class="chapterManageTitle">
+
+📖 Chương ${id}
+
+</div>
+
+<div class="chapterManageName">
+
+${c.title||""}
+
+</div>
+
+<div class="chapterVip">
+
+<label>
+
+<input
+
+type="checkbox"
+
+${c.vip?"checked":""}
+
+onchange="toggleVip('${id}',this.checked)"
+
+>
+
+VIP
+
+</label>
+
+</div>
+
+<div class="chapterManageButtons">
+
+<button
+class="chapterVipBtn"
+data-chapter="${id}"
+onclick="setChapterVip('${id}',this)"
+style="
+background:#ff5a9e;
+color:#fff;
+">
+👑 Cấp VIP
+</button>
+
+<button
+
+class="editChapterBtn"
+
+onclick="editChapter('${id}')">
+
+✏️
+
+</button>
+
+<button
+
+class="deleteChapterBtn"
+
+onclick="deleteChapterAdmin('${id}')">
+
+🗑
+
+</button>
+
+</div>
+
+`;
+
+box.appendChild(item);
+
+});
+
+}
+
+
+
+
+
+
+// =======================
+
+// MỞ ĐỌC
+
+// =======================
+
+
+
+async function openReader(id){
+
+id = String(id);
+
+if(!chapters[id]){
+
+alert("Không tìm thấy chương");
+
+return;
+
+}
+  
+  
+
+const ok = await checkPermission(id);
+
+if(!ok){
+return;
+}
+
+  // =======================
+// TĂNG LƯỢT XEM CHƯƠNG
+// =======================
+
+const chapterRef = ref(
+    db,
+    "stories/" + STORY_ID + "/chapters/" + id + "/views"
+);
+
+const viewSnap = await get(chapterRef);
+
+const currentViews =
+viewSnap.exists()
+? Number(viewSnap.val())
+: 0;
+
+await set(
+    chapterRef,
+    currentViews + 1
+);
+  
+  updateStoryViews();
+  
+currentChapter=id;
+
+speechSynthesis.cancel();
+
+speaking=false;
+
+paused=false;
+
+currentParagraph=0;
+
+document
+.getElementById("readerPage")
+.style.display="block";
+
+const chapterTitle =
+chapters[id].title || "";
+
+document.getElementById("readerTitle").innerText =
+chapterTitle
+? `Chương ${id}: ${chapterTitle}`
+: `Chương ${id}`;
+
+await showChapter(chapters[id]);
+  
+  const noteList = document.getElementById("readerNoteList");
+
+if(noteList){
+
+renderChapterImages(
+chapters[id].images || []
+);
+
+}
+
+buildParagraphs();
+
+currentParagraph = 0;
+
+const currentText =
+document.getElementById("readerContent").innerText;
+
+document.getElementById("chapterDate").innerText =
+chapters[id].date || "--";
+
+document.getElementById("chapterWords").innerText =
+currentText.trim().split(/\s+/).filter(Boolean).length.toLocaleString("vi-VN");
+  
+  document.getElementById("chapterViews").innerText =
+(chapters[id].views || 0).toLocaleString("vi-VN");
+
+const content =
+document.getElementById("readerContent");
+
+content.style.fontSize =
+(localStorage.getItem("fontSize") || 19) + "px";
+
+content.style.lineHeight =
+(localStorage.getItem("lineHeight") || 20) / 10;
+
+content.style.fontFamily =
+localStorage.getItem("fontFamily") || "'Be Vietnam Pro'";
+
+localStorage.setItem(
+STORY_ID+"_last",
+id
+);
+
+let readList =
+JSON.parse(
+localStorage.getItem(STORY_ID+"_read") || "[]"
+);
+
+if(!readList.includes(id)){
+
+readList.push(id);
+
+localStorage.setItem(
+STORY_ID+"_read",
+JSON.stringify(readList)
+);
+
+}
+
+document.querySelectorAll(".chapterItem").forEach(el=>{
+el.classList.remove("reading");
+});
+
+document.querySelectorAll(".chapterItem").forEach(el=>{
+
+if(el.innerText.includes("Chương "+id)){
+
+el.classList.add("reading");
+
+}
+
+});
+
+document
+.getElementById("lastRead")
+.innerText=
+"Chương "+id;
+
+renderChapterList();
+
+}
+
+
+
+
+// =======================
+
+// NÚT DANH SÁCH
+
+// =======================
+
+
+
+document
+
+.getElementById("listBtn")
+
+
+.onclick=()=>{
+
+
+
+document
+
+.getElementById("homePage")
+
+.style.display="none";
+
+
+
+document
+
+.getElementById("chapterPage")
+
+.style.display="block";
+
+
+
+};
+
+
+
+
+
+
+
+
+// =======================
+
+// QUAY LẠI
+
+// =======================
+
+
+
+document
+
+.getElementById("backHome")
+
+
+.onclick=()=>{
+
+
+
+document
+
+.getElementById("chapterPage")
+
+.style.display="none";
+
+
+
+document
+
+.getElementById("homePage")
+
+.style.display="block";
+
+
+
+};
+
+
+
+
+
+
+
+
+
+// =======================
+
+// ĐỌC NGAY
+
+// =======================
+
+
+
+document
+
+.getElementById("readBtn")
+
+
+.onclick=()=>{
+
+
+
+let last=
+
+
+localStorage.getItem(
+
+STORY_ID+"_last"
+
+)
+
+||
+
+"1";
+
+
+
+
+openReader(last);
+
+
+
+
+};
+
+
+
+
+
+
+
+
+
+// =======================
+
+// ĐÓNG READER
+
+// =======================
+
+
+
+document
+
+.getElementById("closeReader")
+
+
+.onclick=()=>{
+
+
+
+document
+
+.getElementById("readerPage")
+
+.style.display="none";
+
+
+
+};
+
+
+
+
+
+
+
+
+
+// =======================
+
+// CHUYỂN CHƯƠNG
+
+// =======================
+
+
+
+document
+
+.getElementById("prevChapter")
+
+
+.onclick=()=>{
+
+
+
+let id=
+
+
+Number(currentChapter)-1;
+
+
+
+
+if(chapters[id]){
+
+
+openReader(id);
+
+
+}
+
+
+
+};
+
+
+
+
+
+
+
+
+document
+
+.getElementById("nextChapter")
+
+
+.onclick=()=>{
+
+
+
+let id=
+
+
+Number(currentChapter)+1;
+
+
+
+
+if(chapters[id]){
+
+
+openReader(id);
+
+
+}
+
+
+
+};
+
+
+
+
+
+
+
+document.getElementById("showAllTags").onclick=function(){
+
+document
+.getElementById("allTagList")
+.classList.toggle("show");
+
+};
+
+
+// =======================
+
+// CHẠY
+
+// =======================
+
+  loadSystemDefaultStory().then(()=>{
+
+loadStory();
+
+loadChapters();
+
+loadVipList();
+
+loadLoginStorySlider();
+loadAllStories();
+});
+  
+  // =======================
+// EDITOR
+// =======================
+
+const editor =
+document.getElementById("adminContent");
+
+document.querySelectorAll(".editorToolbar button[data-cmd]").forEach(btn=>{
+
+btn.addEventListener("click",function(){
+
+editor.focus();
+
+document.execCommand(
+this.dataset.cmd,
+false,
+null
+);
+
+});
+
+});
+
+document.getElementById("textColor").addEventListener("input",function(){
+
+editor.focus();
+
+document.execCommand(
+"foreColor",
+false,
+this.value
+);
+
+});
+
+document.getElementById("insertLinkBtn").onclick=function(){
+
+const url =
+prompt("Nhập liên kết:");
+
+if(!url) return;
+
+editor.focus();
+
+document.execCommand(
+"createLink",
+false,
+url
+);
+
+};
+
+document.getElementById("insertImageBtn").onclick=function(){
+
+const url =
+prompt("Nhập URL ảnh:");
+
+if(!url) return;
+
+editor.focus();
+
+document.execCommand(
+"insertImage",
+false,
+url
+);
+const editor = document.getElementById("adminContent");
+
+editor.innerHTML = "";
+
+editor.focus();
+
+const range = document.createRange();
+const sel = window.getSelection();
+
+range.selectNodeContents(editor);
+range.collapse(true);
+
+sel.removeAllRanges();
+sel.addRange(range);
+};
+  
+  
+  
+  
+document.getElementById("searchStoryBtn").onclick=function(){
+
+const search =
+document.getElementById("storySearchPanel");
+
+const tag =
+document.getElementById("storyTagPanel");
+
+if(tag){
+
+tag.style.display="none";
+
+}
+
+search.style.display=
+search.style.display=="block"
+?
+"none"
+:
+"block";
+
+};
+const readerContent =
+
+document.getElementById("readerContent");
+
+const fontSize =
+
+document.getElementById("fontSize");
+
+const lineHeight =
+
+document.getElementById("lineHeight");
+
+const fontFamily =
+
+document.getElementById("fontFamily");
+  
+  const readerTheme =
+
+document.getElementById("readerTheme");
+
+readerContent.style.fontSize =
+
+(localStorage.getItem("fontSize") || 19) + "px";
+
+readerContent.style.lineHeight =
+
+(localStorage.getItem("lineHeight") || 20) / 10;
+
+readerContent.style.fontFamily =
+
+localStorage.getItem("fontFamily") || "'Be Vietnam Pro'";
+
+const savedTheme =
+
+localStorage.getItem("readerTheme") || "white";
+
+readerTheme.value =
+
+savedTheme;
+
+applyTheme(savedTheme);
+const lastChapter =
+localStorage.getItem(STORY_ID+"_last");
+
+const lastRead =
+document.getElementById("lastRead");
+
+if(lastChapter){
+
+lastRead.innerText =
+"Chương " + lastChapter;
+
+}else{
+
+lastRead.innerText =
+"Chưa đọc";
+
+}
+  
+  document.getElementById("searchStoryBtn").onclick=function(){
+
+const search =
+document.getElementById("storySearchPanel");
+
+const tag =
+document.getElementById("storyTagPanel");
+
+tag.style.display="none";
+
+search.style.display=
+search.style.display=="block"
+?
+"none"
+:
+"block";
+
+};
+
+
+document.getElementById("tagStoryBtn").onclick=function(){
+
+const tag =
+document.getElementById("storyTagPanel");
+
+const search =
+document.getElementById("storySearchPanel");
+
+search.style.display="none";
+
+tag.style.display=
+tag.style.display=="block"
+?
+"none"
+:
+"block";
+
+loadTagList();
+
+}
+  
+  
+// =======================
+
+// ADMIN + KHÓA CHƯƠNG
+
+// =======================
+
+
+
+const ADMIN_ID = "quynh246712";
+
+
+
+
+
+
+
+
+
+
+// =======================
+
+// ADMIN LOGIN
+
+// =======================
+
+
+
+document
+
+.getElementById("adminLoginBtn")
+
+.onclick=()=>{
+
+
+
+let id =
+
+
+document
+
+.getElementById("adminIDInput")
+
+.value
+
+.trim();
+
+
+
+
+
+if(id === ADMIN_ID){
+
+
+
+
+document
+
+.getElementById("adminLogin")
+
+.style.display="none";
+
+
+
+
+document
+
+.getElementById("adminProfile")
+
+.style.display="block";
+
+
+
+
+document
+
+.getElementById("adminName")
+
+.innerText=id;
+
+
+
+
+localStorage.setItem(
+
+"MEOW_ADMIN",
+
+id
+
+);
+
+
+
+
+}
+
+
+else{
+
+
+
+document
+
+.getElementById("adminLoginMsg")
+
+.innerText=
+
+"❌ Sai ID Admin";
+
+
+
+}
+
+
+
+
+};
+
+
+// =======================
+// CUSTOMER LOGIN KHÔNG GMAIL
+// =======================
+document.getElementById("customerLoginBtn").onclick = async function(){
+
+
+const id =
+document.getElementById("customerIDInput").value.trim();
+
+
+const name =
+document.getElementById("customerNameInput").value.trim();
+
+
+
+if(!id || !name){
+
+document.getElementById("customerLoginMsg").innerText =
+"⚠️ Nhập đầy đủ thông tin";
+
+return;
+
+}
+
+
+
+const snap =
+await get(
+ref(db,"customers/"+id)
+);
+
+
+
+if(!snap.exists()){
+
+document.getElementById("customerLoginMsg").innerText =
+"❌ Không tìm thấy khách";
+
+return;
+
+}
+
+
+
+const data =
+snap.val();
+
+
+
+if(data.name !== name){
+
+document.getElementById("customerLoginMsg").innerText =
+"❌ Sai thông tin";
+
+return;
+
+}
+
+
+
+// lưu đăng nhập
+
+localStorage.setItem(
+"MEOW_ID",
+id
+);
+
+
+
+// báo thành công
+
+document.getElementById("customerLoginMsg").innerText =
+"💖 Đăng nhập thành công";
+
+
+
+// ẩn màn đăng nhập
+
+document.getElementById("adminLogin").style.display="none";
+
+
+
+// mở profile khách
+
+const profile =
+document.getElementById("customerProfile");
+
+
+if(profile){
+
+profile.style.display="block";
+
+}
+
+
+
+// đổ dữ liệu profile
+
+document.getElementById("customerProfileName").innerText =
+"🐱 " + data.name;
+
+
+document.getElementById("customerProfileID").innerText =
+id;
+
+
+
+if(document.getElementById("customerProfileMail")){
+
+document.getElementById("customerProfileMail").innerText =
+data.mail || "---";
+
+}
+
+
+
+};
+  
+ // =======================
+// CUSTOMER BOOKS
+// =======================
+
+
+document.getElementById("myBooksBtn").onclick = async function(){
+
+
+const id =
+localStorage.getItem("MEOW_ID");
+
+
+if(!id) return;
+
+
+const box =
+document.getElementById("customerContent");
+
+
+box.innerHTML =
+"⏳ Đang tải tủ truyện...";
+
+
+
+const snap =
+await get(
+ref(db,"customers/"+id)
+);
+
+
+
+if(!snap.exists()){
+
+box.innerHTML =
+"❌ Không có dữ liệu";
+
+return;
+
+}
+
+
+
+const data =
+snap.val();
+
+
+const books =
+data.books || {};
+
+
+
+let html =
+"<h3>📚 Tủ truyện</h3>";
+
+
+
+let count=0;
+
+
+
+for(const storyId of Object.keys(books)){
+
+
+count++;
+
+
+// lấy thông tin truyện
+
+let storyName = storyId;
+
+
+const storySnap =
+await get(
+ref(db,"stories/"+storyId+"/info")
+);
+
+
+
+if(storySnap.exists()){
+
+storyName =
+storySnap.val().name || storyId;
+
+}
+
+
+
+html += `
+
+<div class="customerBookItem">
+
+
+📖 <b>${storyName}</b>
+
+
+<br>
+
+<button onclick="openCustomerStory('${storyId}')">
+
+Đọc truyện
+
+</button>
+
+
+</div>
+
+`;
+
+}
+
+
+
+if(count===0){
+
+html +=
+"Chưa có truyện nào";
+
+}
+
+
+
+box.innerHTML=html;
+
+
+};
+
+
+
+
+// =======================
+// TRUYỆN ĐÃ MUA VIP
+// =======================
+
+
+document.getElementById("myVipBooksBtn").onclick = async function(){
+
+
+const id =
+localStorage.getItem("MEOW_ID");
+
+
+if(!id) return;
+
+
+
+const box =
+document.getElementById("customerContent");
+
+
+
+box.innerHTML =
+"⏳ Kiểm tra VIP...";
+
+
+
+const snap =
+await get(
+ref(db,"customers/"+id)
+);
+
+
+
+if(!snap.exists()) return;
+
+
+
+const data =
+snap.val();
+
+
+
+const books =
+data.books || {};
+
+
+
+let html =
+"<h3>👑 Truyện đã mua</h3>";
+
+
+
+let vipCount=0;
+
+
+
+for(const storyId of Object.keys(books)){
+
+
+if(
+books[storyId].vip === true
+){
+
+
+vipCount++;
+
+
+
+let storyName = storyId;
+
+
+
+const storySnap =
+await get(
+ref(db,"stories/"+storyId+"/info")
+);
+
+
+
+if(storySnap.exists()){
+
+storyName =
+storySnap.val().name || storyId;
+
+}
+
+
+
+
+html += `
+
+<div class="customerBookItem">
+
+
+👑 <b>${storyName}</b>
+
+
+<br>
+
+
+<span>
+VIP đang hoạt động
+</span>
+
+
+<br>
+
+
+<button onclick="openCustomerStory('${storyId}')">
+
+📖 Đọc truyện
+
+</button>
+
+
+</div>
+
+`;
+
+
+
+}
+
+
+
+}
+
+
+
+if(vipCount===0){
+
+html +=
+"Chưa có truyện VIP";
+
+}
+
+
+
+box.innerHTML=html;
+
+
+};
+
+
+
+
+// =======================
+// MỞ TRUYỆN KHÁCH
+// =======================
+
+
+window.openCustomerStory=function(id){
+
+
+STORY_ID=id;
+
+
+localStorage.setItem(
+"CURRENT_STORY",
+id
+);
+
+
+
+loadStory();
+
+loadChapters();
+
+
+
+document.getElementById("customerProfile").style.display="none";
+
+
+document.getElementById("homePage").style.display="block";
+
+
+};
+
+
+
+// =======================
+// TRUYỆN ĐÃ MUA VIP
+// =======================
+
+
+document.getElementById("myVipBooksBtn").onclick = async function(){
+
+
+const id =
+localStorage.getItem("MEOW_ID");
+
+
+if(!id) return;
+
+
+const box =
+document.getElementById("customerContent");
+
+
+box.innerHTML =
+"⏳ Kiểm tra VIP...";
+
+
+
+const snap =
+await get(
+ref(db,"customers/"+id)
+);
+
+
+
+if(!snap.exists()) return;
+
+
+
+const data =
+snap.val();
+
+
+
+let html =
+"<h3>👑 Truyện VIP</h3>";
+
+
+
+let vipCount=0;
+
+
+
+const books =
+data.books || {};
+
+
+
+Object.keys(books).forEach(storyId=>{
+
+
+if(
+books[storyId].vip
+){
+
+
+vipCount++;
+
+
+html += `
+
+<div class="customerBookItem">
+
+👑 ${storyId}
+
+<br>
+
+<span>
+VIP đang hoạt động
+</span>
+
+
+</div>
+
+
+`;
+
+}
+
+
+});
+
+
+
+if(vipCount===0){
+
+html +=
+"Chưa có truyện VIP";
+
+}
+
+
+
+box.innerHTML=html;
+
+
+
+};
+
+
+
+// =======================
+// MỞ TRUYỆN KHÁCH
+// =======================
+
+
+window.openCustomerStory=function(id){
+
+
+STORY_ID=id;
+
+
+localStorage.setItem(
+"CURRENT_STORY",
+id
+);
+
+
+loadStory();
+
+loadChapters();
+
+
+document.getElementById("customerProfile").style.display="none";
+
+
+document.getElementById("homePage").style.display="block";
+
+
+};
+
+// =======================
+
+// NÚT THÊM CHƯƠNG
+
+// =======================
+
+
+
+document
+
+.getElementById("showAddChapter")
+
+.onclick=()=>{
+
+
+
+let box =
+
+
+document
+
+.getElementById("addChapterBox");
+
+
+
+
+if(box.style.display==="block"){
+
+
+
+box.style.display="none";
+
+
+
+}
+
+
+else{
+
+
+
+box.style.display="block";
+
+
+
+}
+
+
+
+
+};
+
+
+
+
+
+
+
+
+// =======================
+
+// LƯU CHƯƠNG
+
+// =======================
+
+
+
+document
+
+.getElementById("saveChapter")
+
+
+.onclick = async()=>{
+
+
+
+let id;
+
+if(editingChapter){
+
+id = editingChapter;
+
+}else{
+
+id = String(
+Object.keys(chapters).length + 1
+);
+
+}
+
+
+
+
+let title =
+
+
+document
+
+.getElementById("adminTitle")
+
+.value
+
+.trim();
+  
+  let chapterPrice = Math.max(
+  0,
+  Number(
+    document.getElementById("adminChapterPrice").value
+  ) || 0
+);
+
+
+
+
+const temp = document.createElement("div");
+
+temp.innerHTML =
+document.getElementById("adminContent").innerHTML;
+
+temp.querySelectorAll("*").forEach(el=>{
+
+    el.style.removeProperty("font-family");
+    el.style.removeProperty("font-size");
+    el.style.removeProperty("line-height");
+
+    el.removeAttribute("face");
+
+    if(el.tagName==="FONT"){
+
+        const span=document.createElement("span");
+
+        span.innerHTML=el.innerHTML;
+
+        el.replaceWith(span);
+
+    }
+
+});
+
+let content = temp.innerHTML;
+
+
+
+let password =
+
+
+document
+
+.getElementById("adminPassword")
+
+.value
+
+.trim();
+
+
+
+
+let vip =
+
+
+document
+
+.getElementById("adminVip")
+
+.checked;
+
+
+
+
+
+
+if(!id){
+
+
+
+alert(
+
+"Chưa nhập số chương"
+
+);
+
+
+
+return;
+
+
+
+}
+
+
+
+
+
+const old = chapters[id] || {};
+
+await set(
+ref(db,
+"stories/"+STORY_ID+"/chapters/"+id),
+{
+...old,
+
+title:title,
+content:content,
+password:password,
+vip:vip,
+   price: chapterPrice,
+date:new Date().toLocaleDateString("vi-VN"),
+images:chapterImages
+}
+
+
+
+
+
+
+
+
+);
+
+
+
+
+alert(
+
+editingChapter
+
+?
+
+"Đã cập nhật chương "+id
+
+:
+
+"Đã thêm chương "+id
+
+);
+  
+  chapterImages=[];
+
+document.getElementById("chapterImagePreview").innerHTML="";
+
+document.getElementById("chapterImageFile").value="";
+
+editingChapter = null;
+
+document.getElementById("saveChapter").innerText=
+"💾 Lưu chương";
+
+updateNextChapter();
+
+document.getElementById("adminTitle").value="";
+  document.getElementById("adminChapterPrice").value = "0";
+
+document.getElementById("adminContent").innerHTML="";
+
+document.getElementById("adminPassword").value="";
+
+document.getElementById("adminVip").checked=false;
+  
+
+updateNextChapter();
+
+
+};
+
+
+
+
+
+
+
+
+
+// =======================
+
+// XÓA CHƯƠNG
+
+// =======================
+
+
+
+document
+
+.getElementById("deleteChapter")
+
+
+.onclick = async()=>{
+
+
+
+let id;
+
+if(editingChapter){
+
+id = editingChapter;
+
+}else{
+
+id = String(
+Object.keys(chapters).length + 1
+);
+
+}
+
+
+
+
+
+if(!id){
+
+
+alert(
+
+"Nhập số chương cần xóa"
+
+);
+
+
+return;
+
+
+}
+
+
+
+
+
+if(
+
+!confirm(
+
+"Xóa chương "+id+"?"
+
+)
+
+
+)
+
+
+return;
+
+
+
+
+
+
+
+await remove(
+
+
+ref(
+
+
+db,
+
+
+"stories/"
+
++
+
+STORY_ID
+
++
+
+"/chapters/"
+
++
+
+id
+
+
+)
+
+
+);
+
+
+
+
+alert(
+
+"Đã xóa chương "+id
+
+);
+
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+// =======================
+
+// SỬA OPEN READER
+
+// THÊM KHÓA CHƯƠNG
+
+// =======================
+
+
+
+// =======================
+// KIỂM TRA QUYỀN CHƯƠNG VIP
+// =======================
+
+async function checkPermission(id){
+
+
+const chapter =
+chapters[id];
+
+
+if(!chapter){
+
+return false;
+
+}
+
+
+
+// chương thường
+
+if(
+!chapter.vip &&
+!chapter.password
+){
+
+return true;
+
+}
+
+
+
+// khóa bằng mật khẩu
+
+if(chapter.password){
+
+
+const pass =
+prompt(
+"🔒 Nhập mật khẩu chương"
+);
+
+
+
+if(pass === chapter.password){
+
+return true;
+
+}
+
+
+
+alert(
+"Sai mật khẩu"
+);
+
+
+return false;
+
+
+}
+
+
+
+
+// =======================
+// KIỂM TRA VIP KHÁCH
+// =======================
+
+if(chapter.vip){
+
+const user =
+localStorage.getItem("MEOW_ID");
+
+if(!user){
+
+document.getElementById("vipLockPage").style.display="flex";
+
+return false;
+
+}
+
+// =======================
+// VIP TOÀN TRUYỆN
+// =======================
+
+const storyVip =
+await get(
+ref(
+db,
+"customers/"
++
+user
++
+"/books/"
++
+STORY_ID
+)
+);
+
+if(
+storyVip.exists() &&
+storyVip.val().vip === true
+){
+
+return true;
+
+}
+
+// =======================
+// VIP CHƯƠNG LẺ
+// =======================
+
+const chapterVip =
+await get(
+ref(
+db,
+"customers/"
++
+user
++
+"/chapterVip/"
++
+STORY_ID
++
+"/"
++
+id
+)
+);
+
+if(chapterVip.exists()){
+
+return true;
+
+}
+
+// =======================
+// KHÔNG CÓ QUYỀN
+// =======================
+
+document.getElementById("vipStoryName").innerText =
+"📖 " + document.getElementById("storyName").innerText;
+
+document.getElementById("vipUserId").innerText =
+"👤 ID: " + user;
+
+document.getElementById("vipChapterName").innerText =
+"🔒 Chương " + id + " - " +
+(chapters[id].title || "Không có tiêu đề");
+  
+  
+document.getElementById("vipLockPage").style.display="flex";
+
+return false;
+
+}
+
+return true;
+  
+  }
+
+readerSettingBtn.onclick=()=>{
+
+
+readerSettingPanel.style.display="block";
+
+
+}
+
+
+closeSetting.onclick=()=>{
+
+
+readerSettingPanel.style.display="none";
+
+
+}
+
+
+fontSize.oninput=function(){
+
+
+readerContent.style.fontSize=this.value+"px";
+
+
+localStorage.setItem("fontSize",this.value);
+
+
+}
+
+
+lineHeight.oninput=function(){
+
+
+readerContent.style.lineHeight=(this.value/10);
+
+
+localStorage.setItem("lineHeight",this.value);
+
+
+}
+
+
+fontFamily.addEventListener("change", function(){
+
+readerContent.style.fontFamily = this.value;
+
+localStorage.setItem("fontFamily", this.value);
+
+});
+  
+  // =======================
+// MỞ DANH SÁCH CHƯƠNG TRONG READER
+// =======================
+
+document.getElementById("readerChapterList").onclick = ()=>{
+
+document.getElementById("readerChapterPanel").style.display = "block";
+
+};
+
+// Đóng khi bấm ra ngoài
+document.getElementById("readerChapterPanel").onclick = (e)=>{
+
+if(e.target.id==="readerChapterPanel"){
+
+document.getElementById("readerChapterPanel").style.display="none";
+
+}
+
+};
+  
+  
+document.getElementById("closeChapterPanel").onclick=()=>{
+
+document.getElementById("readerChapterPanel").style.display="none";
+
+};
+  
+function renderChapterImages(images=[]){
+
+const box=document.getElementById("readerNoteList");
+
+if(!box) return;
+
+box.innerHTML="";
+
+if(images.length===0){
+
+box.innerHTML="🌸 Không có ảnh chú thích.";
+
+return;
+
+}
+
+images.forEach(item=>{
+
+box.innerHTML+=`
+
+<div class="readerNoteItem">
+
+<div class="readerNoteImage">
+
+<img src="${item.url}">
+
+<button
+class="zoomImageBtn"
+onclick="openNoteImage('${item.url}')">
+
+🔍
+
+</button>
+
+</div>
+
+<div class="readerNoteText">
+
+${item.caption||""}
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+  
+  window.removeChapterImage=function(index){
+
+chapterImages.splice(index,1);
+
+const preview=document.getElementById("chapterImagePreview");
+
+preview.innerHTML="";
+
+chapterImages.forEach((img,i)=>{
+
+preview.innerHTML+=`
+
+<div class="chapterPreviewItem">
+
+<img src="${img.url}">
+
+<button
+class="deleteChapterImageBtn"
+onclick="removeChapterImage(${i})">
+
+✕
+
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+  window.addEventListener("DOMContentLoaded",()=>{
+
+const noteBtn = document.getElementById("readerNoteBtn");
+const notePanel = document.getElementById("readerNotePanel");
+const closeBtn = document.getElementById("closeReaderNotePanel");
+
+console.log(noteBtn);
+console.log(notePanel);
+
+if(noteBtn){
+
+noteBtn.onclick = ()=>{
+
+if(!chapters[currentChapter]){
+
+alert("Chưa có dữ liệu chương.");
+
+return;
+
+}
+
+notePanel.style.display = "block";
+
+renderChapterImages(
+chapters[currentChapter].images || []
+);
+
+};
+
+}
+
+if(closeBtn){
+
+closeBtn.onclick = ()=>{
+
+notePanel.style.display = "none";
+
+};
+
+}
+
+if(notePanel){
+
+notePanel.onclick = (e)=>{
+
+if(e.target === notePanel){
+
+notePanel.style.display = "none";
+
+}
+
+};
+
+}
+
+});
+  
+  window.openNoteImage=function(url){
+
+document.getElementById("noteImageBig").src=url;
+
+document.getElementById("noteImageViewer").style.display="flex";
+
+}
+
+document.getElementById("closeNoteImage").onclick=function(){
+
+document.getElementById("noteImageViewer").style.display="none";
+
+}
+
+document.getElementById("noteImageViewer").onclick=function(e){
+
+if(e.target.id==="noteImageViewer"){
+
+this.style.display="none";
+
+}
+
+}
+  
+function applyTheme(theme){
+
+const page =
+
+document.getElementById("readerPage");
+
+const content =
+
+document.getElementById("readerContent");
+
+switch(theme){
+
+case "cream":
+
+page.style.background="#f7f1e3";
+
+content.style.color="#5c4630";
+
+break;
+
+case "pink":
+
+page.style.background="#fff0f7";
+
+content.style.color="#6d4b5a";
+
+break;
+
+case "blue":
+
+page.style.background="#eef7ff";
+
+content.style.color="#35506b";
+
+break;
+
+case "night":
+
+page.style.background="#1f2330";
+
+content.style.color="#f3f3f3";
+
+break;
+
+case "matcha":
+
+page.style.background="#eef7e8";
+
+content.style.color="#3f5a39";
+
+break;
+
+case "lavender":
+
+page.style.background="#f5f0ff";
+
+content.style.color="#5b4b78";
+
+break;
+
+case "peach":
+
+page.style.background="#fff5ef";
+
+content.style.color="#6b4f45";
+
+break;
+
+default:
+
+page.style.background="#ffffff";
+
+content.style.color="#444";
+
+}
+
+localStorage.setItem("readerTheme",theme);
+
+}
+  readerTheme.onchange=function(){
+
+applyTheme(this.value);
+
+};
+  
+  
+
+
+  
+
+
+// =======================
+// TẠO DANH SÁCH ĐOẠN
+// =======================
+
+function buildParagraphs(){
+
+const reader =
+document.getElementById("readerContent");
+
+paragraphs = [];
+
+// Ưu tiên đọc theo thẻ <p>
+const pList = [...reader.querySelectorAll("p")];
+
+if(pList.length){
+
+paragraphs = pList;
+
+return;
+
+}
+
+// Nếu không có <p> thì tách theo xuống dòng
+const lines =
+reader.innerText
+.split(/\n+/)
+.map(t=>t.trim())
+.filter(t=>t!="");
+
+// Nếu chỉ có 1 đoạn thì tách tiếp theo dấu chấm
+if(lines.length<=1){
+
+paragraphs =
+reader.innerText
+.split(/(?<=[.!?…])\s+/)
+.map(t=>t.trim())
+.filter(t=>t!="");
+
+return;
+
+}
+
+paragraphs = lines;
+}  
+  
+  // =======================
+// BẮT ĐẦU ĐỌC
+// =======================
+
+function startTTS(index = currentParagraph){
+
+if(!paragraphs.length){
+
+buildParagraphs();
+
+}
+
+if(!paragraphs.length){
+
+return;
+
+}
+
+speechSynthesis.cancel();
+
+paused = false;
+speaking = true;
+
+currentParagraph = index;
+
+speakCurrentParagraph();
+
+}
+  
+  // =======================
+// LẤY NỘI DUNG ĐOẠN
+// =======================
+
+function getParagraphText(item){
+
+if(typeof item === "string"){
+
+return item;
+
+}
+
+return item.innerText.trim();
+
+}
+  
+  // =======================
+// HIGHLIGHT ĐOẠN
+// =======================
+
+function highlightParagraph(){
+
+document
+.querySelectorAll(".reading")
+.forEach(el=>el.classList.remove("reading"));
+
+const item = paragraphs[currentParagraph];
+
+if(item instanceof HTMLElement){
+
+item.classList.add("reading");
+
+item.scrollIntoView({
+
+behavior:"smooth",
+
+block:"center"
+
+});
+
+}
+
+}
+  
+  // =======================
+// ĐỌC ĐOẠN HIỆN TẠI
+// =======================
+
+function speakCurrentParagraph(){
+
+if(currentParagraph >= paragraphs.length){
+
+autoNextChapter();
+
+return;
+
+}
+
+highlightParagraph();
+
+const text = getParagraphText(
+paragraphs[currentParagraph]
+);
+
+if(!text){
+
+currentParagraph++;
+
+speakCurrentParagraph();
+
+return;
+
+}
+
+utterance =
+new SpeechSynthesisUtterance(text);
+
+utterance.lang = "vi-VN";
+
+utterance.rate = speechRate;
+
+utterance.pitch = 1;
+
+utterance.volume = 1;
+
+// cập nhật giao diện
+document.getElementById("ttsBtn").innerHTML="⏸️";
+
+document.getElementById("ttsCurrentText").innerText=
+document.getElementById("readerTitle").innerText;
+
+updateProgress();
+
+speechSynthesis.speak(utterance);
+
+// đọc xong đoạn hiện tại
+utterance.onend=()=>{
+
+if(!speaking) return;
+
+currentParagraph++;
+
+speakCurrentParagraph();
+
+};
+
+}
+  
+  // =======================
+// CẬP NHẬT THANH TIẾN TRÌNH
+// =======================
+
+function updateProgress(){
+
+if(!paragraphs.length) return;
+
+const percent =
+((currentParagraph+1)
+/paragraphs.length)*100;
+
+document.getElementById("ttsProgress").style.width=
+percent+"%";
+
+document.getElementById("ttsPercent").innerText=
+Math.floor(percent)+"%";
+
+}
+  
+  // =======================
+// PLAY / PAUSE / STOP
+// =======================
+
+function toggleTTS(){
+
+// Chưa đọc
+if(!speaking){
+
+startTTS(currentParagraph);
+
+return;
+
+}
+
+// Đang tạm dừng -> đọc tiếp từ đoạn hiện tại
+if(paused){
+
+paused = false;
+
+speaking = true;
+
+startTTS(currentParagraph);
+
+return;
+
+}
+
+// Đang đọc -> tạm dừng
+speechSynthesis.cancel();
+
+paused = true;
+
+speaking = false;
+
+document.getElementById("ttsBtn").innerHTML="▶";
+
+}
+
+function stopTTS(){
+
+speechSynthesis.cancel();
+
+speaking = false;
+
+paused = false;
+
+currentParagraph = 0;
+
+document.getElementById("ttsBtn").innerHTML="🔊";
+
+document.getElementById("ttsProgress").style.width="0%";
+
+document.getElementById("ttsPercent").innerText="0%";
+
+document.getElementById("ttsCurrentText").innerText="Đã dừng";
+
+document
+.querySelectorAll(".reading")
+.forEach(el=>el.classList.remove("reading"));
+
+}
+  
+  
+  
+  // =======================
+// TỰ ĐỌC CHƯƠNG TIẾP
+// =======================
+
+function autoNextChapter(){
+
+const next =
+String(Number(currentChapter)+1);
+
+if(!chapters[next]){
+
+stopTTS();
+
+return;
+
+}
+
+openReader(next);
+
+// đợi nội dung render
+setTimeout(()=>{
+
+buildParagraphs();
+
+currentParagraph = 0;
+
+startTTS();
+
+},300);
+
+}
+  // =======================
+// ĐOẠN TRƯỚC
+// =======================
+
+function prevParagraph(){
+
+if(currentParagraph<=0) return;
+
+currentParagraph--;
+
+startTTS(currentParagraph);
+
+}
+  
+  // =======================
+// ĐOẠN SAU
+// =======================
+
+function nextParagraph(){
+
+if(currentParagraph>=paragraphs.length-1) return;
+
+currentParagraph++;
+
+startTTS(currentParagraph);
+
+}
+  
+  document.getElementById("ttsBtn").onclick =
+toggleTTS;
+
+document.getElementById("audioStop").onclick =
+stopTTS;
+
+document.getElementById("audioPrev").onclick =
+prevParagraph;
+
+document.getElementById("audioNext").onclick =
+nextParagraph;
+  
+  // =======================
+// SEEK
+// =======================
+
+function seekTTS(clientX){
+
+if(!paragraphs.length) return;
+
+const bar =
+document.querySelector(".meow-tts-bar");
+
+const rect =
+bar.getBoundingClientRect();
+
+let percent =
+(clientX - rect.left) / rect.width;
+
+percent =
+Math.max(0, Math.min(1, percent));
+
+const index =
+Math.min(
+paragraphs.length - 1,
+Math.floor(percent * paragraphs.length)
+);
+
+currentParagraph = index;
+
+// cập nhật giao diện ngay
+document.getElementById("ttsProgress").style.width =
+(percent * 100) + "%";
+
+document.getElementById("ttsPercent").innerText =
+Math.floor(percent * 100) + "%";
+
+}
+  
+  function applySeek(){
+
+startTTS(currentParagraph);
+
+}
+  
+  const ttsBar =
+document.querySelector(".meow-tts-bar");
+
+ttsBar.onclick = e=>{
+
+seekTTS(e.clientX);
+
+applySeek();
+
+};
+  
+  ttsBar.onmousedown = e=>{
+
+dragging = true;
+
+seekTTS(e.clientX);
+
+};
+
+window.onmousemove = e=>{
+
+if(!dragging) return;
+
+seekTTS(e.clientX);
+
+};
+
+window.onmouseup = ()=>{
+
+if(!dragging) return;
+
+dragging = false;
+
+applySeek();
+
+};
+  
+  ttsBar.ontouchstart = e=>{
+
+dragging = true;
+
+seekTTS(
+e.touches[0].clientX
+);
+
+};
+
+window.ontouchmove = e=>{
+
+if(!dragging) return;
+
+seekTTS(
+e.touches[0].clientX
+);
+
+};
+
+window.ontouchend = ()=>{
+
+if(!dragging) return;
+
+dragging = false;
+
+applySeek();
+
+};
+  
+ const ttsRate =
+document.getElementById("ttsRate");
+
+const ttsRateText =
+document.getElementById("ttsRateText");
+
+ttsRate.oninput=function(){
+
+speechRate = Number(this.value);
+
+ttsRateText.innerText =
+this.value + "x";
+
+};
+  
+  document.getElementById("lastReadBox").onclick = ()=>{
+
+const last =
+localStorage.getItem(STORY_ID+"_last");
+
+if(last && chapters[last]){
+
+openReader(last);
+
+}
+
+};
+  
+ document.getElementById("showStoryInfo").onclick=function(){
+document.getElementById("storyInfoId").value = STORY_ID || "";
+document.getElementById("storyInfoBox").style.display="block";
+
+document.getElementById("addChapterBox").style.display="none";
+
+document.getElementById("chapterManageBox").style.display="none";
+
+loadAdminStoryInfo(); // thêm dòng này
+   loadSettingStories();
+
+};
+  
+  
+  
+  const adminLogout =
+document.getElementById("adminLogout");
+
+
+if(adminLogout){
+
+adminLogout.onclick=function(){
+
+
+localStorage.removeItem("MEOW_ADMIN");
+
+
+// ẩn admin
+
+document.getElementById("adminProfile").style.display="none";
+
+
+// hiện login
+
+document.getElementById("adminLogin").style.display="block";
+
+
+};
+
+}
+  // =======================
+// QUẢN LÝ TRUYỆN
+// =======================
+
+const showStoryManage =
+document.getElementById("showStoryManage");
+
+
+if(showStoryManage){
+
+showStoryManage.onclick=function(){
+
+
+// ẩn các box khác
+
+document.getElementById("customerManage").style.display="none";
+
+document.getElementById("addCustomerBox").style.display="none";
+
+document.getElementById("storyInfoBox").style.display="none";
+
+document.getElementById("chapterManageBox").style.display="none";
+
+document.getElementById("addChapterBox").style.display="none";
+
+
+// hiện quản lý truyện
+
+const box =
+document.getElementById("storyManage");
+
+
+if(box.style.display==="block"){
+
+box.style.display="none";
+
+}else{
+
+box.style.display="block";
+
+loadStoryList();
+
+}
+
+
+};
+
+}
+
+document.getElementById("storyManageSearch").oninput=function(){
+
+const key=this.value.trim().toLowerCase();
+
+document.querySelectorAll(".storyManageItem").forEach(item=>{
+
+if(item.innerText.toLowerCase().includes(key)){
+
+item.style.display="block";
+
+}else{
+
+item.style.display="none";
+
+}
+
+});
+
+};
+
+// =======================
+// QUẢN LÝ KHÁCH
+// =======================
+
+const showCustomerManage =
+document.getElementById("showCustomerManage");
+
+
+if(showCustomerManage){
+
+showCustomerManage.onclick=function(){
+
+
+// ẩn các box khác
+
+document.getElementById("storyManage").style.display="none";
+
+document.getElementById("addStoryBox").style.display="none";
+
+document.getElementById("storyInfoBox").style.display="none";
+
+document.getElementById("chapterManageBox").style.display="none";
+
+document.getElementById("addChapterBox").style.display="none";
+
+
+// hiện quản lý khách
+
+const box =
+document.getElementById("customerManage");
+
+
+if(box.style.display==="block"){
+
+box.style.display="none";
+
+}else{
+
+box.style.display="block";
+
+loadCustomerList();
+
+}
+
+
+};
+
+}
+  
+  document.getElementById("customerManageSearch").oninput=function(){
+
+const key=this.value.trim().toLowerCase();
+
+document.querySelectorAll(".customerItem").forEach(item=>{
+
+if(item.innerText.toLowerCase().includes(key)){
+
+item.style.display="block";
+
+}else{
+
+item.style.display="none";
+
+}
+
+});
+
+};
+  
+  const closeChapterManage =
+document.getElementById("closeChapterManage");
+
+
+if(closeChapterManage){
+
+closeChapterManage.onclick=function(){
+
+document.getElementById("chapterManageBox").style.display="none";
+
+};
+
+}
+  const toggleVipCustomer =
+document.getElementById("toggleVipCustomer");
+
+
+const vipCustomerSearchBox =
+document.getElementById("vipCustomerSearchBox");
+
+
+if(toggleVipCustomer){
+
+toggleVipCustomer.onclick=function(){
+
+
+if(vipCustomerSearchBox.style.display==="none"){
+
+vipCustomerSearchBox.style.display="block";
+
+toggleVipCustomer.innerHTML="🔼 Đóng danh sách VIP";
+
+
+}else{
+
+
+vipCustomerSearchBox.style.display="none";
+
+toggleVipCustomer.innerHTML="👑 Chọn khách VIP";
+
+
+}
+
+
+};
+
+}
+  const closeStoryInfo =
+document.getElementById("closeStoryInfo");
+
+
+if(closeStoryInfo){
+
+closeStoryInfo.onclick=function(){
+
+document.getElementById("storyInfoBox").style.display="none";
+
+};
+
+}
+  function renderTags(){
+
+const box =
+document.getElementById("tagList");
+
+box.innerHTML="";
+
+storyTags.forEach((tag,index)=>{
+
+const div =
+document.createElement("div");
+
+div.className="storyTag";
+
+div.innerHTML=`
+${tag}
+<span>✕</span>
+`;
+
+div.querySelector("span").onclick=()=>{
+
+storyTags.splice(index,1);
+
+renderTags();
+
+};
+
+box.appendChild(div);
+
+});
+
+}
+  
+document.getElementById("addTagBtn").onclick = async function(){
+
+const input =
+document.getElementById("newTag");
+
+const value =
+input.value.trim();
+
+if(!value) return;
+
+// Thêm vào tag của truyện
+if(!storyTags.includes(value)){
+
+storyTags.push(value);
+
+renderTags();
+
+}
+
+// Thêm vào danh sách tag chung nếu chưa có
+if(!allTags.includes(value)){
+
+allTags.push(value);
+
+await set(
+ref(db,"settings/tags"),
+allTags
+);
+
+loadAllTags();
+
+}
+
+input.value="";
+
+};
+  
+  async function loadAllTags(){
+
+const snap = await get(
+ref(db,"settings/tags")
+);
+
+allTags = [];
+
+const box =
+document.getElementById("allTagList");
+
+if(!box) return;
+
+box.innerHTML="";
+
+if(!snap.exists()) return;
+
+allTags = snap.val();
+
+allTags.forEach(tag=>{
+
+const div =
+document.createElement("div");
+
+div.className = "tagChooseItem";
+
+div.innerHTML = `
+<button class="tagChooseBtn">
+${tag}
+</button>
+
+<button
+class="deleteTagBtn"
+onclick="deleteTag('${tag}')">
+
+✕
+</button>
+`;
+
+div.querySelector(".tagChooseBtn").onclick = ()=>{
+
+if(storyTags.includes(tag)) return;
+
+storyTags.push(tag);
+
+renderTags();
+
+};
+
+box.appendChild(div);
+
+});
+
+}
+  
+  window.deleteTag = async function(tag){
+
+if(!confirm("Xóa tag '" + tag + "' ?")) return;
+
+allTags =
+allTags.filter(t=>t!==tag);
+
+await set(
+ref(db,"settings/tags"),
+allTags
+);
+
+loadAllTags();
+
+};
+  
+  
+  async function loadAllStories(){
+
+const snap = await get(
+ref(db,"stories")
+);
+
+if(!snap.exists()) return;
+
+allStories = snap.val();
+
+}
+  
+  // =======================
+// LOAD THỂ LOẠI TRUYỆN
+// =======================
+
+async function loadTagList(){
+
+const box =
+document.getElementById("storyTagList");
+
+const result =
+document.getElementById("storyTagResultBox");
+
+if(!box || !result) return;
+
+box.innerHTML="";
+result.innerHTML="";
+
+const snap =
+await get(ref(db,"stories"));
+
+if(!snap.exists()) return;
+
+const stories =
+snap.val();
+
+const tagMap={};
+
+// gom tất cả tag
+Object.keys(stories).forEach(id=>{
+
+const info =
+stories[id].info || {};
+
+(info.tags || []).forEach(tag=>{
+
+if(!tagMap[tag]){
+
+tagMap[tag]=[];
+
+}
+
+tagMap[tag].push({
+id:id,
+info:info,
+story:stories[id]
+});
+
+});
+
+});
+
+// tạo nút tag
+Object.keys(tagMap).sort().forEach(tag=>{
+
+const btn =
+document.createElement("button");
+
+btn.className="storyTagBtn";
+
+btn.innerText=tag;
+
+btn.onclick=function(){
+
+result.innerHTML=`
+<div class="tagResultTitle">
+🏷️ Thể loại: ${tag}
+</div>
+`;
+
+tagMap[tag].forEach(item=>{
+
+const chapterCount =
+item.story.chapters
+?
+Object.keys(item.story.chapters).length
+:
+0;
+
+let views = 0;
+
+if(item.story.chapters){
+
+Object.values(item.story.chapters).forEach(ch=>{
+
+views += Number(ch.views || 0);
+
+});
+
+}
+
+let likes = 0;
+
+if(typeof item.story.likes === "number"){
+
+    likes = item.story.likes;
+
+}else if(item.story.likes){
+
+    likes = Object.keys(item.story.likes).length;
+
+}
+
+const status =
+(item.info.status || "Đang ra").trim();
+
+let cls="running";
+let text="Đang ra";
+
+if(chapterCount===0){
+
+cls="empty";
+text="Chưa có chương";
+
+}else if(status==="Hoàn thành"){
+
+cls="full";
+text="Full";
+
+}else if(status==="Drop"){
+
+cls="drop";
+text="Drop";
+
+}
+
+  
+  
+  
+result.innerHTML += `
+
+<div class="storySearchItem"
+onclick="openLoginStory('${item.id}')">
+
+<div style="position:relative">
+
+<img
+src="${item.info.cover||''}"
+class="storySearchCover">
+
+<div class="storyStatusBadge ${cls}">
+${text}
+</div>
+
+</div>
+
+<div class="storySearchInfo">
+
+<div class="storySearchTitle">
+${item.info.name||item.id}
+</div>
+
+<div class="storySearchMeta">
+<b>✍️ Tác giả:</b> ${item.info.author||'Đang cập nhật'}
+</div>
+
+<div class="storySearchMeta">
+<b>🏷️ Thể loại:</b>
+${(item.info.tags||[]).join(', ') || 'Chưa cập nhật'}
+</div>
+
+<div class="storySearchStats">
+
+<span>📚 ${chapterCount} chương</span>
+
+<span>👀 ${views}</span>
+
+<span>💖 ${likes}</span>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+};
+
+box.appendChild(btn);
+
+});
+
+}
+  
+  
+  document.getElementById("storySearchInput").oninput = async function(){
+
+const keyword = this.value.trim().toLowerCase();
+
+const box = document.getElementById("storySearchResultBox");
+
+box.innerHTML = "";
+
+if(!keyword){
+
+box.style.display = "none";
+return;
+
+}
+
+box.style.display = "block";
+
+const snap = await get(ref(db,"stories"));
+
+if(!snap.exists()){
+
+box.innerHTML = "❌ Không có dữ liệu truyện";
+return;
+
+}
+
+const stories = snap.val();
+
+let html = "";
+
+// ===== TÌM THEO TÁC GIẢ =====
+const authorMap = {};
+
+Object.keys(stories).forEach(id=>{
+
+const info = stories[id].info || {};
+
+const author = (info.author || "Không rõ").trim();
+
+if(author.toLowerCase().includes(keyword)){
+
+if(!authorMap[author]) authorMap[author] = [];
+
+authorMap[author].push({
+id,
+info,
+story:stories[id]
+});
+
+}
+
+});
+
+Object.keys(authorMap).forEach(author=>{
+
+html += `
+<div class="tagResultTitle">
+✍️ Tác giả: ${author}
+</div>
+`;
+
+authorMap[author].forEach(item=>{
+
+const chapterCount =
+item.story.chapters
+?
+Object.keys(item.story.chapters).length
+:
+0;
+
+let views = 0;
+
+if(item.story.chapters){
+
+Object.values(item.story.chapters).forEach(ch=>{
+
+views += Number(ch.views || 0);
+
+});
+
+}
+let likes = 0;
+
+if(typeof item.story.likes === "number"){
+
+    likes = item.story.likes;
+
+}else if(item.story.likes){
+
+    likes = Object.keys(item.story.likes).length;
+
+}
+  
+let cls="running";
+let text="Đang ra";
+
+const status = (item.info.status || "").trim();
+
+if(chapterCount===0){
+
+cls="empty";
+text="Chưa có chương";
+
+}else if(status==="Hoàn thành"){
+
+cls="full";
+text="Full";
+
+}else if(status==="Drop"){
+
+cls="drop";
+text="Drop";
+
+}
+
+html += `
+
+<div class="storySearchItem"
+onclick="openLoginStory('${item.id}')">
+
+<div style="position:relative">
+
+<img
+src="${item.info.cover||''}"
+class="storySearchCover">
+
+<div class="storyStatusBadge ${cls}">
+${text}
+</div>
+
+</div>
+
+<div class="storySearchInfo">
+
+<div class="storySearchTitle">
+${item.info.name||item.id}
+</div>
+
+<div class="storySearchMeta">
+<b>✍️ Tác giả:</b> ${item.info.author||'Đang cập nhật'}
+</div>
+
+<div class="storySearchMeta">
+<b>🏷️ Thể loại:</b>
+${(item.info.tags||[]).join(', ') || 'Chưa cập nhật'}
+</div>
+
+<div class="storySearchStats">
+
+<span>📚 ${chapterCount} chương</span>
+
+<span>👀 ${views}</span>
+
+<span>💖 ${likes}</span>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+});
+
+// ===== TÌM THEO TÊN TRUYỆN =====
+Object.keys(stories).forEach(id=>{
+
+const info = stories[id].info || {};
+
+const name = (info.name || "").toLowerCase();
+
+if(name.includes(keyword)){
+
+const chapterCount =
+stories[id].chapters
+?
+Object.keys(stories[id].chapters).length
+:
+0;
+
+let views = 0;
+
+if(stories[id].chapters){
+
+Object.values(stories[id].chapters).forEach(ch=>{
+
+views += Number(ch.views || 0);
+
+});
+
+}
+let likes = 0;
+
+if(typeof stories[id].likes === "number"){
+
+    likes = stories[id].likes;
+
+}else if(stories[id].likes){
+
+    likes = Object.keys(stories[id].likes).length;
+
+}
+
+let cls="running";
+let text="Đang ra";
+
+const status = (info.status || "").trim();
+
+if(chapterCount===0){
+
+cls="empty";
+text="Chưa có chương";
+
+}else if(status==="Hoàn thành"){
+
+cls="full";
+text="Full";
+
+}else if(status==="Drop"){
+
+cls="drop";
+text="Drop";
+
+}
+
+html += `
+
+<div class="storySearchItem"
+onclick="openLoginStory('${id}')">
+
+<div style="position:relative">
+
+<img
+src="${info.cover||''}"
+class="storySearchCover">
+
+<div class="storyStatusBadge ${cls}">
+${text}
+</div>
+
+</div>
+
+<div class="storySearchInfo">
+
+<div class="storySearchTitle">
+${info.name||id}
+</div>
+
+<div class="storySearchMeta">
+<b>✍️ Tác giả:</b> ${info.author||'Đang cập nhật'}
+</div>
+
+<div class="storySearchMeta">
+<b>🏷️ Thể loại:</b>
+${(info.tags||[]).join(', ') || 'Chưa cập nhật'}
+</div>
+
+<div class="storySearchStats">
+
+<span>📚 ${chapterCount} chương</span>
+
+<span>👀 ${views}</span>
+
+<span>💖 ${likes}</span>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+});
+
+box.innerHTML = html || "❌ Không tìm thấy truyện hoặc tác giả";
+
+};
+  const storyCover =
+document.getElementById("storyCover");
+
+const storyPreview =
+document.getElementById("storyCoverPreview");
+
+storyCover.oninput=function(){
+
+if(!this.value) return;
+
+storyPreview.src=this.value;
+
+storyPreview.style.display="block";
+
+};
+  
+  document.getElementById("storyCoverFile").onchange=function(){
+
+const file=this.files[0];
+
+if(!file) return;
+
+const reader=
+new FileReader();
+
+reader.onload=e=>{
+
+storyPreview.src=e.target.result;
+
+storyPreview.style.display="block";
+
+storyCover.value=e.target.result;
+
+};
+
+reader.readAsDataURL(file);
+
+};
+  
+function updateNextChapter(){
+
+const next = String(
+Object.keys(chapters).length + 1
+);
+
+document.getElementById("adminChapter").value = next;
+
+document.getElementById("nextChapterNumber").innerText =
+"Chương " + next;
+
+}
+  
+  document.getElementById("showChapterList").onclick=function(){
+
+storyInfoBox.style.display="none";
+
+addChapterBox.style.display="none";
+
+chapterManageBox.style.display="block";
+
+renderChapterManage();
+
+}
+  
+// =======================
+// ẢNH CHÚ THÍCH CHƯƠNG
+// =======================
+
+let chapterImages = [];
+
+
+// mở chọn ảnh
+
+document.getElementById("chooseChapterImages").onclick=function(){
+
+document.getElementById("chapterImageFile").click();
+
+};
+
+
+
+// chọn nhiều ảnh
+
+document.getElementById("chapterImageFile").onchange = async function(){
+
+
+const files = Array.from(this.files);
+
+
+for(const file of files){
+
+
+const url = await readImage(file);
+
+
+
+const caption = prompt(
+"📝 Nhập chú thích cho ảnh:"
+) || "";
+
+
+
+chapterImages.push({
+
+url:url,
+
+caption:caption
+
+});
+
+
+}
+
+
+
+// hiện toàn bộ ảnh
+
+renderChapterImagePreview();
+
+
+
+this.value="";
+
+
+};
+
+
+
+
+// đọc ảnh
+
+function readImage(file){
+
+return new Promise((resolve)=>{
+
+
+const reader = new FileReader();
+
+
+
+reader.onload=e=>{
+
+resolve(e.target.result);
+
+};
+
+
+
+reader.readAsDataURL(file);
+
+
+
+});
+
+}
+
+
+
+// =======================
+// HIỆN ẢNH + CHÚ THÍCH
+// =======================
+
+function renderChapterImagePreview(){
+
+
+const preview =
+document.getElementById("chapterImagePreview");
+
+
+if(!preview) return;
+
+
+
+preview.innerHTML="";
+
+
+
+chapterImages.forEach((img,index)=>{
+
+
+preview.innerHTML += `
+
+
+<div class="chapterPreviewItem">
+
+
+<img src="${img.url}">
+
+
+<div class="previewCaption">
+
+${img.caption || ""}
+
+</div>
+
+
+
+<button
+
+class="deleteChapterImageBtn"
+
+onclick="removeChapterImage(${index})">
+
+✕
+
+</button>
+
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+}
+
+
+
+
+// =======================
+// XÓA ẢNH
+// =======================
+
+window.removeChapterImage=function(index){
+
+
+chapterImages.splice(index,1);
+
+
+renderChapterImagePreview();
+
+
+};
+  
+  // =======================
+// SỬA CHƯƠNG
+// =======================
+
+window.editChapter = function(id){
+
+editingChapter = id;
+
+const c = chapters[id];
+
+if(!c) return;
+
+
+document.getElementById("chapterManageBox").style.display="none";
+
+document.getElementById("addChapterBox").style.display="block";
+
+
+document.getElementById("adminChapter").value=id;
+
+
+document.getElementById("adminTitle").value =
+c.title || "";
+
+
+document.getElementById("adminContent").innerHTML =
+c.content || "";
+
+
+document.getElementById("adminPassword").value =
+c.password || "";
+
+
+document.getElementById("adminVip").checked =
+c.vip || false;
+
+document.getElementById("adminChapterPrice").value =
+  Number(c.price) || 0;
+
+chapterImages = JSON.parse(
+JSON.stringify(c.images || [])
+);
+
+
+// load ảnh + chú thích
+
+renderChapterImagePreview();
+
+
+
+document.getElementById("nextChapterNumber").innerText =
+"Đang sửa chương " + id;
+
+
+document.getElementById("saveChapter").innerText =
+"💾 Cập nhật chương";
+
+
+}
+  
+  
+ document.getElementById("saveStoryInfo").onclick = async()=>{
+
+const data={
+
+name:
+document.getElementById("storyTitle").value.trim(),
+
+author:
+document.getElementById("storyAuthor").value.trim(),
+
+cover:
+document.getElementById("storyCover").value.trim(),
+
+summary:
+document.getElementById("adminStorySummary").value,
+
+tags: storyTags,
+
+status:
+document.getElementById("storyStatus").value,
+
+price:
+document.getElementById("storyPrice").value.trim(),
+  
+  pageLink:
+document.getElementById("storyPageLink").value.trim(),
+
+date:
+new Date().toLocaleDateString("vi-VN")
+
+};
+   
+   await set(
+ref(
+db,
+"stories/"+STORY_ID+"/info"
+),
+data
+);
+
+
+await set(
+ref(
+db,
+"settings/defaultStory/" + PAGE_ID
+),
+document.getElementById("defaultStorySelect").value
+);
+
+const disableDefault =
+document.getElementById("disableDefaultStory").checked;
+
+
+if(disableDefault){
+
+localStorage.removeItem(
+"DEFAULT_STORY"
+);
+
+}else{
+
+await set(
+ref(db,"settings/defaultStory/" + PAGE_ID),
+document.getElementById("defaultStorySelect").value
+);
+
+}
+
+
+await set(
+ref(db,"settings/useDefault"),
+!disableDefault
+);
+alert("💖 Đã lưu thông tin truyện");
+
+
+loadStory();
+
+
+};
+  
+  document.getElementById("deleteStoryBtn").onclick = async function(){
+
+if(!STORY_ID){
+
+alert("Chưa chọn truyện.");
+
+return;
+
+}
+
+if(!confirm("⚠️ Xóa toàn bộ truyện này?\n\nTất cả chương, thông tin và VIP sẽ bị xóa vĩnh viễn!")){
+
+return;
+
+}
+
+await remove(
+ref(db,"stories/"+STORY_ID)
+);
+
+// Nếu truyện đang là truyện mặc định thì xóa luôn
+await remove(
+ref(db,"settings/defaultStory/"+PAGE_ID)
+);
+
+alert("🗑️ Đã xóa truyện.");
+
+document.getElementById("storyInfoBox").style.display="none";
+
+loadStoryList();
+
+};
+  
+  async function loadSettingStories(){
+
+const select =
+document.getElementById("defaultStorySelect");
+
+
+if(!select) return;
+
+
+select.innerHTML="";
+
+
+const snap =
+await get(
+ref(db,"stories")
+);
+
+
+if(!snap.exists()){
+
+select.innerHTML =
+"<option>Chưa có truyện</option>";
+
+return;
+
+}
+
+
+const stories =
+snap.val();
+
+
+
+Object.keys(stories).forEach(id=>{
+
+
+const option =
+document.createElement("option");
+
+
+option.value=id;
+
+
+option.textContent =
+stories[id].info?.name || id;
+
+
+select.appendChild(option);
+
+
+});
+
+
+
+const defaultSnap = await get(
+ref(db,"settings/defaultStory/" + PAGE_ID)
+);
+
+
+if(defaultSnap.exists()){
+
+select.value = defaultSnap.val();
+
+}else{
+
+select.value = STORY_ID;
+
+}
+
+
+
+document.getElementById("disableDefaultStory").checked =
+localStorage.getItem("NO_DEFAULT_STORY") === "true";
+
+
+}
+ async function loadAdminStoryInfo(){
+
+const snap = await get(
+ref(db,"stories/"+STORY_ID+"/info")
+);
+
+if(!snap.exists()) return;
+
+const data = snap.val();
+
+const price = data.price || "0đ";
+
+const buyPrice =
+document.getElementById("buyPagePrice");
+
+if(buyPrice){
+
+buyPrice.innerText = price;
+
+}
+document.getElementById("storyTitle").value =
+data.name || "";
+
+
+document.getElementById("storyAuthor").value =
+data.author || "";
+
+
+document.getElementById("storyCover").value =
+data.cover || "";
+
+
+document.getElementById("adminStorySummary").value =
+data.summary || "";
+
+
+document.getElementById("storyStatus").value =
+data.status || "Đang ra";
+   
+   document.getElementById("storyPageLink").value =
+data.pageLink || "";
+   
+document.getElementById("storyPrice").value =
+data.price || "";
+
+storyTags = data.tags || [];
+
+renderTags();
+
+loadAllTags();
+if(data.cover){
+
+const preview =
+document.getElementById("storyCoverPreview");
+
+preview.src = data.cover;
+
+preview.style.display="block";
+
+}
+loadVipCustomerList();
+   loadSettingStories();
+}
+  
+  // =======================
+// ANIME LIGHT / DARK MODE
+// =======================
+
+const animeThemeBtn =
+document.getElementById("animeThemeBtn");
+
+
+let animeDark =
+localStorage.getItem("animeDark");
+
+
+if(animeDark==="true"){
+
+document.body.classList.add("darkMode");
+
+animeThemeBtn.innerHTML="☀️";
+
+}
+
+
+
+animeThemeBtn.onclick=()=>{
+
+
+document.body.classList.toggle("darkMode");
+
+
+let dark =
+document.body.classList.contains("darkMode");
+
+
+localStorage.setItem(
+"animeDark",
+dark
+);
+
+
+animeThemeBtn.innerHTML =
+dark ? "☀️" : "🌙";
+
+
+};
+  
+  let chapterSort="old";
+
+
+document.getElementById("oldChapter").onclick=()=>{
+
+chapterSort="old";
+
+renderChapterList();
+
+};
+
+
+
+document.getElementById("newChapter").onclick=()=>{
+
+chapterSort="new";
+
+renderChapterList();
+
+};
+
+
+
+// tìm chương
+
+document.getElementById("chapterSearch").oninput=function(){
+
+let key=this.value.trim();
+
+
+document.querySelectorAll("#chapterList .chapterItem")
+.forEach(item=>{
+
+
+if(item.innerText
+.toLowerCase()
+.includes(key.toLowerCase())){
+
+
+item.style.display="block";
+
+
+}else{
+
+
+item.style.display="none";
+
+
+}
+
+
+});
+
+
+};
+  
+  // =======================
+// QUẢN LÝ NHIỀU TRUYỆN
+// =======================
+
+const addStoryBtn =
+document.getElementById("addStoryBtn");
+
+const addStoryBox =
+document.getElementById("addStoryBox");
+
+const storyList =
+document.getElementById("storyList");
+
+// Mở form
+addStoryBtn.onclick=function(){
+
+addStoryBox.style.display=
+addStoryBox.style.display=="block"
+?
+"none"
+:
+"block";
+
+};
+
+// Đóng form
+document.getElementById("closeStoryBox").onclick=function(){
+
+addStoryBox.style.display="none";
+
+};
+
+// Lưu truyện
+document.getElementById("saveNewStory").onclick=async function(){
+
+const id=
+document.getElementById("newStoryId").value.trim();
+
+const name=
+document.getElementById("newStoryName").value.trim();
+
+if(!id||!name){
+
+alert("Nhập đầy đủ thông tin");
+
+return;
+
+}
+
+await set(
+ref(db,"stories/"+id+"/info"),
+{
+name:name,
+
+author:"",
+
+cover:"",
+
+summary:"",
+
+tags:[],
+
+status:"Đang ra",
+
+price:"",
+
+date:new Date().toLocaleDateString("vi-VN")
+}
+);
+
+alert("Đã thêm truyện");
+
+document.getElementById("newStoryId").value="";
+
+document.getElementById("newStoryName").value="";
+
+addStoryBox.style.display="none";
+
+loadStoryList();
+
+};
+
+// Load danh sách truyện
+function loadStoryList(){
+
+onValue(
+ref(db,"stories"),
+snap=>{
+
+storyList.innerHTML="";
+
+if(!snap.exists()) return;
+
+const data=snap.val();
+  
+  const keyword =
+(
+document.getElementById("customerManageSearch")?.value ||
+""
+).toLowerCase();
+
+Object.keys(data).forEach(id=>{
+
+const c=data[id];
+
+if(
+keyword &&
+!(
+(c.name||"").toLowerCase().includes(keyword) ||
+id.toLowerCase().includes(keyword) ||
+(c.mail||"").toLowerCase().includes(keyword)
+)
+){
+return;
+}
+  
+  const customerSearch =
+document.getElementById("customerManageSearch");
+
+if(customerSearch){
+
+
+}
+
+const info=data[id].info||{};
+
+const div=document.createElement("div");
+
+div.className="storyManageItem";
+
+div.innerHTML=`
+
+<div class="storyManageItemTop">
+
+<div class="storyManageName">
+
+📚 ${info.name||id}
+
+</div>
+
+<div class="storyManageButtons">
+
+<button onclick="selectStory('${id}')">
+⚙️
+</button>
+
+<button onclick="manageChapter('${id}')">
+➕
+</button>
+
+<button onclick="viewStory('${id}')">
+👁️
+</button>
+
+</div>
+
+</div>
+
+`;
+
+storyList.appendChild(div);
+
+});
+
+});
+
+}
+  
+  
+  // =======================
+// CHỌN TRUYỆN
+// =======================
+
+window.selectStory=function(id){
+
+STORY_ID=id;
+
+localStorage.setItem(
+"CURRENT_STORY",
+id
+);
+
+loadStory();
+
+loadChapters();
+  loadVipList();
+
+document.getElementById("storyInfoBox").style.display="block";
+
+loadAdminStoryInfo();
+
+};
+
+// =======================
+// QUẢN LÝ CHƯƠNG
+// =======================
+
+window.manageChapter=function(id){
+
+STORY_ID=id;
+
+localStorage.setItem(
+"CURRENT_STORY",
+id
+);
+
+document.getElementById("chapterManageBox").style.display="block";
+
+loadStory();
+
+loadChapters();
+
+// Load khách ngay
+loadChapterVipCustomers();
+
+};
+  
+  // =======================
+// LOAD KHÁCH CHO DROPDOWN SET VIP CHƯƠNG
+// =======================
+
+async function loadChapterVipCustomers(){
+
+const select =
+document.getElementById("chapterVipCustomer");
+
+if(!select){
+console.log("Không tìm thấy select");
+return;
+}
+
+select.innerHTML =
+'<option value="">👤 Chọn khách</option>';
+
+const snap = await get(ref(db,"customers"));
+
+if(!snap.exists()){
+console.log("Không có customers");
+return;
+}
+
+const customers = snap.val();
+
+for(const id in customers){
+
+const option =
+document.createElement("option");
+
+option.value = id;
+
+option.textContent =
+(customers[id].name || id) + " (" + id + ")";
+
+select.appendChild(option);
+
+}
+
+console.log("Đã load", select.options.length, "khách");
+
+
+}
+  
+  
+// =======================
+// XEM TRUYỆN
+// =======================
+
+window.viewStory=function(id){
+
+STORY_ID=id;
+
+localStorage.setItem(
+"CURRENT_STORY",
+id
+);
+
+loadStory();
+
+loadChapters();
+  loadVipList();
+
+alert("Đã mở truyện.");
+
+};
+  
+  
+  
+  window.openLoginStory = function(id){
+
+STORY_ID = id;
+
+localStorage.setItem(
+"CURRENT_STORY",
+id
+);
+
+loadStory();
+
+loadChapters();
+
+loadVipList();
+
+document.getElementById("homePage").style.display = "block";
+
+};
+  loadStoryList();
+  
+  
+  
+  
+  
+  window.toggleVip=async function(id,value){
+
+let c=chapters[id];
+
+if(!c) return;
+
+c.vip=value;
+
+await set(
+
+ref(
+
+db,
+
+"stories/"+
+
+STORY_ID+
+
+"/chapters/"+
+
+id
+
+),
+
+c
+
+);
+
+};
+  
+  window.deleteChapterAdmin=
+async function(id){
+
+if(
+
+!confirm(
+
+"Xóa chương "+id+" ?"
+
+)
+
+)return;
+
+await remove(
+
+ref(
+
+db,
+
+"stories/"+
+
+STORY_ID+
+
+"/chapters/"+
+
+id
+
+)
+
+);
+
+};
+  
+  // =======================
+// KHÁCH
+// =======================
+
+const customerBox =
+document.getElementById("addCustomerBox");
+
+document.getElementById("addCustomerBtn").onclick=function(){
+
+customerBox.style.display=
+
+customerBox.style.display=="block"
+
+?
+
+"none"
+
+:
+
+"block";
+
+};
+
+document.getElementById("closeCustomerBox").onclick=function(){
+
+customerBox.style.display="none";
+
+};
+  
+  document.getElementById("saveCustomer").onclick=
+
+async function(){
+
+const id=
+
+customerID.value.trim();
+
+const name=
+
+customerName.value.trim();
+
+const mail=
+
+customerMail.value.trim();
+
+if(!id||!name){
+
+alert("Thiếu thông tin");
+
+return;
+
+}
+
+await set(
+
+ref(db,"customers/"+id),
+
+{
+
+id,
+
+name,
+
+mail,
+
+vip:{},
+
+books:[],
+
+notify:[]
+
+}
+
+);
+
+customerName.value="";
+
+customerID.value="";
+
+customerMail.value="";
+
+customerBox.style.display="none";
+
+loadCustomers();
+
+};
+  
+  function loadCustomers(){
+
+onValue(
+
+ref(db,"customers"),
+
+snap=>{
+
+customerList.innerHTML="";
+
+if(!customerListVisible){
+
+customerList.innerHTML="...";
+
+return;
+
+}
+
+if(!snap.exists()) return;
+
+const data=snap.val();
+
+Object.keys(data).forEach(id=>{
+
+const c=data[id];
+
+const div=document.createElement("div");
+
+div.className="customerItem";
+
+div.innerHTML=`
+
+<div class="customerTop">
+
+<div>
+
+<b>
+
+${c.name}
+
+</b>
+
+<br>
+
+${id}
+
+</div>
+
+<div class="customerButtons">
+
+<button onclick="openCustomerChapterVip('${id}')">
+👑
+</button>
+
+<button onclick="viewCustomer('${id}')">
+
+👁️
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+customerList.appendChild(div);
+
+});
+
+});
+
+}
+
+loadCustomers();
+  
+  
+  window.openCustomerChapterVip = function(customerId){
+
+selectedVipCustomer = customerId;
+
+// hiện box quản lý chương
+document.getElementById("chapterManageBox").style.display="block";
+
+// load lại danh sách chương
+renderChapterManage();
+    
+    setTimeout(async()=>{
+
+document.querySelectorAll(".chapterVipBtn").forEach(async btn=>{
+
+const id = btn.dataset.chapter;
+
+const snap = await get(
+ref(
+db,
+"customers/" +
+selectedVipCustomer +
+"/chapterVip/" +
+STORY_ID +
+"/" +
+id
+)
+);
+
+if(snap.exists()){
+
+btn.innerText="❌ Thu hồi";
+btn.style.background="#8a4fff";
+
+}else{
+
+btn.innerText="👑 Cấp VIP";
+btn.style.background="#ff5a9e";
+
+}
+
+});
+
+},100);
+
+alert("Đang cấp VIP cho khách: " + customerId);
+
+}
+  
+  document.getElementById("toggleCustomerList").onclick=function(){
+
+customerListVisible=!customerListVisible;
+
+this.innerHTML=
+customerListVisible
+?
+"🙈"
+:
+"👁️";
+
+loadCustomers();
+
+};
+  // =======================
+// DROPDOWN TRUYỆN ĐÃ MUA
+// =======================
+
+async function loadStoryDropdown(){
+
+const user =
+localStorage.getItem("MEOW_ID");
+
+const select =
+document.getElementById("storyDropdown");
+
+if(!user || !select){
+
+return;
+
+}
+
+select.innerHTML="";
+
+const snap =
+await get(
+ref(db,"customers/"+user+"/books")
+);
+
+if(!snap.exists()){
+
+select.style.display="none";
+
+return;
+
+}
+
+const books=snap.val();
+
+const ids=Object.keys(books);
+
+if(ids.length===0){
+
+select.style.display="none";
+
+return;
+
+}
+
+select.style.display="block";
+
+for(const id of ids){
+
+const story =
+await get(
+ref(db,"stories/"+id+"/info")
+);
+
+let name=id;
+
+if(story.exists()){
+
+name=
+story.val().name || id;
+
+}
+
+select.innerHTML +=
+
+`<option value="${id}">
+${name}
+</option>`;
+
+}
+
+select.value=STORY_ID;
+
+}
+  
+document
+.getElementById("storyDropdown")
+.onchange = async function(){
+
+const newStory = this.value;
+
+
+if(!newStory) return;
+
+
+// đổi ID truyện
+STORY_ID = newStory;
+
+
+// lưu truyện hiện tại
+localStorage.setItem(
+"CURRENT_STORY",
+STORY_ID
+);
+
+
+// xóa dữ liệu cũ
+chapters = {};
+vipList = {};
+
+
+// load lại thông tin
+await loadStory();
+
+
+// load chương mới
+loadChapters();
+
+
+// load quyền VIP truyện mới
+loadVipList();
+
+
+// cập nhật danh sách dropdown
+loadStoryDropdown();
+
+};
+  // =======================
+// LOAD DANH SÁCH VIP
+// =======================
+
+async function loadVipCustomerList(){
+
+const box =
+document.getElementById("vipCustomerList");
+
+if(!box) return;
+
+
+const keyword =
+(document.getElementById("vipCustomerSearch")?.value || "")
+.toLowerCase()
+.trim();
+
+
+box.innerHTML="";
+
+
+const snap =
+await get(ref(db,"customers"));
+
+
+if(!snap.exists()) return;
+
+
+const customers =
+snap.val();
+
+
+Object.keys(customers).forEach(id=>{
+
+
+const c = customers[id];
+
+
+if(
+keyword &&
+!(c.name||"")
+.toLowerCase()
+.includes(keyword)
+){
+
+return;
+
+}
+
+
+const hasVip =
+c.books &&
+c.books[STORY_ID] &&
+c.books[STORY_ID].vip;
+
+
+
+const div =
+document.createElement("div");
+
+
+div.className="vipCustomerItem";
+
+
+div.innerHTML=`
+
+<div>
+
+<div class="vipCustomerName">
+
+${c.name}
+
+</div>
+
+
+<div>
+
+${id}
+
+</div>
+
+
+</div>
+
+
+<button
+
+class="vipCustomerBtn ${hasVip?"remove":""}"
+
+onclick="toggleStoryVip('${id}')"
+
+>
+
+${hasVip?"Thu hồi":"Cấp VIP"}
+
+</button>
+
+`;
+
+
+box.appendChild(div);
+
+
+});
+
+}
+
+
+
+window.toggleStoryVip = async function(customerId){
+
+
+const vipRef =
+ref(
+db,
+"customers/" +
+customerId +
+"/books/" +
+STORY_ID
+);
+
+
+
+const snap = await get(vipRef);
+
+
+
+if(snap.exists()){
+
+
+// Thu hồi VIP của khách
+
+await remove(vipRef);
+
+
+
+// Thu hồi trong danh sách VIP của truyện
+
+await remove(
+ref(
+db,
+"stories/" + STORY_ID + "/vip/" + customerId
+)
+);
+
+
+
+}else{
+
+
+// Cấp VIP cho khách
+
+await set(vipRef,{
+
+vip:true,
+
+buyDate:new Date().toLocaleString("vi-VN")
+
+});
+
+
+
+// Thêm vào danh sách VIP của truyện
+
+await set(
+ref(
+db,
+"stories/" + STORY_ID + "/vip/" + customerId
+),
+true
+);
+
+
+
+// Thông báo
+
+await set(
+ref(
+db,
+"customers/" + customerId + "/notify/" + Date.now()
+),
+{
+
+text:"🎉 Bạn đã được cấp quyền đọc VIP truyện " + STORY_ID,
+
+date:new Date().toLocaleString("vi-VN"),
+
+type:"vip"
+
+}
+
+);
+
+
+}
+
+
+
+// Cập nhật lại danh sách
+
+loadVipCustomerList();
+
+loadVipList();
+
+
+};
+
+
+
+
+
+document.getElementById("closeVipLock").onclick=function(){
+
+document.getElementById("vipLockPage").style.display="none";
+
+};
+
+
+
+
+
+function loadVipList(){
+
+onValue(
+ref(
+db,
+"stories/"+STORY_ID+"/vip"
+),
+snap=>{
+
+
+vipList = snap.exists()
+? snap.val()
+: {};
+
+
+// cập nhật lại danh sách chương sau khi có VIP
+renderChapterList();
+
+
+});
+
+}
+
+
+
+
+
+const vipSearch =
+document.getElementById("vipCustomerSearch");
+
+
+
+if(vipSearch){
+
+vipSearch.oninput=function(){
+
+loadVipCustomerList();
+
+};
+
+}
+  
+  
+  
+ window.setChapterVip = async function(chapterId,btn){
+
+if(!selectedVipCustomer){
+
+alert("Chưa chọn khách.");
+
+return;
+
+}
+
+const vipRef = ref(
+db,
+"customers/" +
+selectedVipCustomer +
+"/chapterVip/" +
+STORY_ID +
+"/" +
+chapterId
+);
+
+const snap = await get(vipRef);
+
+if(snap.exists()){
+
+await remove(vipRef);
+
+btn.innerText="👑 Cấp VIP";
+btn.style.background="#ff5a9e";
+
+alert("Đã thu hồi VIP chương.");
+
+}else{
+
+await set(vipRef,true);
+
+btn.innerText="❌ Thu hồi";
+btn.style.background="#8a4fff";
+
+alert("Đã cấp VIP chương.");
+
+}
+
+};
+  // =======================
+// CHUYỂN TAB ADMIN / KHÁCH
+// =======================
+
+const adminTab = document.getElementById("showAdminLogin");
+const customerTab = document.getElementById("showCustomerLogin");
+
+const adminBox = document.getElementById("adminLoginBox");
+const customerLoginBox = document.getElementById("customerLoginBox");
+
+if(adminTab && customerTab && adminBox && customerLoginBox){
+
+adminTab.addEventListener("click",()=>{
+
+adminTab.classList.add("active");
+customerTab.classList.remove("active");
+
+adminBox.style.display="flex";
+customerLoginBox.style.display="none";
+
+});
+
+customerTab.addEventListener("click",()=>{
+
+customerTab.classList.add("active");
+adminTab.classList.remove("active");
+
+customerLoginBox.style.display="flex";
+adminBox.style.display="none";
+
+});
+
+}
+  
+  
+  // =======================
+// LOAD NOTIFY
+// =======================
+
+function loadCustomerNotify(){
+
+
+const id =
+localStorage.getItem("MEOW_ID");
+
+
+const box =
+document.getElementById("customerContent");
+
+
+if(!id || !box) return;
+
+
+
+onValue(
+
+ref(db,"customers/"+id+"/notify"),
+
+snap=>{
+
+
+box.innerHTML="";
+
+
+if(!snap.exists()){
+
+box.innerHTML=
+"🌸 Chưa có thông báo";
+
+return;
+
+}
+
+
+
+Object.values(snap.val())
+.reverse()
+.forEach(n=>{
+
+
+box.innerHTML += `
+
+<div class="notifyItem">
+
+🔔 ${n.text}
+
+<br>
+
+<small>${n.date}</small>
+
+</div>
+
+`;
+
+});
+
+
+});
+
+}
+  
+  document.getElementById("customerNotifyBtn").onclick=()=>{
+
+loadCustomerNotify();
+
+};
+  
+  // =======================
+// TỦ TRUYỆN
+// =======================
+
+document.getElementById("myBooksBtn").onclick=function(){
+
+
+const id =
+localStorage.getItem("MEOW_ID");
+
+
+const box =
+document.getElementById("customerContent");
+
+
+box.innerHTML="";
+
+
+onValue(
+
+ref(db,"stories"),
+
+snap=>{
+
+
+if(!snap.exists()) return;
+
+
+const stories=snap.val();
+
+
+Object.keys(stories).forEach(storyID=>{
+
+
+box.innerHTML += `
+
+<div class="bookItem">
+
+📖 ${stories[storyID].info.name}
+
+</div>
+
+`;
+
+
+});
+
+
+});
+
+
+};
+  
+  // =======================
+// TRUYỆN VIP ĐÃ MUA
+// =======================
+
+document.getElementById("myVipBooksBtn").onclick=function(){
+
+
+const id =
+localStorage.getItem("MEOW_ID");
+
+
+const box =
+document.getElementById("customerContent");
+
+
+box.innerHTML="";
+
+
+onValue(
+
+ref(db,"customers/"+id+"/books"),
+
+snap=>{
+
+
+if(!snap.exists()){
+
+box.innerHTML=
+"🔒 Chưa có truyện VIP";
+
+return;
+
+}
+
+
+
+const books=snap.val();
+
+
+Object.keys(books).forEach(storyID=>{
+
+
+if(books[storyID].vip){
+
+
+box.innerHTML +=`
+
+<div class="bookItem vip">
+
+👑 ${storyID}
+
+<br>
+
+<small>
+Đã mở VIP
+</small>
+
+</div>
+
+`;
+
+}
+
+
+});
+
+
+});
+
+
+};
+  async function loadLoginStorySlider(){
+
+const box =
+document.getElementById("loginStoryTrack");
+
+if(!box) return;
+
+const snap =
+await get(ref(db,"stories"));
+
+if(!snap.exists()) return;
+
+box.innerHTML="";
+
+const stories = snap.val();
+
+let html="";
+
+Object.keys(stories).forEach(id=>{
+
+const info = stories[id].info || {};
+
+const chapterCount =
+stories[id].chapters
+?
+Object.keys(stories[id].chapters).length
+:
+0;
+
+let cls="running";
+let text="Đang ra";
+
+const status = (info.status || "").trim();
+
+if(chapterCount===0){
+
+cls="empty";
+text="Chưa có chương";
+
+}else if(status === "Hoàn thành"){
+
+cls="full";
+text="Full";
+
+}else if(status === "Drop"){
+
+cls="drop";
+text="Drop";
+
+}else{
+
+cls="running";
+text="Đang ra";
+
+}
+
+html+=`
+
+<div
+class="loginStoryCard"
+onclick="openLoginStory('${id}')"
+>
+
+
+
+<div class="loginStoryCover">
+
+<img src="${info.cover||""}">
+
+<div class="storyStatusBadge ${cls}">
+${text}
+</div>
+
+</div>
+
+<div class="loginStoryName">
+${info.name||id}
+</div>
+
+<div class="loginStoryTags">
+
+🏷 ${
+(info.tags && info.tags.length)
+?
+info.tags.slice(0,2).join(" • ")
+:
+"Chưa có thể loại"
+}
+
+</div>
+
+</div>
+
+`;
+
+});
+
+/* nhân đôi để chạy vô hạn */
+
+box.innerHTML = html + html;
+
+}
+
+  
+
+</script>
+<script>
+
+// COPY TỪNG THÔNG TIN
+function copyText(btn,text,name){
+
+navigator.clipboard.writeText(text);
+
+const old = btn.innerHTML;
+
+btn.innerHTML = "💖 Đã Copy";
+
+btn.disabled = true;
+
+setTimeout(function(){
+
+btn.innerHTML = old;
+
+btn.disabled = false;
+
+},1800);
+
+}
+  
+  function toggleBuyStory(){
+
+document
+.querySelector(".buyDropdown")
+.classList.toggle("open");
+
+}
+function toggleBuyBox(){
+
+const body =
+document.getElementById("buyBody");
+
+const arrow =
+document.getElementById("buyArrow");
+
+body.classList.toggle("open");
+
+arrow.classList.toggle("rotate");
+
+}
+
+function downloadQR(){
+
+const img =
+document.getElementById("buyQRImage");
+
+const a =
+document.createElement("a");
+
+a.href = img.src;
+
+a.download = "https://img.vietqr.io/image/BIDV-8817159793-compact.png?accountName=LE%20HONG%20TRANG";
+
+document.body.appendChild(a);
+
+a.click();
+
+document.body.removeChild(a);
+
+}
+  
+  const libraryNotice =
+document.getElementById("libraryNotice");
+
+const closeLibraryNotice =
+document.getElementById("closeLibraryNotice");
+
+// Khi tải trang
+if(localStorage.getItem("HIDE_LIBRARY_NOTICE")==="true"){
+
+libraryNotice.style.display="none";
+
+}
+
+// Đóng
+closeLibraryNotice.onclick=function(){
+
+libraryNotice.style.display="none";
+
+localStorage.setItem(
+"HIDE_LIBRARY_NOTICE",
+"true"
+);
+
+};
+</script>
+
