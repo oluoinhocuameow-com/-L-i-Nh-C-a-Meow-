@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff0f7">
+  <meta name="description" content="Meow Reader — thư viện truyện dễ thương">
+  <title>Ổ LƯỜI NHỎ CỦA MEOW - WEB CŨ </title>
+</head>
+<body>
 <div id="meowApp">
 
 
@@ -298,9 +308,8 @@ Copy
 
 <!-- MEOW WALLET + BẢNG MUA CHƯƠNG -->
 <div class="meowWalletCard" id="meowWalletCard">
-  <div class="mwTop"><span>🐱 Ví tiền Meow</span><div class="mwTopActions"><a href="#" id="mwYuiWalletBtn" class="mwYuiWalletBtn" target="_blank" rel="noopener">💜 Ví Yui</a><button type="button" id="mwRefreshBtn" aria-label="Làm mới ví">↻</button></div></div>
+  <div class="mwTop"><span>🐱 Ví tiền Meow</span><div class="mwTopActions"><a href="https://oluoinhocuameow-ops.github.io/nap-tien/" id="mwYuiWalletBtn" class="mwYuiWalletBtn" target="_blank" rel="noopener">💜 Ví </a><button type="button" id="mwRefreshBtn" aria-label="Làm mới ví">↻</button></div></div>
   <div class="mwBalance" id="mwBalance">Đăng nhập ID khách để xem số dư</div>
-  <small id="mwWalletHint">Số dư đồng bộ từ Meow Wallet trên Firebase.</small>
 </div>
 <div class="meowBuyTableCard">
   <div class="mwTableHeading"><h2>🌸 Bảng mua chương lẻ</h2><div class="mwHeadingRight"><span id="mwSingleCount">0 chương</span><button type="button" id="mwToggleBuyTable" class="mwToggleBuyTable" aria-expanded="false" aria-controls="mwBuyTableContent">＋ Xem thêm</button></div></div>
@@ -308,8 +317,7 @@ Copy
     <div class="mwTotalRow"><span>💗 Tổng giá các chương lẻ</span><b id="mwSingleTotal">0đ</b></div>
     <div class="mwTableScroll"><table class="mwChapterTable"><thead><tr><th>Chương</th><th>Giá</th><th></th></tr></thead><tbody id="mwChapterBuyRows"><tr><td colspan="3">Đang tải giá chương…</td></tr></tbody></table></div>
   </div>
-  <div class="mwFullBuyRow"><div><b>📚 Mua full bộ</b><small id="mwFullPriceHint">Giá full truyện được đồng bộ từ thông tin truyện.</small></div><b id="mwFullPrice">Chưa cập nhật</b><button type="button" id="mwBuyFullBtn">💗 Mua full bộ</button></div>
-  <p id="mwPurchaseMessage" class="mwPurchaseMessage" aria-live="polite"></p>
+  <div class="mwFullBuyRow"><div><b>📚 Mua full bộ</b><small id="mwFullPriceHint"></small></div><b id="mwFullPrice">Chưa cập nhật</b><button type="button" id="mwBuyFullBtn">💗 Mua full bộ</button></div>
 </div>
 <div id="mwCuteConfirm" class="mwConfirmOverlay" aria-hidden="true">
   <div class="mwConfirmBox" role="dialog" aria-modal="true" aria-labelledby="mwConfirmTitle">
@@ -9607,6 +9615,422 @@ body.darkMode .meowWalletCard,body.darkMode .meowBuyTableCard{background:#2b2737
 .mwConfirmOverlay{position:fixed;inset:0;z-index:999999;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(70,38,61,.42);backdrop-filter:blur(5px)}.mwConfirmOverlay.mwShow{display:flex}.mwConfirmBox{width:min(100%,360px);padding:24px 20px 20px;border-radius:28px;text-align:center;background:linear-gradient(145deg,#fffaff,#ffeaf4);border:1px solid #ffc8e0;box-shadow:0 20px 65px #6d29483b;animation:mwPopIn .18s ease-out;color:#6a4358}.mwConfirmIcon{font-size:38px}.mwConfirmBox h3{margin:9px 0;color:#df438b;font-size:21px}.mwConfirmBox p{white-space:pre-line;line-height:1.7;font-size:14px;margin:10px 0 20px}.mwConfirmButtons{display:flex;gap:9px;justify-content:center}.mwConfirmButtons button{flex:1;border:0;border-radius:999px;padding:11px 10px;font-weight:800;font-size:12px}.mwConfirmCancel{background:#f4e8ef;color:#886779}.mwConfirmOk{background:linear-gradient(100deg,#ff9dcc,#ff579d);color:#fff;box-shadow:0 5px 12px #ff79b54a}@keyframes mwPopIn{from{opacity:0;transform:translateY(8px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}body.darkMode .mwConfirmBox{background:linear-gradient(145deg,#30283a,#443044);color:#fbeaf4;border-color:#69445d}body.darkMode .mwToggleBuyTable{background:#443044!important;color:#ffd8eb!important;border-color:#69445d!important}
 @media(max-width:480px){.mwHeadingRight{gap:5px}.mwToggleBuyTable{padding:6px 8px!important;font-size:11px}.mwConfirmButtons{flex-direction:column-reverse}.meowWalletCard,.meowBuyTableCard{padding:14px;border-radius:20px}.mwTableHeading h2{font-size:16px}.mwChapterTable th,.mwChapterTable td{padding:9px 6px;font-size:12px}.mwChapterTable button{padding:7px 9px;font-size:11px}.mwFullBuyRow{gap:8px}.mwFullBuyRow button{width:100%}}
 
+
+/* =========================================================
+   RESPONSIVE PATCH — GitHub Pages / mobile / tablet / desktop
+   Giữ nguyên chức năng hiện có, chỉ tối ưu bố cục theo màn hình.
+========================================================= */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+}
+img, video, canvas, iframe {
+  max-width: 100%;
+}
+input, textarea, select, button {
+  max-width: 100%;
+}
+button, input, select, textarea {
+  touch-action: manipulation;
+}
+button {
+  min-height: 40px;
+}
+#meowApp {
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+}
+#homePage, #chapterPage, #adminProfile, #customerProfile {
+  padding: clamp(12px, 2.4vw, 28px);
+}
+.homeCard,
+.adminProfileCard,
+.customerProfileCard,
+.adminCard {
+  width: 100%;
+  min-width: 0;
+}
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.storyTitleBox {
+  min-width: 0;
+  flex: 1 1 220px;
+}
+#storyName, .manageText h2, .storyManageHeader h2 {
+  overflow-wrap: anywhere;
+}
+#storyTags, #tagList, #allTagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.infoBox {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+#chapterSearch,
+.searchInput,
+#storySearchInput,
+#vipCustomerSearch,
+#adminLogin input,
+#customerLoginBox input,
+#addStoryBox input,
+#addCustomerBox input {
+  width: 100%;
+  min-width: 0;
+}
+#chapterList, #storyList, #customerList, #chapterManageList,
+#readerChapterListBox, #storySearchResultBox, #storyTagResultBox {
+  min-width: 0;
+}
+#readerPage {
+  width: 100%;
+  max-width: 100%;
+}
+#readerTop {
+  gap: clamp(6px, 1.5vw, 15px);
+}
+#readerTitle {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#readerContent {
+  overflow-wrap: anywhere;
+  -webkit-overflow-scrolling: touch;
+}
+#chapterInfo {
+  flex-wrap: wrap;
+}
+.chapterInfoItem {
+  min-width: 0;
+}
+#manageBox {
+  min-width: 0;
+  padding: clamp(14px, 2.5vw, 25px);
+}
+.manageButtons {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.storyManageHeader, .storyManageLeft, .mwTop, .mwTableHeading,
+.mwFullBuyRow, .buyRow, .storyFormButtons {
+  min-width: 0;
+  flex-wrap: wrap;
+}
+.storyManageHeader > *, .storyManageLeft > *,
+.mwTop > *, .mwTableHeading > *, .mwFullBuyRow > * {
+  min-width: 0;
+}
+#storyInfoBox, #addChapterBox, #chapterManageBox, #storyManage,
+#customerManage, #addCustomerBox, #addStoryBox {
+  min-width: 0;
+  max-width: 100%;
+}
+#adminContent {
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+.editorToolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.mwTableScroll {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.mwChapterTable {
+  min-width: 360px;
+}
+.coverBox img {
+  display: block;
+}
+@media (min-width: 900px) {
+  #meowApp {
+    padding: 18px 24px 32px;
+  }
+  #homePage, #chapterPage, #adminProfile, #customerProfile {
+    padding: 24px;
+  }
+  .coverBox {
+    aspect-ratio: 21 / 9;
+    max-height: 430px;
+  }
+  .infoBox {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  #readerContent {
+    padding: 30px clamp(28px, 8vw, 110px);
+  }
+  #readerTop, #readerBottom {
+    padding-inline: max(20px, calc((100vw - 1050px) / 2));
+  }
+  #readerContent {
+    left: max(0px, calc((100vw - 1050px) / 2));
+    right: max(0px, calc((100vw - 1050px) / 2));
+  }
+  #adminLogin {
+    max-width: 560px;
+    margin: 28px auto;
+  }
+  .adminProfileCard {
+    max-width: 1100px;
+    margin-inline: auto;
+  }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  #meowApp {
+    max-width: 820px;
+  }
+  .infoBox {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .manageButtons {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+  #readerContent {
+    padding: 22px;
+  }
+}
+@media (max-width: 599px) {
+  body {
+    font-size: 14px;
+  }
+  #meowApp {
+    width: 100%;
+    padding: 0;
+  }
+  #homePage, #chapterPage, #adminProfile, #customerProfile {
+    padding: 12px;
+  }
+  .coverBox {
+    aspect-ratio: 4 / 3;
+    border-radius: 22px;
+  }
+  .authorBadge {
+    left: 10px;
+    bottom: 10px;
+    padding: 8px 12px;
+    font-size: 12px;
+    max-width: calc(100% - 20px);
+  }
+  #storyName {
+    font-size: clamp(20px, 6vw, 25px);
+    line-height: 1.3;
+    margin: 14px 0;
+  }
+  .titleRow {
+    gap: 7px;
+  }
+  .titleRow button {
+    flex: 0 0 auto;
+  }
+  .infoBox {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    padding: 10px;
+    border-radius: 20px;
+  }
+  .infoBox div {
+    min-width: 0;
+    padding: 10px 7px;
+    min-height: 64px;
+    font-size: 11px;
+    overflow-wrap: anywhere;
+  }
+  .infoBox b {
+    font-size: 15px;
+    overflow-wrap: anywhere;
+  }
+  #readBtn {
+    height: 52px;
+    font-size: 17px;
+    margin-top: 18px;
+  }
+  #listBtn {
+    height: 48px;
+    font-size: 15px;
+    margin-top: 10px;
+  }
+  .chapterItem {
+    padding: 14px;
+    border-radius: 16px;
+    overflow-wrap: anywhere;
+  }
+  #readerTop {
+    height: 56px;
+    padding: 0 10px;
+  }
+  #closeReader {
+    padding: 8px 11px;
+    font-size: 16px;
+  }
+  #readerContent {
+    top: 126px;
+    bottom: calc(65px + env(safe-area-inset-bottom, 0px));
+    padding: 18px 15px;
+    font-size: 18px;
+    line-height: 1.85;
+  }
+  #chapterInfo {
+    gap: 6px;
+    padding: 7px;
+  }
+  .chapterInfoItem {
+    gap: 5px;
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+  .chapterInfoItem b {
+    font-size: 12px;
+    overflow-wrap: anywhere;
+  }
+  .chapterInfoLabel {
+    font-size: 10px;
+  }
+  #readerBottom {
+    height: calc(62px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  #readerBottom button {
+    width: 46px;
+    height: 42px;
+    border-radius: 14px;
+  }
+  .adminCard, .adminProfileCard, .customerProfileCard {
+    padding: 18px 14px;
+    border-radius: 22px;
+  }
+  #manageBox {
+    margin-top: 18px;
+    padding: 12px;
+    border-radius: 22px;
+  }
+  .manageHeader {
+    gap: 10px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .manageAvatar {
+    width: 54px;
+    height: 54px;
+    border-radius: 17px;
+    font-size: 28px;
+  }
+  .manageText h2 {
+    font-size: 19px;
+  }
+  .manageText p {
+    font-size: 12px;
+  }
+  .manageButtons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+  .manageButtons button {
+    padding: 13px 7px;
+    border-radius: 18px;
+    gap: 7px;
+  }
+  .manageBtnIcon {
+    width: 46px;
+    height: 46px;
+    border-radius: 15px;
+    font-size: 24px;
+  }
+  .manageButtons span {
+    font-size: 12px;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+  #storyInfoBox, #addChapterBox, #chapterManageBox,
+  #storyManage, #customerManage, #addCustomerBox, #addStoryBox {
+    padding: 14px;
+    border-radius: 20px;
+  }
+  #storyInfoBox input, #storyInfoBox textarea, #storyInfoBox select,
+  #addChapterBox input, #addChapterBox textarea,
+  #adminLogin input, #customerLoginBox input {
+    font-size: 16px;
+  }
+  .storyFormButtons {
+    display: flex;
+    gap: 8px;
+  }
+  .storyFormButtons button {
+    flex: 1 1 0;
+  }
+  .editorToolbar button {
+    min-width: 38px;
+    padding: 8px;
+  }
+  .mwTop, .mwTableHeading {
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .mwFullBuyRow {
+    align-items: stretch;
+  }
+  .mwFullBuyRow > div {
+    flex: 1 1 100%;
+  }
+  .mwFullBuyRow button {
+    width: 100%;
+  }
+  .mwConfirmBox {
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+  }
+  #readerSettingPanel, #readerChapterPanel, #readerNotePanel {
+    max-height: 82dvh;
+    padding: 16px 14px calc(18px + env(safe-area-inset-bottom, 0px));
+  }
+}
+@media (max-width: 360px) {
+  #homePage, #chapterPage, #adminProfile, #customerProfile {
+    padding: 9px;
+  }
+  .infoBox {
+    gap: 6px;
+    padding: 8px;
+  }
+  .infoBox div {
+    font-size: 10px;
+    padding: 8px 4px;
+  }
+  .infoBox b {
+    font-size: 14px;
+  }
+  .manageButtons {
+    gap: 7px;
+  }
+  #readerContent {
+    padding-inline: 12px;
+    font-size: 17px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
 </style>
 
 
@@ -9705,7 +10129,7 @@ const db = getDatabase(app);
 // MEOW WALLET: đồng bộ số dư, giá chương và giao dịch mua
 const MW_WALLET_PATH = "meowWallet";
 // Bà tự thay URL bên dưới bằng link Ví Yui của mình
-const MW_YUI_WALLET_URL = "DAN_LINK_VI_YUI_CUA_BA_VAO_DAY";
+const MW_YUI_WALLET_URL = "https://oluoinhocuameow-ops.github.io/nap-tien/";
 const MW_PURCHASE_PATH = "meowPurchases";
 const MW_TX_PATH = "meowWalletTransactions";
 let mwWalletBalance = 0;
@@ -9794,7 +10218,7 @@ async function mwBuy(kind,chapterId=""){
 try { mwStartWalletSync(); } catch(e) { console.warn("Wallet sync:",e); }
 const mwYuiWalletButton=document.getElementById("mwYuiWalletBtn");
 if(mwYuiWalletButton){
- mwYuiWalletButton.href = MW_YUI_WALLET_URL.startsWith("http") ? MW_YUI_WALLET_URL : "#";
+ mwYuiWalletButton.href = MW_YUI_WALLET_URL.startsWith("http") ? MW_YUI_WALLET_URL : "https://oluoinhocuameow-ops.github.io/nap-tien/";
  mwYuiWalletButton.addEventListener("click",function(e){
   if(!MW_YUI_WALLET_URL.startsWith("http")){
    e.preventDefault();
@@ -16233,3 +16657,6 @@ localStorage.setItem(
 };
 </script>
 
+
+</body>
+</html>
